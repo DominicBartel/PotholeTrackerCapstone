@@ -10,13 +10,16 @@
 
     <img src="~/Content/map.png" />
 
-    <table>
+    <table class="table-index-page" style="color: white">
         @foreach (var pothole in Model)
         {
             <tr>
                 <td>@rowNum</td>
                 <td>@pothole.Street1</td>
+                <td></td>
                 <td>@pothole.Street2</td>
+                <td>@pothole.LocationDesc</td>
+                <td>@pothole.PotholeDesc</td>
             </tr>
             rowNum++;
         }
