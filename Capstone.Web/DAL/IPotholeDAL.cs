@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capstone.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Capstone.Web.DAL
 {
-    interface IPotholeDAL
+    public interface IPotholeDAL
     {
-
+        List<Pothole> GetAllPotholes();
+        
 
 
 
