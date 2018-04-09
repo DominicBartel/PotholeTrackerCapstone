@@ -32,7 +32,7 @@ namespace Capstone.Web.DAL
                     conn.Open();
 
 
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM PotHole", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM PotHole WHERE IsValidated = 1", conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
