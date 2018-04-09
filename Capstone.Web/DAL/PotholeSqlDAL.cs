@@ -14,6 +14,7 @@ namespace Capstone.Web.DAL
 
         public string ConnectionString { get; set; }
 
+
         public PotholeSqlDAL(string connectionString)
         {
             this.ConnectionString = connectionString;
@@ -31,7 +32,7 @@ namespace Capstone.Web.DAL
                     conn.Open();
 
 
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM PotHole");
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM PotHole", conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
