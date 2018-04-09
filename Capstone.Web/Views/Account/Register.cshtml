@@ -11,9 +11,11 @@
     <h4>Create a new account.</h4>    
     <div>
         @Html.TextBoxFor(m => m.Email, new { placeholder = "email" })
+        @Html.ValidationMessageFor(model => model.Email)
     </div>
     <div>
         @Html.PasswordFor(m => m.Password, new { placeholder = "password" })
+        @Html.ValidationMessageFor(model => model.Password)
     </div>
     <div>
         @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "confirm password" })
