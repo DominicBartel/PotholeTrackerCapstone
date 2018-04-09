@@ -35,7 +35,7 @@ namespace Capstone.Web
             // Configure Bindings
             // kernel.Bind<interface>().To<class>();
 
-            kernel.Bind<IPotholeDAL>().To<PotholeSqlDAL>();
+            kernel.Bind<IPotholeDAL>().To<PotholeSqlDAL>().WithConstructorArgument(connectionString);
 
             GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
 
