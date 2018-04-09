@@ -20,18 +20,23 @@ namespace Capstone.Web.DAL
         }
 
 
-        public List<Pothole> GetAllPotholes()
+        public List<Pothole> GetAllValidPotholes()
         {
             List<Pothole> allPotholes = new List<Pothole>();
 
-            //try
-            //{
-            //    using(SqlConnection)
-            //}
-            //catch (S)
-            //{
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    conn.Open();
 
-            //}
+                    SqlCommand cmd = new SqlCommand("INSERT INTO ");
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
 
 
             return allPotholes;
