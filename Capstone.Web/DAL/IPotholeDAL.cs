@@ -10,7 +10,8 @@ namespace Capstone.Web.DAL
     public interface IPotholeDAL
     {
         List<Pothole> GetAllValidPotholes();
-        
+
+        List<Pothole> SearchValidPotHoles(string street1);
 
 
 
