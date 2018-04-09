@@ -34,18 +34,28 @@ CREATE TABLE [dbo].[RepairOrder]
  (
    [PotHole_Id]		UNIQUEIDENTIFIER	NOT NULL PRIMARY KEY,
    [UserId]			UNIQUEIDENTIFIER	NOT NULL,
-   [RepairId]		UNIQUEIDENTIFIER	NOT NULL,
    [PotHoleDesc]	VARCHAR(100)		NULL,
    [Lat]			FLOAT(50)			NULL,
    [Long]			FLOAT(50)			NULL,
    [Severity]		TINYINT				NULL,
    [Street1]		VARCHAR(50)			NULL,
    [Street2]		VARCHAR(50)			NULL,
+   [LocationDesc]	VARCHAR(250)		NULL,
    [DateReported]	DATETIME			NULL,
    [InspectedDate]	DATETIME			NULL,
    [RepairDate]		DATETIME			NULL,
    [IsValidated]	BIT					NULL,
 
    CONSTRAINT fk_UserId FOREIGN KEY (UserId) REFERENCES Users(UserId),
-   CONSTRAINT fk_RepairId FOREIGN KEY (RepairId) REFERENCES RepairOrder(RepairId),
+ );
+
+ CREATE TABLE [dbo].[RepairOrderPothole]
+ (
+	[RepairOrderPothole_Id] UNIQUEIDENTIFIER	NOT NULL PRIMARY KEY,
+	[RepairId]				UNIQUEIDENTIFIER	NOT NULL,
+	[PotHole_Id]			UNIQUEIDENTIFIER	NOT NULL,
+
+	CONSTRAINT fk_RepairId FOREIGN KEY (RepairId) REFERENCES RepairOrder(RepairId),
+	CONSTRAINT fk_PotHole_Id FOREIGN KEY (PotHole_Id) REFERENCES PotHole(PotHole_Id)
+
  );
