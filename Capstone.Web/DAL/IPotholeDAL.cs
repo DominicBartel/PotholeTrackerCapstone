@@ -8,5 +8,9 @@ namespace Capstone.Web.DAL
 {
     interface IPotholeDAL
     {
+
+
+
+
     }
 }
