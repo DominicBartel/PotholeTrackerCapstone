@@ -1,10 +1,19 @@
-﻿ CREATE DATABASE PotHoleDB
+﻿DROP TABLE RepairOrderPothole
+DROP TABLE PotHole
+DROP TABLE RepairOrder
+DROP TABLE UserRoles
+DROP TABLE Users
 
-GO
 
-USE PotHoleDB;
 
-GO
+
+--CREATE DATABASE PotHoleDB
+
+--GO
+
+--USE PotHoleDB;
+
+--GO
 
 CREATE TABLE [dbo].[Users]
 (
@@ -76,4 +85,4 @@ Insert PotHole values('C2CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Description', 50,
 Insert PotHole values('C2CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Description', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
 Insert PotHole values('C2CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Watch out for tacos', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
 
-select * from users;
+select * from RepairOrderPothole;
