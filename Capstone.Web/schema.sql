@@ -53,20 +53,21 @@ CREATE TABLE [dbo].[RepairOrder]
  (
 	[RepairOrderPothole_Id] UNIQUEIDENTIFIER	NOT NULL PRIMARY KEY,
 	[RepairId]				UNIQUEIDENTIFIER	NOT NULL,
-	[PotHole_Id]			UNIQUEIDENTIFIER	NOT NULL,
+	[PotHole_Id]			INT IDENTITY (1,1)	NOT NULL,
 
 	CONSTRAINT fk_RepairId FOREIGN KEY (RepairId) REFERENCES RepairOrder(RepairId),
 	CONSTRAINT fk_PotHole_Id FOREIGN KEY (PotHole_Id) REFERENCES PotHole(PotHole_Id)
 
  );
 
+
 Insert PotHole values('C2CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Description', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
-Insert PotHole values('C2CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'This one is different', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
-Insert PotHole values('C2CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Description', 50, 50, 11, 'Waffle', 'HoeseMask', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
-Insert PotHole values('C2CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Description', 50, 50, 11, 'SaintClair', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
-Insert PotHole values('C2CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Description', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
-Insert PotHole values('C2CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Hello Jonathan', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
-Insert PotHole values('C2CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Description', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
-Insert PotHole values('C2CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Description', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
-Insert PotHole values('C2CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Description', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
-Insert PotHole values('C2CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Watch out for tacos', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
+Insert PotHole values('C3CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'This one is different', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
+Insert PotHole values('C4CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Description', 50, 50, 11, 'Waffle', 'HoeseMask', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
+Insert PotHole values('C5CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Description', 50, 50, 11, 'SaintClair', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
+Insert PotHole values('C6CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Description', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
+Insert PotHole values('C7CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Hello Jonathan', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
+Insert PotHole values('C8CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Description', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
+Insert PotHole values('C9CD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Description', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
+Insert PotHole values('CACD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Description', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
+Insert PotHole values('CBCD529E-B0D7-466E-8ADE-E8A973E79ECE', 'Watch out for tacos', 50, 50, 11, 'Euclid', 'Elm', 'Its on the corner of what kathy said', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
