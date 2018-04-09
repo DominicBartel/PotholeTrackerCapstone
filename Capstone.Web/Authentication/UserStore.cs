@@ -62,7 +62,7 @@ namespace Capstone.Web.Authentication
                 {
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
-                        connection.Execute("insert into Users(UserId, UserName, PasswordHash, SecurityStamp, Role) values(@userId, @userName, @passwordHash, @securityStamp, @role)", user);
+                        connection.Execute("insert into Users(UserId, UserName, PasswordHash, SecurityStamp) values(@userId, @userName, @passwordHash, @securityStamp)", user);
                         connection.Execute("insert into UserRoles(UserId, Role) values (@userId, @name)", userRoles);
                     }
                     tran.Complete();
