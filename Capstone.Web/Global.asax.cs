@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using Capstone.Web.DAL;
+using Ninject;
 using Ninject.Web.Common.WebHost;
 using Ninject.Web.WebApi;
 using System;
@@ -33,6 +34,8 @@ namespace Capstone.Web
 
             // Configure Bindings
             // kernel.Bind<interface>().To<class>();
+
+            kernel.Bind<IPotholeDAL>().To<PotholeSqlDAL>();
 
             GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
 
