@@ -9,8 +9,9 @@ namespace Capstone.Web.DAL
 {
     public interface IPotholeDAL
     {
-        List<Pothole> GetAllPotholes();
+        List<Pothole> GetAllValidPotholes();
         
+
 
 
 

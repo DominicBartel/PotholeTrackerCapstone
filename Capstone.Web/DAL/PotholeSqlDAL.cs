@@ -30,7 +30,8 @@ namespace Capstone.Web.DAL
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO ");
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM PotHole");
                 }
             }
             catch (SqlException ex)
