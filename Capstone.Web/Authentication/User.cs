@@ -14,6 +14,7 @@ namespace Capstone.Web.Authentication
         public string UserName { get; set; }
         public string PasswordHash { get; set; }
         public string SecurityStamp { get; set; }
+        public int Role { get; set; }
 
         public string Id => UserId.ToString();
 
