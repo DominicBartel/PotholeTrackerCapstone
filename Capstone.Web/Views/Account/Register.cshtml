@@ -19,6 +19,8 @@
     </div>
     <div>
         @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "confirm password" })
+        @Html.ValidationMessageFor(model => model.ConfirmPassword)
+        
     </div>
     <div>
         <input type="submit" value="Register" />
@@ -26,5 +28,6 @@
 }
 
 @section Scripts {
+
 
 }
