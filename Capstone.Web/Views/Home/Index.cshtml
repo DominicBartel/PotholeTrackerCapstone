@@ -1,7 +1,29 @@
-﻿
+﻿@model List<Capstone.Web.Models.Pothole>
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int rowNum = 1;
 }
 
-<h2>Index</h2>
+<body>
+    <h1>Pothole Tracker</h1>
+
+    <img src="~/Content/map.png" />
+
+    <table>
+        @foreach (var pothole in Model)
+        {
+            <tr>
+                <td>@rowNum</td>
+                <td>@pothole.Street1</td>
+                <td>@pothole.Street2</td>
+            </tr>
+            rowNum++;
+        }
+    </table>
+
+
+
+</body>
+
 

@@ -1,4 +1,5 @@
 ﻿using Capstone.Web.DAL;
+using Capstone.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace Capstone.Web.Controllers
 {
     public class HomeController : Controller
     {
+        public List<Pothole> AllPotholes = new List<Pothole>();
 
         public IPotholeDAL potholeDAL;
 
@@ -20,9 +22,9 @@ namespace Capstone.Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var list = potholeDAL.GetAllValidPotholes();
+            return View(list);
         }
-
 
     }
 }
