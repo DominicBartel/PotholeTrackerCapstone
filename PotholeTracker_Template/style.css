@@ -1,0 +1,52 @@
+body
+{
+    background:repeating-linear-gradient(
+        -55deg,
+        black,
+        black 1px,
+        #222 1px,
+        #222 3px
+    );
+    background-attachment: fixed;
+    font-family: 'Roboto'; 
+    text-shadow: black 1px 1px;
+}
+
+h1
+{
+    color: white;
+    background-color:black;
+    border-radius: 10px;
+    box-shadow: dimgray 2px 2px;
+    text-align: left;
+    padding-left:10px;
+}
+
+ul
+{
+    font-size: 20px;
+    list-style-type: none;
+    border-radius: 10px;
+    background-color: darkmagenta; 
+    box-shadow: black 2px 2px;
+}
+
+li
+{
+   display:inline;
+   padding:10px;
+}
+
+a
+{
+    color:white;
+    text-align: left;
+    text-decoration: none;
+}
+
+#map
+{
+    border:solid white 2px;
+    padding:10px;
+}
+

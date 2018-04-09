@@ -1,8 +1,4 @@
-﻿CREATE DATABASE Project;
-
-GO
-
-USE Project;
+﻿USE PotHoleDB;
 
 GO
 
