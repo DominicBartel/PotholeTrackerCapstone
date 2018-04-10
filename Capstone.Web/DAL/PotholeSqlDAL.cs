@@ -21,7 +21,6 @@ namespace Capstone.Web.DAL
         }
 
 
-
         public List<Pothole> GetAllValidPotholes()
         {
             List<Pothole> allPotholes = new List<Pothole>();
@@ -67,7 +66,8 @@ namespace Capstone.Web.DAL
             return allPotholes;
         }
 
-        public List<Pothole> SearchValidPotHoles(PotholeViewModel viewModel)
+
+        public PotholeViewModel SearchValidPotHoles(PotholeViewModel viewModel)
         {
             List<Pothole> allPotholes = new List<Pothole>();
 
@@ -77,11 +77,11 @@ namespace Capstone.Web.DAL
                 {
                     conn.Open();
 
-                    string query = BuildSqlQuery(viewModel);
+                    //string query = BuildSqlCommand(viewModel, conn);
 
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM PotHole WHERE IsValidated = 1 AND Street1 = @street1", conn);
+                    SqlCommand cmd = BuildSqlCommand(viewModel, conn);
 
-                    cmd.Parameters.AddWithValue("@street1", viewModel);
+
 
 
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -99,16 +99,113 @@ namespace Capstone.Web.DAL
                 throw;
             }
 
-            return allPotholes;
+            viewModel.PotholeList = allPotholes;
+
+            return viewModel;
         }
 
-        private string BuildSqlQuery(PotholeViewModel viewModel)
+
+        private SqlCommand BuildSqlCommand(PotholeViewModel viewModel, SqlConnection conn)
         {
-            string result = "";
 
 
-            return result;
+
+            string query = "SELECT PotHole.PotHole_Id, PotHole.UserId, Users.UserName, PotHole.PotHoleDesc, PotHole.Lat, PotHole.Long, PotHole.Severity, PotHole.Street1, PotHole.Street2, PotHole.LocationDesc, PotHole.DateReported, PotHole.InspectedDate, PotHole.RepairDate, PotHole.IsValidated FROM PotHole JOIN Users ON PotHole.UserId = Users.UserId WHERE 1=1";
+
+            if (viewModel.PotholeId != null)
+            {
+                query += " AND PotHole_Id = @potholeId";
+            }
+
+            if (viewModel.UserId != null)
+            {
+                query += " AND UserId = @userId";
+            }
+
+            if (!String.IsNullOrEmpty(viewModel.UserName))
+            {
+                query += " AND UserName = @userName";
+            }
+
+            if (!String.IsNullOrEmpty(viewModel.PotholeDesc))
+            {
+                query = " AND PotHoleDesc = @potholeDesc";
+            }
+
+            if(viewModel.Latitude != null)
+            {
+                query += " AND Lat = @latitude";
+            }
+
+            if(viewModel.Longitude != null)
+            {
+                query += " AND Long = @longitude";
+            }
+
+            if(viewModel.Severity != null)
+            {
+                query += " AND Severity = @severity";
+            }
+
+            if (!String.IsNullOrEmpty(viewModel.Street1))
+            {
+                query += " AND Street1 = @street1";
+            }
+
+            if (!String.IsNullOrEmpty(viewModel.Street2))
+            {
+                query += " AND Street2 = @street2";
+            }
+
+            if(!String.IsNullOrEmpty(viewModel.LocationDesc))
+            {
+                query += " AND LocationDesc = @locationDesc";
+            }
+
+            if(viewModel.ReportedDate != null)
+            {
+                query += " AND DateReported = @reportedDate";
+            }
+
+            if(viewModel.InspectedDate != null)
+            {
+                query += " AND InspectedDate = @inspectedDate";
+            }
+
+            if(viewModel.RepairedDate != null)
+            {
+                query += " AND RepairDate = @repairedDate";
+            }
+
+            if(viewModel.InspectedDate != null)
+            {
+                query += " AND IsValidated = @isValidated"; 
+            }
+
+
+
+            SqlCommand cmd = new SqlCommand(query, conn);
+
+            cmd.Parameters.AddWithValue("@potholeId", viewModel.PotholeId);
+            cmd.Parameters.AddWithValue("@userId", viewModel.UserId);
+            cmd.Parameters.AddWithValue("@userName", viewModel.UserName);
+            cmd.Parameters.AddWithValue("@potholeDesc", viewModel.PotholeDesc);
+            cmd.Parameters.AddWithValue("@latitude", viewModel.Latitude);
+            cmd.Parameters.AddWithValue("@longitude", viewModel.Longitude);
+            cmd.Parameters.AddWithValue("@severity", viewModel.Severity);
+            cmd.Parameters.AddWithValue("@street1", viewModel.Street1);
+            cmd.Parameters.AddWithValue("@street2", viewModel.Street2);
+            cmd.Parameters.AddWithValue("@locationDesc", viewModel.LocationDesc);
+            cmd.Parameters.AddWithValue("@reportedDate", viewModel.ReportedDate);
+            cmd.Parameters.AddWithValue("@inspectedDate", viewModel.InspectedDate);
+            cmd.Parameters.AddWithValue("@repairedDate", viewModel.InspectedDate);
+            cmd.Parameters.AddWithValue("@isValidated", viewModel.IsValidated);
+
+
+
+            return cmd;
         }
+
 
         public Pothole MapRows(SqlDataReader reader)
         {
@@ -206,7 +303,7 @@ namespace Capstone.Web.DAL
             }
             else
             {
-            p.InspectedDate = Convert.ToDateTime(reader["InspectedDate"]);
+                p.InspectedDate = Convert.ToDateTime(reader["InspectedDate"]);
             }
 
 

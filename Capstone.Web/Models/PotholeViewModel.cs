@@ -8,8 +8,8 @@ namespace Capstone.Web.Models
     public class PotholeViewModel
     {
 
-        public int PotholeId { get; set; }
-        public Guid UserId { get; set; }
+        public int? PotholeId { get; set; }
+        public Guid? UserId { get; set; }
         public string UserName { get; set; }
         public string PotholeDesc { get; set; }
         public double? Latitude { get; set; }
@@ -21,7 +21,7 @@ namespace Capstone.Web.Models
         public DateTime? ReportedDate { get; set; }
         public DateTime? InspectedDate { get; set; }
         public DateTime? RepairedDate { get; set; }
-        public bool IsValidated { get; set; }
+        public bool? IsValidated { get; set; }
 
         public List<Pothole> PotholeList { get; set; }
 

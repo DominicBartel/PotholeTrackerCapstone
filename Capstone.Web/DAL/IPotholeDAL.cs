@@ -11,7 +11,7 @@ namespace Capstone.Web.DAL
     {
         List<Pothole> GetAllValidPotholes();
 
-        List<Pothole> SearchValidPotHoles(PotholeViewModel viewModel);
+        PotholeViewModel SearchValidPotHoles(PotholeViewModel viewModel);
 
 
 
