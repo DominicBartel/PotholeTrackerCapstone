@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace Capstone.Web.Controllers
 {
-    public class APIController : ApiController
+    public class PotholesController : ApiController
     {
         // GET api/<controller>
         public IEnumerable<string> Get()
