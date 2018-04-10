@@ -4,8 +4,7 @@
     background: repeating-linear-gradient( -55deg, #191923, #191923, 1px, #222 1px, #222 3px );
     background-attachment: fixed;
     font-family: 'Roboto';
-    text-shadow: black 1px 1px;
-    color: white;
+    color: #FBFEF9;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -30,7 +29,7 @@ textarea {
 
 header {
     grid-area: header;
-    color: white;
+    color: #FBFEF9;
     background-color: black;
     border-radius: 10px;
     box-shadow: dimgray 2px 2px;
@@ -42,8 +41,9 @@ nav {
     font-size: 20px;
     list-style-type: none;
     border-radius: 10px;
-    background-color: #0090C1;
+    background-color: #A23B72;
     box-shadow: black 2px 2px;
+    text-shadow: black 1px 1px;
 }
 
 li {
@@ -52,45 +52,32 @@ li {
 }
 
 a {
-    color: white;
+    color: #FBFEF9;
     text-align: left;
     text-decoration: none;
 }
 
 img {
     display: inline-block;
+    border-radius:5px;
     border: solid #FBFEF9 2px;
     padding: 10px;
 }
 
-h2 {
+table{
     display: inline-block;
-    padding: 5px;
-    text-align: center;
-    background-color: #542344;
-    border-radius: 6px;
-    box-shadow: dimgray 2px 2px;
+    border: 5px solid #FBFEF9;
+    border-radius:5px;
+    font-size: 25px;
+}
+
+.table-index-page th {
+    background-color: #0090C1;
     color: #FBFEF9;
-    text-shadow: #191923 1px,1px;
+    text-shadow: black 1px 1px;
 }
-
-.grid-container {
-    display: grid;
-    grid-template-areas: 
-        'header header header header header header'
-        'left middle middle middle middle right';
-    grid-column-gap: 10px;
-}
-
-.table-index-page {
-    display: inline-block;
-    border-color: #FBFEF9;
-}
-
-    
+  
     .table-index-page tr {
-        color: #FBFEF9;
-        background-color: #0090C1;
         text-align: center;
         padding: 10px;
         margin: 5px;
@@ -98,4 +85,12 @@ h2 {
 
     .table-index-page td {
         text-align: center;
+        color:black;
     }
+
+tr:nth-child(even) {
+    background-color: #FBFEF9;
+}
+tr:nth-child(odd) {
+    background-color: #CFDBD5;
+}

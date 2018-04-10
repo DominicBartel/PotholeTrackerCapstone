@@ -6,9 +6,8 @@
 
 <body>
     <img src="~/Content/map.png" />
-    <h2 class="tableHeader" >Current Confirmed Potholes:</h2>
     <table class="table-index-page">
-
+        <th colspan="5">Current Confirmed Potholes:</th>
 
         <tr>
             <td>Severity</td>
@@ -18,15 +17,15 @@
             <td>Pothole Description</td>
         </tr>
         @foreach (var pothole in Model)
-        {
-            <tr>
-                <td>@pothole.Severity</td>
-                <td>@pothole.Street1</td>
-                <td>@pothole.Street2</td>
-                <td>@pothole.LocationDesc</td>
-                <td>@pothole.PotholeDesc</td>
-            </tr>
-        }
+    {
+        <tr>
+            <td>@pothole.Severity</td>
+            <td>@pothole.Street1</td>
+            <td>@pothole.Street2</td>
+            <td>@pothole.LocationDesc</td>
+            <td>@pothole.PotholeDesc</td>
+        </tr>
+}
     </table>
 
 
