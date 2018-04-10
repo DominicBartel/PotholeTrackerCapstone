@@ -192,7 +192,7 @@ namespace Capstone.Web.DAL
                 cmd.Parameters.AddWithValue("@repairedDate", viewModel.InspectedDate);
             }
 
-            if (viewModel.InspectedDate != null)
+            if (viewModel.IsValidated != null)
             {
                 query += " AND IsValidated = @isValidated";
                 cmd.Parameters.AddWithValue("@isValidated", viewModel.IsValidated);

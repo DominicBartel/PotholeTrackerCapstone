@@ -40,7 +40,7 @@ namespace Capstone.Web.Models
             ReportedDate = null;
             InspectedDate = null;
             RepairedDate = null;
-            IsValidated = true;
+            this.IsValidated = true;
         }
 
     }
