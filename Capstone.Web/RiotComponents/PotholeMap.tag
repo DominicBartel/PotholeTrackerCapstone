@@ -3,15 +3,6 @@
     <div id="map"></div>
 
 
-    <style>
-        #map {
-            width: 400px;
-            height: 400px;
-            background-color: grey;
-        }
-    </style>
-
-
     <script>
 
         this.on('mount', () => {
