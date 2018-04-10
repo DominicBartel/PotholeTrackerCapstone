@@ -8,10 +8,12 @@
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>    
+    <h4>Create a new account.</h4>
+    @Html.ValidationSummary(true)
     <div>
         @Html.TextBoxFor(m => m.Email, new { placeholder = "email" })
         @Html.ValidationMessageFor(model => model.Email)
+
     </div>
     <div>
         @Html.PasswordFor(m => m.Password, new { placeholder = "password" })
@@ -20,7 +22,7 @@
     <div>
         @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "confirm password" })
         @Html.ValidationMessageFor(model => model.ConfirmPassword)
-        
+
     </div>
     <div>
         <input type="submit" value="Register" />
