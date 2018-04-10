@@ -2,27 +2,25 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    int rowNum = 1;
 }
 
 <body>
-    
-
     <img src="~/Content/map.png" />
-
-    <h2>All currently confirmed potholes:</h2>
-
+    <h2 class="tableHeader" >Current Confirmed Potholes:</h2>
     <table class="table-index-page">
 
+
         <tr>
-            <th>First Cross Street</th>
-            <th>Second Cross Street</th>
-            <th>Location</th>
-            <th>Pothole Description</th>
+            <td>Severity</td>
+            <td>First Cross Street</td>
+            <td>Second Cross Street</td>
+            <td>Location</td>
+            <td>Pothole Description</td>
         </tr>
         @foreach (var pothole in Model)
         {
             <tr>
+                <td>@pothole.Severity</td>
                 <td>@pothole.Street1</td>
                 <td>@pothole.Street2</td>
                 <td>@pothole.LocationDesc</td>

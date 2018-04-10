@@ -1,7 +1,7 @@
 ﻿body {
-    padding-top: 50px;
+    padding-top: 10px;
     padding-bottom: 20px;
-    background: repeating-linear-gradient( -55deg, black, black 1px, #222 1px, #222 3px );
+    background: repeating-linear-gradient( -55deg, #191923, #191923, 1px, #222 1px, #222 3px );
     background-attachment: fixed;
     font-family: 'Roboto';
     text-shadow: black 1px 1px;
@@ -29,6 +29,7 @@ textarea {
 }
 
 header {
+    grid-area: header;
     color: white;
     background-color: black;
     border-radius: 10px;
@@ -56,28 +57,45 @@ a {
     text-decoration: none;
 }
 
-#map {
-    border: solid white 2px;
+img {
+    display: inline-block;
+    border: solid #FBFEF9 2px;
     padding: 10px;
 }
 
+h2 {
+    display: inline-block;
+    padding: 5px;
+    text-align: center;
+    background-color: #542344;
+    border-radius: 6px;
+    box-shadow: dimgray 2px 2px;
+    color: #FBFEF9;
+    text-shadow: #191923 1px,1px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+        'header header header header header header'
+        'left middle middle middle middle right';
+    grid-column-gap: 10px;
+}
 
 .table-index-page {
-   border-collapse:collapse;
+    display: inline-block;
+    border-color: #FBFEF9;
 }
-    .table-index-page th {
-        color: white;
-        border-radius: 4px;
-        box-shadow: #183446 2px 2px;
+
+    
+    .table-index-page tr {
+        color: #FBFEF9;
         background-color: #0090C1;
         text-align: center;
         padding: 10px;
         margin: 5px;
     }
 
-.table-index-page tr td {
-    text-align: center;
-
-}
-tr:nth-child(even) {background: #92D2E3}
-tr:nth-child(odd){background: white}
+    .table-index-page td {
+        text-align: center;
+    }
