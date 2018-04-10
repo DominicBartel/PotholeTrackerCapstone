@@ -108,6 +108,7 @@ namespace Capstone.Web.DAL
         private SqlCommand BuildSqlCommand(PotholeViewModel viewModel, SqlConnection conn)
         {
 
+            SqlCommand cmd = new SqlCommand();
 
 
             string query = "SELECT PotHole.PotHole_Id, PotHole.UserId, Users.UserName, PotHole.PotHoleDesc, PotHole.Lat, PotHole.Long, PotHole.Severity, PotHole.Street1, PotHole.Street2, PotHole.LocationDesc, PotHole.DateReported, PotHole.InspectedDate, PotHole.RepairDate, PotHole.IsValidated FROM PotHole JOIN Users ON PotHole.UserId = Users.UserId WHERE 1=1";
@@ -115,93 +116,93 @@ namespace Capstone.Web.DAL
             if (viewModel.PotholeId != null)
             {
                 query += " AND PotHole_Id = @potholeId";
+                cmd.Parameters.AddWithValue("@potholeId", viewModel.PotholeId);
             }
 
             if (viewModel.UserId != null)
             {
                 query += " AND UserId = @userId";
+                cmd.Parameters.AddWithValue("@userId", viewModel.UserId);
             }
 
             if (!String.IsNullOrEmpty(viewModel.UserName))
             {
                 query += " AND UserName = @userName";
+                cmd.Parameters.AddWithValue("@userName", viewModel.UserName);
             }
 
             if (!String.IsNullOrEmpty(viewModel.PotholeDesc))
             {
                 query = " AND PotHoleDesc = @potholeDesc";
+                cmd.Parameters.AddWithValue("@potholeDesc", viewModel.PotholeDesc);
             }
 
-            if(viewModel.Latitude != null)
+            if (viewModel.Latitude != null)
             {
                 query += " AND Lat = @latitude";
+                cmd.Parameters.AddWithValue("@latitude", viewModel.Latitude);
+
             }
 
-            if(viewModel.Longitude != null)
+            if (viewModel.Longitude != null)
             {
                 query += " AND Long = @longitude";
+                cmd.Parameters.AddWithValue("@longitude", viewModel.Longitude);
             }
 
-            if(viewModel.Severity != null)
+            if (viewModel.Severity != null)
             {
                 query += " AND Severity = @severity";
+                cmd.Parameters.AddWithValue("@severity", viewModel.Severity);
             }
 
             if (!String.IsNullOrEmpty(viewModel.Street1))
             {
                 query += " AND Street1 = @street1";
+                cmd.Parameters.AddWithValue("@street1", viewModel.Street1);
             }
 
             if (!String.IsNullOrEmpty(viewModel.Street2))
             {
                 query += " AND Street2 = @street2";
+                cmd.Parameters.AddWithValue("@street2", viewModel.Street2);
             }
 
-            if(!String.IsNullOrEmpty(viewModel.LocationDesc))
+            if (!String.IsNullOrEmpty(viewModel.LocationDesc))
             {
                 query += " AND LocationDesc = @locationDesc";
+                cmd.Parameters.AddWithValue("@locationDesc", viewModel.LocationDesc);
             }
 
-            if(viewModel.ReportedDate != null)
+            if (viewModel.ReportedDate != null)
             {
                 query += " AND DateReported = @reportedDate";
+                cmd.Parameters.AddWithValue("@reportedDate", viewModel.ReportedDate);
             }
 
-            if(viewModel.InspectedDate != null)
+            if (viewModel.InspectedDate != null)
             {
                 query += " AND InspectedDate = @inspectedDate";
+                cmd.Parameters.AddWithValue("@inspectedDate", viewModel.InspectedDate);
             }
 
-            if(viewModel.RepairedDate != null)
+            if (viewModel.RepairedDate != null)
             {
                 query += " AND RepairDate = @repairedDate";
+                cmd.Parameters.AddWithValue("@repairedDate", viewModel.InspectedDate);
             }
 
-            if(viewModel.InspectedDate != null)
+            if (viewModel.InspectedDate != null)
             {
-                query += " AND IsValidated = @isValidated"; 
+                query += " AND IsValidated = @isValidated";
+                cmd.Parameters.AddWithValue("@isValidated", viewModel.IsValidated);
+
             }
 
+            query += ";";
 
-
-            SqlCommand cmd = new SqlCommand(query, conn);
-
-            cmd.Parameters.AddWithValue("@potholeId", viewModel.PotholeId);
-            cmd.Parameters.AddWithValue("@userId", viewModel.UserId);
-            cmd.Parameters.AddWithValue("@userName", viewModel.UserName);
-            cmd.Parameters.AddWithValue("@potholeDesc", viewModel.PotholeDesc);
-            cmd.Parameters.AddWithValue("@latitude", viewModel.Latitude);
-            cmd.Parameters.AddWithValue("@longitude", viewModel.Longitude);
-            cmd.Parameters.AddWithValue("@severity", viewModel.Severity);
-            cmd.Parameters.AddWithValue("@street1", viewModel.Street1);
-            cmd.Parameters.AddWithValue("@street2", viewModel.Street2);
-            cmd.Parameters.AddWithValue("@locationDesc", viewModel.LocationDesc);
-            cmd.Parameters.AddWithValue("@reportedDate", viewModel.ReportedDate);
-            cmd.Parameters.AddWithValue("@inspectedDate", viewModel.InspectedDate);
-            cmd.Parameters.AddWithValue("@repairedDate", viewModel.InspectedDate);
-            cmd.Parameters.AddWithValue("@isValidated", viewModel.IsValidated);
-
-
+            cmd.CommandText = query;
+            cmd.Connection = conn;
 
             return cmd;
         }

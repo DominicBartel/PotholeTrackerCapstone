@@ -25,6 +25,23 @@ namespace Capstone.Web.Models
 
         public List<Pothole> PotholeList { get; set; }
 
+        public PotholeViewModel()
+        {
+            PotholeId = null;
+            UserId = null;
+            UserName = "";
+            PotholeDesc = "";
+            Latitude = null;
+            Longitude = null;
+            Severity = null;
+            Street1 = "";
+            Street2 = "";
+            LocationDesc = "";
+            ReportedDate = null;
+            InspectedDate = null;
+            RepairedDate = null;
+            IsValidated = true;
+        }
 
     }
 }

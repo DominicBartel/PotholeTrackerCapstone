@@ -1,4 +1,4 @@
-﻿@model List<Capstone.Web.Models.Pothole>
+﻿@model Capstone.Web.Models.PotholeViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,7 +17,7 @@
             <td>Location</td>
             <td>Pothole Description</td>
         </tr>
-        @foreach (var pothole in Model)
+        @foreach (var pothole in Model.PotholeList)
         {
             <tr>
                 <td>@pothole.Severity</td>

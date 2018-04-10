@@ -12,6 +12,8 @@ namespace Capstone.Web.Controllers
     {
         public List<Pothole> AllPotholes = new List<Pothole>();
 
+        public PotholeViewModel PotHoleSearch = new PotholeViewModel();
+
         public IPotholeDAL potholeDAL;
 
         public HomeController(IPotholeDAL dal)
@@ -20,10 +22,20 @@ namespace Capstone.Web.Controllers
         }
 
 
-        public ActionResult Index()
+        public ActionResult Index(PotholeViewModel viewModel)
         {
-            var list = potholeDAL.GetAllValidPotholes();
-            return View(list);
+
+            PotholeViewModel newModel = new PotholeViewModel();
+
+            if(viewModel == null)
+            {
+                viewModel = new PotholeViewModel();
+            }
+
+            newModel = potholeDAL.SearchValidPotHoles(viewModel);
+       
+
+            return View(newModel);
         }
 
     }
