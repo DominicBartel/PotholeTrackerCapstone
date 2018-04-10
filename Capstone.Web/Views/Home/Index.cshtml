@@ -12,27 +12,22 @@
 
     <h2>All currently confirmed potholes:</h2>
 
-    <table class="table-index-page" style="color: white">
+    <table class="table-index-page">
 
         <tr>
-            <td></td>
-            <td>First Cross Street</td>
-            <td></td>
-            <td>Second Cross Street</td>
-            <td>Location</td>
-            <td>Pothole Description</td>
+            <th>First Cross Street</th>
+            <th>Second Cross Street</th>
+            <th>Location</th>
+            <th>Pothole Description</th>
         </tr>
         @foreach (var pothole in Model)
         {
             <tr>
-                <td>@rowNum</td>
                 <td>@pothole.Street1</td>
-                <td></td>
                 <td>@pothole.Street2</td>
                 <td>@pothole.LocationDesc</td>
                 <td>@pothole.PotholeDesc</td>
             </tr>
-            rowNum++;
         }
     </table>
 
