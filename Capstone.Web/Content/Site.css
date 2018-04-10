@@ -28,7 +28,7 @@ textarea {
     max-width: 280px;
 }
 
-h1 {
+header {
     color: white;
     background-color: black;
     border-radius: 10px;
@@ -37,11 +37,11 @@ h1 {
     padding-left: 10px;
 }
 
-ul {
+nav {
     font-size: 20px;
     list-style-type: none;
     border-radius: 10px;
-    background-color: darkmagenta;
+    background-color: #0090C1;
     box-shadow: black 2px 2px;
 }
 

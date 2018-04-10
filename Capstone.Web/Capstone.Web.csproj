@@ -207,6 +207,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\map.png" />
+    <Content Include="Content\pothole.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="schema.sql" />
