@@ -193,6 +193,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PotholesController.cs" />
     <Compile Include="DAL\IPotholeDAL.cs" />
     <Compile Include="DAL\IUserDAL.cs" />
     <Compile Include="DAL\PotholeSqlDAL.cs" />

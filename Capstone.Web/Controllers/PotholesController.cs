@@ -1,18 +1,32 @@
-﻿using System;
+﻿using Capstone.Web.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Capstone.Web.Models;
 
 namespace Capstone.Web.Controllers
 {
     public class PotholesController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+
+        public IPotholeDAL potholeDAL;
+
+        
+        public PotholesController(IPotholeDAL dal)
         {
-            return new string[] { "value1", "value2" };
+            this.potholeDAL = dal;
+        }
+        // GET api/<controller>
+        [HttpGet]
+        [Route("api/potholes")]
+        public IHttpActionResult GetAllPotholes()
+        {
+            var pothole = potholeDAL.GetAllValidPotholes();
+
+            return Ok(pothole);
         }
 
         // GET api/<controller>/5
