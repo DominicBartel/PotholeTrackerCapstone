@@ -4,18 +4,19 @@
     ViewBag.Title = "Log in";
 }
 
-<h2>@ViewBag.Title.</h2>
 <section id="loginForm">
+    <h1 style="text-shadow: #191923 1px 1px">Log In</h1>
     @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
     {
         @Html.AntiForgeryToken()
-        <h4>Use a local account to log in.</h4>
+        <!-- <h4>Use a local account to log in.</h4>-->
         @Html.ValidationSummary(true)
         <div>
             @Html.TextBoxFor(m => m.Email, new { placeholder = "email" })
             @Html.ValidationMessageFor(model => model.Email)
         </div>
-        <div>
+        <div id="password">
+            <img src="~/Content/lock.png" />
             @Html.PasswordFor(m => m.Password, new { placeholder = "password" })
             @Html.ValidationMessageFor(model => model.Password)
         </div>
@@ -24,7 +25,7 @@
             @Html.LabelFor(m => m.RememberMe)
         </div>
         <div>
-            <input type="submit" value="Log in" />
+            <input type="submit" value="SIGN IN" />
         </div>
         <p>
             @Html.ActionLink("Register as a new user", "Register")

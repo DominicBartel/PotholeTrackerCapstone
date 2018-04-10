@@ -103,3 +103,28 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
     background-color: #CFDBD5; /*darker*/
 }
+
+#loginForm {
+    box-shadow: black 4px 4px;
+    text-align: center;
+    width: 25%;
+    height: auto;
+    margin: auto;
+    background-color: #FBFEF9;
+    color: #191923;
+}
+
+    #loginForm h1 {
+        font-size: 30px;
+        color: #FBFEF9;
+        background: #0090C1;
+    }
+    #password{
+        padding: 10px;
+    }
+        #password img {
+            width: 30px;
+            height: auto;
+            background-color: #FBFEF9;
+            border-radius: 10px;
+        }
