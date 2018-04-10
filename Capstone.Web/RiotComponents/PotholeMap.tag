@@ -1,8 +1,5 @@
 <potholemap>
 
-    <p>Potato</p>
-
-
     <div id="map"></div>
 
 

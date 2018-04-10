@@ -5,7 +5,8 @@
 }
 
 <body>
-    <img src="~/Content/map.png" />
+    <potholemap></potholemap>
+
     <table class="table-index-page">
         <th colspan="5">Current Confirmed Potholes:</th>
 
@@ -17,18 +18,21 @@
             <td>Pothole Description</td>
         </tr>
         @foreach (var pothole in Model)
-    {
-        <tr>
-            <td>@pothole.Severity</td>
-            <td>@pothole.Street1</td>
-            <td>@pothole.Street2</td>
-            <td>@pothole.LocationDesc</td>
-            <td>@pothole.PotholeDesc</td>
-        </tr>
-}
+        {
+            <tr>
+                <td>@pothole.Severity</td>
+                <td>@pothole.Street1</td>
+                <td>@pothole.Street2</td>
+                <td>@pothole.LocationDesc</td>
+                <td>@pothole.PotholeDesc</td>
+            </tr>
+        }
     </table>
 
-
+    <script src="~/RiotComponents/potholemap.tag" type="riot/tag"></script>
+    <script>
+        riot.mount('potholemap');
+    </script>
 
 </body>
 
