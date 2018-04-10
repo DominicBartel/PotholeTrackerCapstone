@@ -67,7 +67,7 @@ namespace Capstone.Web.DAL
             return allPotholes;
         }
 
-        public List<Pothole> SearchValidPotHoles(PotholeSqlDAL viewModel)
+        public List<Pothole> SearchValidPotHoles(PotholeViewModel viewModel)
         {
             List<Pothole> allPotholes = new List<Pothole>();
 
@@ -102,7 +102,7 @@ namespace Capstone.Web.DAL
             return allPotholes;
         }
 
-        private string BuildSqlQuery(PotholeSqlDAL viewModel)
+        private string BuildSqlQuery(PotholeViewModel viewModel)
         {
             string result = "";
 
