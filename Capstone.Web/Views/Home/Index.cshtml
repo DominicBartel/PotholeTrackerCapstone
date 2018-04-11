@@ -5,7 +5,22 @@
 }
 
 <body>
-    <potholemap></potholemap>
+    @*<potholemap></potholemap>
+
+    <form action="Index" method="get">
+        <input type="hidden" name="IsValidated" value="true" />
+        <input type="text" name="UserName" placeholder="Search By Submitter Username" />
+        <input type="text" name="Street1" placeholder="Search On Street" />
+        <input type="text" name="Street2" placeholder="Search by Street near street pothole is on" />
+        <select title="Severity" name="Severity">
+            <option value="1">1</option>
+            <option value="1">1</option>
+
+
+        </select>
+        <button>SEARCH</button>
+    </form>*@
+
 
     <table class="table-index-page">
         <th colspan="5">Current Confirmed Potholes:</th>

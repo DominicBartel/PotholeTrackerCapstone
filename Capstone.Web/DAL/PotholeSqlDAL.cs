@@ -196,10 +196,9 @@ namespace Capstone.Web.DAL
             {
                 query += " AND IsValidated = @isValidated";
                 cmd.Parameters.AddWithValue("@isValidated", viewModel.IsValidated);
-
             }
 
-            query += ";";
+            query += " ORDER BY Severity DESC;";
 
             cmd.CommandText = query;
             cmd.Connection = conn;
