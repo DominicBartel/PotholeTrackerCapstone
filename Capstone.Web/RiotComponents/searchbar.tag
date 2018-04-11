@@ -46,18 +46,32 @@
 
         this.search = function () {
 
-            const isvalidated = this.root.querySelector('#isvalidated');
-            const username = this.root.querySelector('#username');
-            const street1 = this.root.querySelector('#street1');
-            const street2 = this.root.querySelector('#street2');
-            const locationdesc = this.root.querySelector('#locationdesc');
-            const potholedesc = this.root.querySelector('#potholedesc');
+            const isvalidatedE = this.root.querySelector('#isvalidated');
+            const isvalidated = isvalidatedE.value;
+            const usernameE = this.root.querySelector('#username');
+            const username = usernameE.value;
+            const street1E = this.root.querySelector('#street1');
+            const street1 = street1E.value;
+            const street2E = this.root.querySelector('#street2');
+            const street2 = street2E.value
+            const locationdescE = this.root.querySelector('#locationdesc');
+            const locationdesc = locationdescE.value
+            const potholedescE = this.root.querySelector('#potholedesc');
+            const potholedesc = potholedescE.value;
 
             console.log(isvalidated);
+            console.log(username);
 
             const url = `http://localhost:55900/api/potholessearch?IsValidated=${isvalidated}&UserName=${username}&Street1=${street1}&Street2=${street2}&LocationDesc=&PotholeDesc=&Severity=`
 
+            fetch('http://localhost:55900/api/potholes')
+                .then(response => response.json())
+                .then(json => {
+                    this.opts.bus.trigger('searchresult', json.search);
+                    console.log(json);
+                });
 
+            
 
         }
 
