@@ -62,12 +62,12 @@
             console.log(isvalidated);
             console.log(username);
 
-            const url = `http://localhost:55900/api/potholessearch?IsValidated=${isvalidated}&UserName=${username}&Street1=${street1}&Street2=${street2}&LocationDesc=&PotholeDesc=&Severity=`
+            const url = `http://localhost:55900/api/potholessearch?isValidated=${isvalidated}&userName=${username}&street1=${street1}&street2=${street2}&locationDesc=&potholeDesc=&severity=`;
 
-            fetch('http://localhost:55900/api/potholes')
+            fetch(url)
                 .then(response => response.json())
                 .then(json => {
-                    this.opts.bus.trigger('searchresult', json.search);
+                    this.opts.bus.trigger('searchresult', json);
                     console.log(json);
                 });
 

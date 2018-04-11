@@ -31,11 +31,22 @@ namespace Capstone.Web.Controllers
 
         [HttpGet]
         [Route("api/potholessearch")]
-        public IHttpActionResult SearchValidPotHoles(PotholeViewModel viewModel)
+        public IHttpActionResult SearchValidPotHoles(bool isvalidated, string userName, string street1, string street2, string locationDesc, string potholeDesc, int? severity)
         {
-            PotholeViewModel tempModel = potholeDAL.SearchValidPotHoles(viewModel);
 
-            var pothole = tempModel.PotholeList;
+            PotholeViewModel tempModel = new PotholeViewModel();
+
+            tempModel.IsValidated = isvalidated;
+            tempModel.UserName = userName;
+            tempModel.Street1 = street1;
+            tempModel.Street2 = street2;
+            tempModel.LocationDesc = locationDesc;
+            tempModel.PotholeDesc = potholeDesc;
+            tempModel.Severity = severity;
+
+            
+
+            var pothole = potholeDAL.SearchValidPotHoles(tempModel).PotholeList;
 
             return Ok(pothole);
         }
