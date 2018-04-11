@@ -29,6 +29,18 @@ namespace Capstone.Web.Controllers
             return Ok(pothole);
         }
 
+        [HttpGet]
+        [Route("api/potholessearch")]
+        public IHttpActionResult SearchValidPotHoles(PotholeViewModel viewModel)
+        {
+            PotholeViewModel tempModel = potholeDAL.SearchValidPotHoles(viewModel);
+
+            var pothole = tempModel.PotholeList;
+
+            return Ok(pothole);
+        }
+
+
         // GET api/<controller>/5
         public string Get(int id)
         {
