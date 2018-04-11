@@ -5,39 +5,40 @@
 
 
 
-    List<string> severitySelected = new List<string>();
-    for (int i = 0; i <= 10 ; i++)
-    {
-        severitySelected.Add("");
-    }
+    //List<string> severitySelected = new List<string>();
+    //for (int i = 0; i <= 10 ; i++)
+    //{
+    //    severitySelected.Add("");
+    //}
 
 
-    if (Model.Severity != null)
-    {
-        if (Model.Severity == -1)
-        {
-            severitySelected[0] = "selected";
-        }
-        else
-        {
+    //if (Model.Severity != null)
+    //{
+    //    if (Model.Severity == -1)
+    //    {
+    //        severitySelected[0] = "selected";
+    //    }
+    //    else
+    //    {
 
 
-            for (int i = 1; i <= 10; i++)
-            {
+    //        for (int i = 1; i <= 10; i++)
+    //        {
 
 
-                if (i == Model.Severity)
-                {
-                    severitySelected[i] = "selected";
-                }
-            }
-        }
-    }
+    //            if (i == Model.Severity)
+    //            {
+    //                severitySelected[i] = "selected";
+    //            }
+    //        }
+    //    }
+    //}
 
 }
 
 <body>
     <potholemap></potholemap>
+    <p></p>
 
     @*<p>Search for Pothole:</p>
     <form action="Index" method="get">
@@ -67,6 +68,7 @@
     </form>*@
 
     <searchbar></searchbar>
+    <p></p>
 
     <resultstable></resultstable>
 
