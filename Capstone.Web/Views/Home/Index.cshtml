@@ -38,7 +38,8 @@
 
 <body>
     <potholemap></potholemap>
-    <p>Search for Pothole:</p>
+
+    @*<p>Search for Pothole:</p>
     <form action="Index" method="get">
         <input type="hidden" name="IsValidated" value="true" />
         <input type="text" name="UserName" placeholder="Submitter Username" value="@Model.UserName" />
@@ -63,13 +64,13 @@
 
         <button>SEARCH</button>
 
-    </form>
+    </form>*@
 
     <searchbar></searchbar>
 
-        @*<resultstable></resultstable>*@
+    <resultstable></resultstable>
 
-    <table class="table-index-page">
+    @*<table class="table-index-page">
         <th colspan="5">Current Confirmed Potholes:</th>
 
         <tr style="font-weight:bold">
@@ -89,12 +90,12 @@
                 <td>@pothole.PotholeDesc</td>
             </tr>
         }
-    </table>
+    </table>*@
 
-    @if (Model.PotholeList.Count == 0)
+    @*@if (Model.PotholeList.Count == 0)
     {
         <p>No results could be found for that search.</p>
-    }
+    }*@
 
     <script src="~/RiotComponents/potholemap.tag" type="riot/tag">
     </script>
