@@ -213,6 +213,7 @@
     <Content Include="Content\lock.png" />
     <Content Include="Content\map.png" />
     <Content Include="Content\pothole.ico" />
+    <Content Include="Content\road_night.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="schema.sql" />

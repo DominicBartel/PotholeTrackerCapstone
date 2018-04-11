@@ -31,7 +31,7 @@ header {
     color: #FBFEF9;
     background-color: black;
     border-radius: 10px;
-    box-shadow: dimgray 2px 2px;
+    box-shadow: dimgray 2px 2px 2px;
     text-align: left;
     padding-left: 10px;
 }
@@ -41,7 +41,7 @@ nav {
     list-style-type: none;
     border-radius: 10px;
     background-color: #A23B72;
-    box-shadow: black 2px 2px;
+    box-shadow: black 2px 2px 2px 2px;
     text-shadow: black 1px 1px;
 }
 
@@ -74,7 +74,7 @@ table {
     display: inline-block;
     border: 5px solid #A23B72;
     border-radius: 5px;
-    box-shadow: black 4px 4px;
+    box-shadow: black 4px 4px 4px ;
     font-size: 25px;
     border-collapse: collapse;
 }
@@ -104,27 +104,28 @@ tr:nth-child(odd) {
     background-color: #CFDBD5; /*darker*/
 }
 
-#loginForm {
-    box-shadow: black 4px 4px;
-    text-align: center;
-    width: 25%;
-    height: auto;
+#loginSection {
+    border-radius: 4px;
     margin: auto;
-    background-color: #FBFEF9;
-    color: #191923;
+    width: 700px;
+    height: 345px;
+    background-color: #191923;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: black 4px 4px 4px;
 }
 
-    #loginForm h1 {
-        font-size: 30px;
-        color: #FBFEF9;
-        background: #0090C1;
-    }
-    #password{
-        padding: 10px;
-    }
-        #password img {
-            width: 30px;
-            height: auto;
-            background-color: #FBFEF9;
-            border-radius: 10px;
-        }
+#loginSection h1 {
+    background-color: #0090C1;
+    text-align: center;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    text-shadow: black 1px 1px;
+    width:700px;
+    margin:0px; 
+}
+
+#loginForm{
+    vertical-align:top;
+    margin-top:30px;
+}

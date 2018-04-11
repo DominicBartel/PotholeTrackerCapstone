@@ -4,33 +4,46 @@
     ViewBag.Title = "Log in";
 }
 
-<section id="loginForm">
-    <h1 style="text-shadow: #191923 1px 1px">Log In</h1>
-    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
-    {
-        @Html.AntiForgeryToken()
-        <!-- <h4>Use a local account to log in.</h4>-->
-        @Html.ValidationSummary(true)
-        <div>
-            @Html.TextBoxFor(m => m.Email, new { placeholder = "email" })
-            @Html.ValidationMessageFor(model => model.Email)
-        </div>
-        <div id="password">
-            <img src="~/Content/lock.png" />
-            @Html.PasswordFor(m => m.Password, new { placeholder = "password" })
-            @Html.ValidationMessageFor(model => model.Password)
-        </div>
-        <div>
-            @Html.CheckBoxFor(m => m.RememberMe)
-            @Html.LabelFor(m => m.RememberMe)
-        </div>
-        <div>
-            <input type="submit" value="SIGN IN" />
-        </div>
-        <p>
-            @Html.ActionLink("Register as a new user", "Register")
-        </p>
+<section>
+    
+    <div id="loginSection">
+        <h1 id="titleBar">Log In</h1>
+        <img src="~/Content/road_night.jpg" style="width:500px; border:black solid 2px" />
+
+
+        <div id="loginForm" style="display:inline-block">
+
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div id="email">
+                @Html.TextBoxFor(m => m.Email, new { placeholder = "email" })
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+            <div id="password">
+
+                @Html.PasswordFor(m => m.Password, new { placeholder = "password" })
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+
+            <div id="checkBox">
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe)
+            </div>
+
+            <div id="button">
+
+                <input type="submit" value="SIGN IN" />
+            </div>
+            <p>
+                @Html.ActionLink("Register as a new user", "Register")
+            </p>
+
     }
+        </div>
+    </div>
 </section>
 
 
