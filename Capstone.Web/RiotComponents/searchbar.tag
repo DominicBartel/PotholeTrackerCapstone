@@ -1,13 +1,14 @@
 <searchbar>
   
-  <button onclick="myFunction()">Advanced Search</button>
+  <button onclick="{myFunction}">Advanced Search</button>
   
   <div id="advancedSearch">
-
+    <p>DO SOMETHING NOW YOU SOMETHING SOMETHING SOMETHING!!!!!!</p>
       </div>
 
       <script>
-        function myFunction(){
+        
+        this.myFunction = function(){
         var x = document.getElementById("advancedSearch");
         if (x.style.display === "none") {
         x.style.display = "block";
@@ -17,9 +18,7 @@
         }
         
   
-
-
-        this.potholes = [];
+        <!--this.potholes = [];
 
         this.on('mount', () => {
             
@@ -29,23 +28,11 @@
                     this.potholes = json;
                 })
                 .then(potholes => {
-                   
-                    }
-                })
-
-            });
-        });
-
-
- let bus = {};
-
-        riot.observable(bus);   //makes it so our bus can send and receive messages
-
-        // Mount the riot tags to the page here 
-        
-        riot.mount('movie-search', {bus: bus});
-        riot.mount('movie-list', {bus: bus});
-
+                    for (i = 0; i < this.potholes.length; i++) {
+                        console.log(this.potholes[i].UserName)
+               
+            });-->
+       
     </script>
  
 </searchbar>

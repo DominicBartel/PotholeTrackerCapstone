@@ -16,7 +16,7 @@
                     this.potholes = json;
                 })
                 .then(potholes => {
-                    for (i = 0; i < this.potholes.length; i++) {
+                    for (let i = 0; i < this.potholes.length; i++) {
                         console.log(this.potholes[i].LocationDesc)
                         var latlng = { lat: this.potholes[i].Latitude, lng: this.potholes[i].Longitude };
                         var marker = new google.maps.Marker({
