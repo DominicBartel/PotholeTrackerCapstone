@@ -109,8 +109,8 @@
             console.log(isvalidated);
             console.log(username);
 
-            const url = `http://localhost:55900/api/potholessearch?isValidated=${isvalidated}&userName=${username}&street1=${street1}&street2=${street2}&locationDesc=&potholeDesc=&severity=${severity}`;
-
+            const url = `http://localhost:55900/api/potholessearch?isValidated=${isvalidated}&userName=${username}&street1=${street1}&street2=${street2}&locationDesc=${locationdesc}&potholeDesc=${potholedesc}&severity=${severity}`;
+            console.log(url);
             fetch(url)
                 .then(response => response.json())
                 .then(json => {
@@ -118,42 +118,6 @@
                     console.log(json);
                 });
         }
-
-
-        //var runsearch = function () {
-
-        //    const isvalidatedE = this.root.querySelector('#isvalidated');
-        //    const isvalidated = isvalidatedE.value;
-        //    const usernameE = this.root.querySelector('#username');
-        //    const username = usernameE.value;
-        //    const street1E = this.root.querySelector('#street1');
-        //    const street1 = street1E.value;
-        //    const street2E = this.root.querySelector('#street2');
-        //    const street2 = street2E.value
-        //    const locationdescE = this.root.querySelector('#locationdesc');
-        //    const locationdesc = locationdescE.value
-        //    const potholedescE = this.root.querySelector('#potholedesc');
-        //    const potholedesc = potholedescE.value;
-        //    const severityO = this.root.querySelector('#severity');
-        //    const severityE = severityO.options[severityO.selectedIndex];
-        //    const severity = severityE.value;
-
-        //    console.log(isvalidated);
-        //    console.log(username);
-
-        //    const url = `http://localhost:55900/api/potholessearch?isValidated=${isvalidated}&userName=${username}&street1=${street1}&street2=${street2}&locationDesc=&potholeDesc=&severity=${severity}`;
-
-        //    fetch(url)
-        //        .then(response => response.json())
-        //        .then(json => {
-        //            this.opts.bus.trigger('searchresult', json);
-        //            console.log(json);
-        //        });
-        //}
-
-
-
-
 
 
     </script>

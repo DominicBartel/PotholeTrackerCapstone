@@ -131,9 +131,11 @@ namespace Capstone.Web.DAL
                 cmd.Parameters.AddWithValue("@userName", viewModel.UserName);
             }
 
+            //-------------------------------------------
             if (!String.IsNullOrEmpty(viewModel.PotholeDesc))
             {
-                query += " AND PotHoleDesc = @potholeDesc";
+                viewModel.PotholeDesc = "%" + viewModel.PotholeDesc + "%";
+                query += " AND PotHoleDesc LIKE @potholeDesc";
                 cmd.Parameters.AddWithValue("@potholeDesc", viewModel.PotholeDesc);
             }
 
@@ -167,10 +169,11 @@ namespace Capstone.Web.DAL
                 query += " AND Street2 = @street2";
                 cmd.Parameters.AddWithValue("@street2", viewModel.Street2);
             }
-
+            //----------------------------------------------
             if (!String.IsNullOrEmpty(viewModel.LocationDesc))
             {
-                query += " AND LocationDesc = @locationDesc";
+                viewModel.LocationDesc = "%" + viewModel.LocationDesc + "%";
+                query += " AND LocationDesc LIKE @locationDesc";
                 cmd.Parameters.AddWithValue("@locationDesc", viewModel.LocationDesc);
             }
 
