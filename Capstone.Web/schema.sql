@@ -98,6 +98,6 @@ Insert PotHole values('DCBCB23C-93E2-488C-A293-0D1389946C4D', 'Watch out for tac
 
 select * from RepairOrderPothole;
 
-select * from PotHole where IsValidated = 1;
+select * from PotHole where pothole.UserId = 'DCBCB23C-93E2-488C-A293-0D1389946C4D';
 
 select * from users;

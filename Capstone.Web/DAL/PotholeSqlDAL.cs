@@ -133,7 +133,7 @@ namespace Capstone.Web.DAL
 
             if (!String.IsNullOrEmpty(viewModel.PotholeDesc))
             {
-                query = " AND PotHoleDesc = @potholeDesc";
+                query += " AND PotHoleDesc = @potholeDesc";
                 cmd.Parameters.AddWithValue("@potholeDesc", viewModel.PotholeDesc);
             }
 
@@ -150,7 +150,7 @@ namespace Capstone.Web.DAL
                 cmd.Parameters.AddWithValue("@longitude", viewModel.Longitude);
             }
 
-            if (viewModel.Severity != null)
+            if (viewModel.Severity != null && viewModel.Severity != -1)
             {
                 query += " AND Severity = @severity";
                 cmd.Parameters.AddWithValue("@severity", viewModel.Severity);
