@@ -37,41 +37,42 @@
 }
 
 <body>
-    <potholemap></potholemap>
-    <p></p>
+    <div style="text-align:center">
+        <potholemap></potholemap>
+        <p></p>
 
-    @*<p>Search for Pothole:</p>
-    <form action="Index" method="get">
-        <input type="hidden" name="IsValidated" value="true" />
-        <input type="text" name="UserName" placeholder="Submitter Username" value="@Model.UserName" />
-        <input type="text" name="Street1" placeholder="On Street" value="@Model.Street1" />
-        <input type="text" name="Street2" placeholder="Neighboring Street" value="@Model.Street2" />
-        <input type="text" name="LocationDesc" placeholder="Location Keyword" value="@Model.LocationDesc" />
-        <input type="text" name="PotholeDesc" placeholder="Description Keyword" value="@Model.PotholeDesc" />
-        <select title="Severity" name="Severity">
-            <option value="">Severity Level</option>
-            <option value="-1" @severitySelected[0]>ANY</option>
-            <option value="1" @severitySelected[1]>1</option>
-            <option value="2" @severitySelected[2]>2</option>
-            <option value="3" @severitySelected[3]>3</option>
-            <option value="4" @severitySelected[4]>4</option>
-            <option value="5" @severitySelected[5]>5</option>
-            <option value="6" @severitySelected[7]>6</option>
-            <option value="7" @severitySelected[7]>7</option>
-            <option value="8" @severitySelected[8]>8</option>
-            <option value="9" @severitySelected[9]>9</option>
-            <option value="10" @severitySelected[10]>10</option>
-        </select>
+        @*<p>Search for Pothole:</p>
+        <form action="Index" method="get">
+            <input type="hidden" name="IsValidated" value="true" />
+            <input type="text" name="UserName" placeholder="Submitter Username" value="@Model.UserName" />
+            <input type="text" name="Street1" placeholder="On Street" value="@Model.Street1" />
+            <input type="text" name="Street2" placeholder="Neighboring Street" value="@Model.Street2" />
+            <input type="text" name="LocationDesc" placeholder="Location Keyword" value="@Model.LocationDesc" />
+            <input type="text" name="PotholeDesc" placeholder="Description Keyword" value="@Model.PotholeDesc" />
+            <select title="Severity" name="Severity">
+                <option value="">Severity Level</option>
+                <option value="-1" @severitySelected[0]>ANY</option>
+                <option value="1" @severitySelected[1]>1</option>
+                <option value="2" @severitySelected[2]>2</option>
+                <option value="3" @severitySelected[3]>3</option>
+                <option value="4" @severitySelected[4]>4</option>
+                <option value="5" @severitySelected[5]>5</option>
+                <option value="6" @severitySelected[7]>6</option>
+                <option value="7" @severitySelected[7]>7</option>
+                <option value="8" @severitySelected[8]>8</option>
+                <option value="9" @severitySelected[9]>9</option>
+                <option value="10" @severitySelected[10]>10</option>
+            </select>
 
-        <button>SEARCH</button>
+            <button>SEARCH</button>
 
-    </form>*@
+        </form>*@
 
-    <searchbar></searchbar>
-    <p></p>
+        <searchbar></searchbar>
+        <p></p>
 
-    <resultstable></resultstable>
-
+        <resultstable></resultstable>
+    </div>
     @*<table class="table-index-page">
         <th colspan="5">Current Confirmed Potholes:</th>
 
