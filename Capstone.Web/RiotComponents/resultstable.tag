@@ -11,6 +11,14 @@
             <td>Pothole Description</td>
         </tr>
         
+        <tr>
+            <td><p></p></td>
+            <td><p></p></td>
+            <td><p></p></td>
+            <td><p></p></td>
+            <td><p></p></td>
+        </tr>
+
         <tr each="{potholes}">
             <td>{Severity}</td>
             <td>{Street1}</td>
