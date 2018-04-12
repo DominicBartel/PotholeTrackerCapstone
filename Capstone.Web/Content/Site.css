@@ -74,7 +74,7 @@ table {
     display: inline-block;
     border: 5px solid #A23B72;
     border-radius: 5px;
-    box-shadow: black 4px 4px 4px ;
+    box-shadow: black 4px 4px 4px;
     font-size: 25px;
     border-collapse: collapse;
 }
@@ -95,6 +95,7 @@ table {
     .table-index-page td {
         text-align: center;
         color:black;
+        border:solid 1px black;
     }
 
 tr:nth-child(even) {
