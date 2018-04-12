@@ -22,6 +22,21 @@ namespace Capstone.Web.Models
         public DateTime? RepairedDate { get; set; }
         public bool IsValidated { get; set; }
 
+        public Pothole()
+        {
+            UserName = "";
+            PotholeDesc = "";
+            Latitude = null;
+            Longitude = null;
+            Severity = null;
+            Street1 = "";
+            Street2 = "";
+            LocationDesc = "";
+            ReportedDate = null;
+            InspectedDate = null;
+            RepairedDate = null;
+            this.IsValidated = true;
+        }
 
     }
 }

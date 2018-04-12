@@ -34,8 +34,17 @@ namespace Capstone.Web.Controllers
 
             newModel = potholeDAL.SearchValidPotHoles(viewModel);
        
-
             return View(newModel);
+        }
+
+
+        [HttpPost]
+        public ActionResult ReportPothole(Pothole pothole)
+        {
+
+            bool confirm = potholeDAL.ReportPothole(pothole);
+            //User.
+            return RedirectToAction("Index");
         }
 
     }

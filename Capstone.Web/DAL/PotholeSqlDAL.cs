@@ -105,6 +105,51 @@ namespace Capstone.Web.DAL
         }
 
 
+        public bool ReportPothole(Pothole pothole)
+        {
+
+            bool confirm = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("INSERT INTO PotHole(UserId, PotHoleDesc, Lat, Long, Severity, Street1, Street2, LocationDesc, DateReported, InspectedDate, RepairDate, IsValidated) VALUES(@userId, @potholeDesc, @latitude, @longitude, @severity, @street1, @street2, @locationDesc, @reportedDate, @inspectedDate, @repairedDate, @isValidated)");
+
+                    cmd.Parameters.AddWithValue("@userId", pothole.UserId);
+                    cmd.Parameters.AddWithValue("@potholeDesc", pothole.PotholeDesc);
+                    cmd.Parameters.AddWithValue("@latitude", pothole.Latitude);
+                    cmd.Parameters.AddWithValue("@severity", pothole.Severity);
+                    cmd.Parameters.AddWithValue("@street1", pothole.Street1);
+                    cmd.Parameters.AddWithValue("@street2", pothole.Street2);
+                    cmd.Parameters.AddWithValue("@locationDesc", pothole.LocationDesc);
+                    cmd.Parameters.AddWithValue("@reportedDate", pothole.ReportedDate);
+                    cmd.Parameters.AddWithValue("@inspectedDate", pothole.InspectedDate);
+                    cmd.Parameters.AddWithValue("@repairedDate", pothole.RepairedDate);
+                    cmd.Parameters.AddWithValue("@isValidated", pothole.IsValidated);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+
+            }
+            catch (SqlException ex)
+            {
+                confirm = false;
+                throw;
+            }
+
+
+            return confirm;
+        }
+
+        public bool UpdatePothole(Pothole pothole)
+        {
+            throw new NotImplementedException();
+        }
+
+
         private SqlCommand BuildSqlCommand(PotholeViewModel viewModel, SqlConnection conn)
         {
 
@@ -330,5 +375,9 @@ namespace Capstone.Web.DAL
             return p;
 
         }
+
+
+
+
     }
 }

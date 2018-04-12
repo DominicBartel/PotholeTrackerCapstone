@@ -13,6 +13,12 @@ namespace Capstone.Web.DAL
 
         PotholeViewModel SearchValidPotHoles(PotholeViewModel viewModel);
 
+        bool ReportPothole(Pothole pothole);
+
+        bool UpdatePothole(Pothole pothole);
+
+
+
 
 
 
