@@ -101,6 +101,8 @@
         <p>No results could be found for that search.</p>
     }*@
 
+    <bargraph></bargraph>
+
     <script src="~/RiotComponents/potholemap.tag" type="riot/tag">
     </script>
     <script src="~/RiotComponents/searchbar.tag" type="riot/tag">
@@ -110,10 +112,7 @@
     <script src="~/RiotComponents/bargraph.tag" type="riot/tag">
     </script>
 
-    @foreach(var Role in Model.Roles)
-    {
-        @Role
-    }
+ 
 
     <script>
 
