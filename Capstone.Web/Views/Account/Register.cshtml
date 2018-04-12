@@ -3,31 +3,40 @@
     ViewBag.Title = "Register";
 }
 
-<h2>@ViewBag.Title.</h2>
+<section>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    @Html.ValidationSummary(true)
-    <div>
-        @Html.TextBoxFor(m => m.Email, new { placeholder = "email" })
-        @Html.ValidationMessageFor(model => model.Email)
+    <div id="loginSection">
+        <h1 id="titleBar">Register</h1>
+        <img src="~/Content/road_night.jpg" style="width:500px; padding-top:3px; border-radius:4px" />
 
-    </div>
-    <div>
-        @Html.PasswordFor(m => m.Password, new { placeholder = "password" })
-        @Html.ValidationMessageFor(model => model.Password)
-    </div>
-    <div>
-        @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "confirm password" })
-        @Html.ValidationMessageFor(model => model.ConfirmPassword)
+        <div id="loginForm" style="display:inline-block">
 
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Create a new account.</h4>
+                @Html.ValidationSummary(true)
+                <div>
+                    @Html.TextBoxFor(m => m.Email, new { placeholder = "email" })
+                    @Html.ValidationMessageFor(model => model.Email)
+
+                </div>
+                <div>
+                    @Html.PasswordFor(m => m.Password, new { placeholder = "password" })
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+                <div>
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "confirm password" })
+                    @Html.ValidationMessageFor(model => model.ConfirmPassword)
+
+                </div>
+                <div>
+                    <input type="submit" value="Register" />
+                </div>
+            }
+        </div>
     </div>
-    <div>
-        <input type="submit" value="Register" />
-    </div>
-}
+</section>
 
 @section Scripts {
 
