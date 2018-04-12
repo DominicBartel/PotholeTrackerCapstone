@@ -29,5 +29,6 @@
             this.update();
         });
 
+        console.log(bus.user);
     </script>
 </resultstable>

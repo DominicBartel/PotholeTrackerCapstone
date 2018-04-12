@@ -32,11 +32,39 @@ namespace Capstone.Web.Controllers
                 viewModel = new PotholeViewModel();
             }
 
-            newModel = potholeDAL.SearchValidPotHoles(viewModel);
-       
+            newModel.Roles = GetRoles();
+
+            
             return View(newModel);
         }
 
+        private List<string> GetRoles()
+        {
+            List<string> roles = new List<string>();
+
+            if (User.IsInRole("citizen"))
+            {
+                roles.Add("citizen");
+            }
+            if (User.IsInRole("crew_member"))
+            {
+                roles.Add("crew_member");
+            }
+            if (User.IsInRole("crew_leader"))
+            {
+                roles.Add("crew_leader");
+            }
+            if (User.IsInRole("god"))
+            {
+                roles.Add("god");
+            }
+            if (User.IsInRole("supergod"))
+            {
+                roles.Add("supergod");
+            }
+
+            return roles;
+        }
 
         [HttpPost]
         public ActionResult ReportPothole(Pothole pothole)

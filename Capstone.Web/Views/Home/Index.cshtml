@@ -110,11 +110,16 @@
     <script src="~/RiotComponents/bargraph.tag" type="riot/tag">
     </script>
 
-
+    @foreach(var Role in Model.Roles)
+    {
+        @Role
+    }
 
     <script>
 
-        let bus = {};
+        let bus = {
+            roles: 'bob'
+        };
 
         riot.observable(bus);   //makes it so our bus can send and receive messages
 
@@ -124,6 +129,8 @@
         riot.mount('searchbar', { bus: bus });
         riot.mount('resultstable', { bus: bus });
         riot.mount('bargraph', { bus: bus });
+
+        
     </script>
 
 </body>

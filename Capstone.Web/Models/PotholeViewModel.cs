@@ -22,6 +22,7 @@ namespace Capstone.Web.Models
         public DateTime? InspectedDate { get; set; }
         public DateTime? RepairedDate { get; set; }
         public bool? IsValidated { get; set; }
+        public List<string> Roles { get; set; }
 
         public List<Pothole> PotholeList { get; set; }
 
@@ -41,6 +42,7 @@ namespace Capstone.Web.Models
             InspectedDate = null;
             RepairedDate = null;
             this.IsValidated = true;
+            Roles = new List<string>();
         }
 
     }
