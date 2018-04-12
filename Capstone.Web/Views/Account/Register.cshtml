@@ -15,6 +15,7 @@
             {
                 @Html.AntiForgeryToken()
                 <h4>Create a new account.</h4>
+                <h6 id="passwordRequirements">Password must be 6 or more characters, have a capital letter, a number, and a special character.</h6>
                 @Html.ValidationSummary(true)
                 <div>
                     @Html.TextBoxFor(m => m.Email, new { placeholder = "email" })

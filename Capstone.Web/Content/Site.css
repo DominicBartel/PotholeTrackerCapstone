@@ -130,3 +130,7 @@ tr:nth-child(odd) {
     vertical-align:top;
     margin-top:30px;
 }
+
+#passwordRequirements {
+    margin: 0;
+}
