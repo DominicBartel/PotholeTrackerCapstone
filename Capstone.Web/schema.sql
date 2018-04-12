@@ -104,6 +104,6 @@ Insert PotHole values('DCBCB23C-93E2-488C-A293-0D1389946C4D', '', 41.513232, -81
 
 select * from RepairOrderPothole;
 
-select * from PotHole where pothole.UserId = 'DCBCB23C-93E2-488C-A293-0D1389946C4D';
+select * from PotHole where pothole.LocationDesc LIKE '%sewer%';
 
 select * from users;

@@ -5,29 +5,30 @@
     <div id="advancedSearch">
       <p>DO SOMETHING NOW YOU SOMETHING SOMETHING SOMETHING!!!!!!</p>
         </div>-->
-
-    <input id="isvalidated" type="hidden" name="IsValidated" value="true" />
-    <input id="username" type="text" name="UserName" placeholder="Submitter Username" />
-    <input id="street1" type="text" name="Street1" placeholder="On Street" />
-    <input id="street2" type="text" name="Street2" placeholder="Neighboring Street" />
-    <input id="locationdesc" type="text" name="LocationDesc" placeholder="Location Keyword" />
-    <input id="potholedesc" type="text" name="PotholeDesc" placeholder="Description Keyword" />
-    <select id="severity">
-        <option value="">Severity Level</option>
-        <option value="-1">ANY</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-    </select>
-    <input type="button" onclick="{search}" value="SEARCH" />
-
+    <div>
+        <p>Search Pothole Database:</p>
+        <input id="isvalidated" type="hidden" name="IsValidated" value="true" />
+        <input id="street1" type="text" name="Street1" placeholder="On Street" />
+        <input id="street2" type="text" name="Street2" placeholder="Neighboring Street" />
+        <input id="locationdesc" type="text" name="LocationDesc" placeholder="Location Keyword" />
+        <input id="potholedesc" type="text" name="PotholeDesc" placeholder="Description Keyword" />
+        <input id="username" type="text" name="UserName" placeholder="Submitter Username" />
+        <select id="severity">
+            <option value="">Severity Level</option>
+            <option value="-1">ANY</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+        <input type="button" onclick="{search}" value="SEARCH" />
+    </div>
 
 
     <script>
