@@ -67,12 +67,13 @@ namespace Capstone.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult ReportPothole(Pothole pothole)
+        public ActionResult ReportPothole(string userName)
         {
+            Pothole pothole = new Pothole();
+            pothole.UserName = userName;
 
             bool confirm = potholeDAL.ReportPothole(pothole);
-            //User.
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
     }
