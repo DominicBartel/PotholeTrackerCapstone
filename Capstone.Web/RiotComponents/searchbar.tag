@@ -118,7 +118,7 @@
                 .then(response => response.json())
                 .then(json => {
                     opts.bus.trigger('searchresult', json);
-                    console.log(json);
+                    //console.log(json);
                 });
         }
 
