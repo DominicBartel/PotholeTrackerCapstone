@@ -11,7 +11,7 @@
             <td>Pothole Description</td>
         </tr>
 
-        <tr each="{potholes}">
+        <tr onclick="{selectPothole}" each="{potholes}">
             <td>{Severity}</td>
             <td>{Street1}</td>
             <td>{Street2}</td>
@@ -28,6 +28,11 @@
             this.potholes = data;
             this.update();
         });
+
+        this.selectPothole = function (data) {
+            console.log(data.item.PotholeId);
+            this.opts.bus.opts.trigger('selectedPothole', data.item.PotholeId);
+        }
 
         console.log(bus.user);
     </script>

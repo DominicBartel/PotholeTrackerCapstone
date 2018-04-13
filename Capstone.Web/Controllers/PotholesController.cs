@@ -44,11 +44,36 @@ namespace Capstone.Web.Controllers
             tempModel.PotholeDesc = potholeDesc;
             tempModel.Severity = severity;
 
-            
+
 
             var pothole = potholeDAL.SearchValidPotHoles(tempModel).PotholeList;
 
             return Ok(pothole);
+        }
+
+        [HttpGet]
+        [Route("api/advancedpotholessearch")]
+        public IHttpActionResult SearchValidPotHoles(bool isvalidated, string userName, string street1, string street2, string locationDesc, string potholeDesc, int? severity, int? potholeId,  string latitude, string longitude, string reportedDate, string inspectedDate, string repairedDate)
+        {
+
+            
+            PotholeViewModel tempModel = new PotholeViewModel();
+
+            tempModel.IsValidated = isvalidated;
+            tempModel.UserName = userName;
+            tempModel.Street1 = street1;
+            tempModel.Street2 = street2;
+            tempModel.LocationDesc = locationDesc;
+            tempModel.PotholeDesc = potholeDesc;
+            tempModel.Severity = severity;
+            //tempModel.Latitude = latitude;
+            //tempModel.Longitude = longitude;
+            tempModel.PotholeId = potholeId;
+            
+
+            var returnPothole = potholeDAL.SearchValidPotHoles(tempModel).PotholeList;
+
+            return Ok(returnPothole);
         }
 
 
