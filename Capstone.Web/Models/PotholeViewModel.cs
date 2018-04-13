@@ -24,6 +24,7 @@ namespace Capstone.Web.Models
         public bool? IsValidated { get; set; }
         public string Roles { get; set; }
 
+        public bool? SubmissionSuccessful { get; set; }
         public List<Pothole> PotholeList { get; set; }
 
         public PotholeViewModel()

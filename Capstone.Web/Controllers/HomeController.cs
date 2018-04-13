@@ -111,7 +111,7 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public ActionResult AdminPotholeEdit(Pothole pothole)
         {
-            //potholeDAL.UpdatePothole(pothole); 
+            potholeDAL.UpdatePothole(pothole); 
             PotholeViewModel returnModel = new PotholeViewModel();
             returnModel.PotholeList = new List<Pothole>();
             returnModel.PotholeList.Add(pothole);

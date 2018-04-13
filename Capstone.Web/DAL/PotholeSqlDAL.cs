@@ -213,7 +213,104 @@ namespace Capstone.Web.DAL
 
         public bool UpdatePothole(Pothole pothole)
         {
-            throw new NotImplementedException();
+            bool confirm = false;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT UserId FROM Users WHERE UserName = @userName", conn);
+                    cmd.Parameters.AddWithValue("@userName", pothole.UserName);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        pothole.UserId = (Guid)reader["UserId"];
+                    }
+                    conn.Close();
+
+                    conn.Open();
+
+                    cmd = new SqlCommand("Update PotHole Set UserId = @userId, PotHoleDesc = @potholeDesc, Lat = @latitude, Long = @longitude, Severity = @severity, Street1 = @street1, Street2 = @street2, LocationDesc = @locationDesc, DateReported = @reportedDate, InspectedDate = @inspectedDate, RepairDate = @repairedDate, IsValidated = @isValidated WHERE PotHole_Id = 23", conn);
+
+                    cmd.Parameters.AddWithValue("@userId", pothole.UserId);
+                    cmd.Parameters.AddWithValue("@potholeDesc", pothole.PotholeDesc);
+                    if (pothole.Latitude == null)
+                    {
+                        cmd.Parameters.AddWithValue("@latitude", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@latitude", pothole.Latitude);
+                    }
+
+                    if (pothole.Longitude == null)
+                    {
+                        cmd.Parameters.AddWithValue("@longitude", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@longitude", pothole.Longitude);
+                    }
+
+                    if (pothole.Severity == null)
+                    {
+                        cmd.Parameters.AddWithValue("@severity", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@severity", pothole.Severity);
+                    }
+
+                    cmd.Parameters.AddWithValue("@street1", pothole.Street1);
+                    cmd.Parameters.AddWithValue("@street2", pothole.Street2);
+                    cmd.Parameters.AddWithValue("@locationDesc", pothole.LocationDesc);
+
+                    if (pothole.ReportedDate == null)
+                    {
+                        cmd.Parameters.AddWithValue("@reportedDate", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@reportedDate", pothole.ReportedDate);
+                    }
+
+                    if (pothole.InspectedDate == null)
+                    {
+                        cmd.Parameters.AddWithValue("@inspectedDate", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@inspectedDate", pothole.InspectedDate);
+                    }
+
+                    if (pothole.RepairedDate == null)
+                    {
+                        cmd.Parameters.AddWithValue("@repairedDate", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@repairedDate", pothole.RepairedDate);
+                    }
+
+                    cmd.Parameters.AddWithValue("@isValidated", pothole.IsValidated);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+
+            }
+            catch (SqlException ex)
+            {
+                confirm = false;
+                throw;
+            }
+
+            return confirm;
         }
 
 
