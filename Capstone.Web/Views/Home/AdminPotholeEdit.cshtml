@@ -23,11 +23,17 @@
 
 <bus hidden role="@Model.Roles" componentView="AdminPortal"></bus>
 
+<form method="post" action="~/Home/AdminPotholeEdit">
+    <input type="hidden" name="UserName" value="GUYMAN" />
+    <button>test</button>
+    @Html.AntiForgeryToken()
+</form>
+
 
 <script>
 
     let bus = document.getElementsByTagName('bus');
-
+    
     riot.observable(bus);   //makes it so our bus can send and receive messages
 
     // Mount the riot tags to the page here

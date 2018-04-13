@@ -22,6 +22,11 @@
     </table>
 
     <script>
+        if (bus.componentView = "AdminPortal" && (true)) {
+
+            
+        }//add additional logic for higher roles once
+        
 
         this.opts.bus.on('searchresult', data => {
             console.log(data);
