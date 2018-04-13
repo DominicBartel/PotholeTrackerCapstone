@@ -41,7 +41,7 @@ namespace Capstone.Web.Models
             ReportedDate = null;
             InspectedDate = null;
             RepairedDate = null;
-            this.IsValidated = true;
+            this.IsValidated = false;
             Roles = "";
         }
 
