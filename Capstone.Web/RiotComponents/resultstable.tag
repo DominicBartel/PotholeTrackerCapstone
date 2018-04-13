@@ -31,7 +31,7 @@
 
         this.selectPothole = function (data) {
             console.log(data.item.PotholeId);
-            this.opts.bus.opts.trigger('selectedPothole', data.item.PotholeId);
+            this.opts.bus.trigger('selectedPothole', data.item.PotholeId);
         }
 
         console.log(bus.user);

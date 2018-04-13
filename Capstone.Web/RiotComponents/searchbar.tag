@@ -15,7 +15,7 @@
         <input id="username" type="text" name="UserName" placeholder="Submitter Username" />
         <input id="latitude" type="text" name="latitude" placeholder="Submitter Username" />
         <input id="longitude" type="text" name="longitude" placeholder="Submitter Username" />
-        <input id="potholeId" type="text" name="potholeId" placeholder="Submitter Username" />
+        <input hidden id="potholeId" type="text" name="potholeId" />
         <input id="reportedDate" type="text" name="reportedDate" placeholder="Submitter Username" />
         <input id="inspectedDate" type="text" name="inspectedDate" placeholder="Submitter Username" />
         <input id="repairedDate" type="text" name="repairedDate" placeholder="Submitter Username" />
@@ -34,7 +34,7 @@
             <option value="9">9</option>
             <option value="10">10</option>
         </select>
-        <input type="button" onclick="{search}" value="SEARCH" />
+        <input type="button" onclick="{fullSearch}" value="SEARCH" />
     </div>
 
 
@@ -66,61 +66,48 @@
 
         //    });-->
 
+
+
         this.on('mount', () => {
-            
-            const isvalidatedE = this.root.querySelector('#isvalidated');
-            const isvalidated = isvalidatedE.value;
-            const usernameE = this.root.querySelector('#username');
-            const username = usernameE.value;
-            const street1E = this.root.querySelector('#street1');
-            const street1 = street1E.value;
-            const street2E = this.root.querySelector('#street2');
-            const street2 = street2E.value
-            const locationdescE = this.root.querySelector('#locationdesc');
-            const locationdesc = locationdescE.value
-            const potholedescE = this.root.querySelector('#potholedesc');
-            const potholedesc = potholedescE.value;
-            const severityO = this.root.querySelector('#severity');
-            const severityE = severityO.options[severityO.selectedIndex];
-            const latitude = this.root.querySelector('#latitude').value;
-            const longitude = this.root.querySelector('#longitude').value
-            const potholeId = this.root.querySelector('#potholeId').value
-            const reportedDate = this.root.querySelector('#reportedDate').value
-            const inspectedDate = this.root.querySelector('#inspectedDate').value
-            const repairedDate = this.root.querySelector('#repairedDate').value
-            
-
-            console.log(isvalidated);
-            console.log(username);
-
-            const url = `http://localhost:55900/api/advancedpotholessearch?isValidated=${isvalidated}&userName=${username}&street1=${street1}&street2=${street2}&locationDesc=${locationdesc}&potholeDesc=${potholedesc}&severity=${severity}&potholeId=${potholeId}&latitude=${latitude}&longitude=${longitude}&reportedDate=${reportedDate}&inspectedDate=${inspectedDate}&repairedDate=${repairedDate}`;
-
-            fetch(url)
-                .then(response => response.json())
-                .then(json => {
-                    this.opts.bus.trigger('searchresult', json);
-                    console.log(json);
-                });
+            search();
         });
 
         this.search = function () {
+            search();
+        }
+        this.opts.bus.on('selectedPothole', data => {
+            document.querySelector('#potholeId').value = data;
+            search();
+        })
 
-            const isvalidatedE = this.root.querySelector('#isvalidated');
+        this.fullSearch = function() {
+            document.querySelector('#potholeId').value = null;
+            search();
+        }
+
+        function search() {
+
+            const isvalidatedE = document.querySelector('#isvalidated');
             const isvalidated = isvalidatedE.value;
-            const usernameE = this.root.querySelector('#username');
+            const usernameE = document.querySelector('#username');
             const username = usernameE.value;
-            const street1E = this.root.querySelector('#street1');
+            const street1E = document.querySelector('#street1');
             const street1 = street1E.value;
-            const street2E = this.root.querySelector('#street2');
+            const street2E = document.querySelector('#street2');
             const street2 = street2E.value
-            const locationdescE = this.root.querySelector('#locationdesc');
+            const locationdescE = document.querySelector('#locationdesc');
             const locationdesc = locationdescE.value
-            const potholedescE = this.root.querySelector('#potholedesc');
+            const potholedescE = document.querySelector('#potholedesc');
             const potholedesc = potholedescE.value;
-            const severityO = this.root.querySelector('#severity');
+            const severityO = document.querySelector('#severity');
             const severityE = severityO.options[severityO.selectedIndex];
             const severity = severityE.value;
-            const latitude = 
+            const latitude = document.querySelector('#latitude').value;
+            const longitude = document.querySelector('#longitude').value;
+            const potholeId = document.querySelector('#potholeId').value;
+            const reportedDate = document.querySelector('#reportedDate').value;
+            const inspectedDate = document.querySelector('#inspectedDate').value;
+            const repairedDate = document.querySelector('#repairedDate').value;
 
             console.log(isvalidated);
             console.log(username);
@@ -130,7 +117,7 @@
             fetch(url)
                 .then(response => response.json())
                 .then(json => {
-                    this.opts.bus.trigger('searchresult', json);
+                    opts.bus.trigger('searchresult', json);
                     console.log(json);
                 });
         }

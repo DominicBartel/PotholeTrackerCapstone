@@ -66,6 +66,9 @@ namespace Capstone.Web.Controllers
             tempModel.LocationDesc = locationDesc;
             tempModel.PotholeDesc = potholeDesc;
             tempModel.Severity = severity;
+            //tempModel.ReportedDate = reportedDate;
+            //tempModel.InspectedDate = inspectedDate;
+            //tempModel.RepairedDate = repairedDate;
             //tempModel.Latitude = latitude;
             //tempModel.Longitude = longitude;
             tempModel.PotholeId = potholeId;

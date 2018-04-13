@@ -3,5 +3,47 @@
     ViewBag.Title = "AdminPotholeEdit";
 }
 
-<h2>AdminPotholeEdit</h2>
+<div style="text-align:center">
+    <potholemap></potholemap>
+    <bargraph></bargraph>
+    <p></p>
 
+
+    <searchbar></searchbar>
+    <p></p>
+    <editPothole></editPothole>
+    <resultstable></resultstable>
+</div>
+
+
+
+<script src="~/RiotComponents/potholemap.tag" type="riot/tag">
+</script>
+<script src="~/RiotComponents/searchbar.tag" type="riot/tag">
+</script>
+<script src="~/RiotComponents/resultstable.tag" type="riot/tag">
+</script>
+<script src="~/RiotComponents/bargraph.tag" type="riot/tag">
+</script><script src="~/RiotComponents/editPothole.tag" type="riot/tag">
+</script>
+
+
+
+<script>
+
+    let bus = {
+        roles: 'bob'
+    };
+
+    riot.observable(bus);   //makes it so our bus can send and receive messages
+
+    // Mount the riot tags to the page here
+
+    riot.mount('potholemap', { bus: bus });
+    riot.mount('editPothole', { bus: bus });
+    riot.mount('searchbar', { bus: bus });
+    riot.mount('resultstable', { bus: bus });
+    riot.mount('bargraph', { bus: bus });
+
+
+</script>

@@ -221,6 +221,7 @@
     <Content Include="RiotComponents\bargraph.tag" />
     <Content Include="RiotComponents\resultstable.tag" />
     <Content Include="RiotComponents\searchbar.tag" />
+    <Content Include="RiotComponents\editPothole.tag" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
