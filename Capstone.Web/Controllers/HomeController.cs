@@ -74,6 +74,7 @@ namespace Capstone.Web.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ReportPotholePost(PotholeViewModel viewModel)
         {
             //Pothole pothole = new Pothole();
@@ -108,6 +109,15 @@ namespace Capstone.Web.Controllers
             return View(viewModel);
         }
 
+        [HttpPost]
+        public ActionResult AdminPotholeEdit(Pothole pothole)
+        {
+            potholeDAL.UpdatePothole(pothole); 
+            PotholeViewModel returnModel = new PotholeViewModel();
+            returnModel.PotholeList = new List<Pothole>();
+            returnModel.PotholeList.Add(pothole);
+            return RedirectToAction("AdminPotholeEdit", returnModel);
+        }
 
     }
 }

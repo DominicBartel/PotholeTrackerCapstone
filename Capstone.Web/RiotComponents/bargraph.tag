@@ -1,7 +1,7 @@
 <bargraph>
 
     <!--Div that will hold the pie chart-->
-    <div id="chart_div" style="position:relative; overflow:hidden"></div>
+    <div id="chart_div"></div>
 
 
     <script type="text/javascript">
@@ -53,19 +53,17 @@
                         var data = new google.visualization.DataTable();
                         data.addColumn('string', 'Pothole Status');
                         data.addColumn('number', 'Potholes');
-                        data.addColumn({type:'string', role: 'style' });
                         data.addRows([
 
-                            ['Total Confirmed Potholes', confirmed, '#0090C1'],
-                            ['Total Repaired Potholes', repaired, '#0090C1']
+                            ['Total Confirmed Potholes', confirmed],
+                            ['Total Repaired Potholes', repaired]
                         ]);
 
                         // Set chart options
                         var options = {
-                            'title': 'Citywide Pothole Status',
+                            'title': 'City-wide Pothole Status',
                             'width': 600,
-                            'height': 400,
-                            legend: {position: 'none'}
+                            'height': 300
                         };
 
                         // Instantiate and draw our chart, passing in some options.
