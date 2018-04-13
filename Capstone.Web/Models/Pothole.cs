@@ -7,8 +7,8 @@ namespace Capstone.Web.Models
 {
     public class Pothole
     {
-        public int PotholeId { get; set; }
-        public Guid UserId { get; set; }
+        public int? PotholeId { get; set; }
+        public Guid? UserId { get; set; }
         public string UserName { get; set; }
         public string PotholeDesc { get; set; }
         public double? Latitude { get; set; }
