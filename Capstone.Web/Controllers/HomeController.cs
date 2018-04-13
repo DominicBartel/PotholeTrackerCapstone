@@ -74,6 +74,7 @@ namespace Capstone.Web.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ReportPotholePost(PotholeViewModel viewModel)
         {
             //Pothole pothole = new Pothole();
