@@ -1,7 +1,42 @@
-﻿
+﻿@model Capstone.Web.Models.PotholeViewModel
 @{
     ViewBag.Title = "AdminPotholeEdit";
 }
 
-<h2>AdminPotholeEdit</h2>
+
+<div style="text-align:center">
+    <potholemap></potholemap>
+    <p></p>
+    <searchbar></searchbar>
+    <p></p>
+    <resultstable></resultstable>
+</div>
+
+<script src="~/RiotComponents/potholemap.tag" type="riot/tag">
+</script>
+<script src="~/RiotComponents/searchbar.tag" type="riot/tag">
+</script>
+<script src="~/RiotComponents/resultstable.tag" type="riot/tag">
+</script>
+<script src="~/RiotComponents/bargraph.tag" type="riot/tag">
+</script>
+
+<bus hidden role="@Model.Roles" componentView="AdminPortal"></bus>
+
+
+<script>
+
+    let bus = document.getElementsByTagName('bus');
+
+    riot.observable(bus);   //makes it so our bus can send and receive messages
+
+    // Mount the riot tags to the page here
+
+    riot.mount('potholemap', { bus: bus });
+    riot.mount('searchbar', { bus: bus });
+    riot.mount('resultstable', { bus: bus });
+    riot.mount('bargraph', { bus: bus });
+
+
+</script>
 

@@ -33,29 +33,29 @@ namespace Capstone.Web.Controllers
             return View(newModel);
         }
 
-        private List<string> GetRoles()
+        private string GetRoles()
         {
-            List<string> roles = new List<string>();
+            string roles = "";
 
             if (User.IsInRole("citizen"))
             {
-                roles.Add("citizen");
+                roles = "citizen";
             }
             if (User.IsInRole("crew_member"))
             {
-                roles.Add("crew_member");
+                roles = "crew_member";
             }
             if (User.IsInRole("crew_leader"))
             {
-                roles.Add("crew_leader");
+                roles = "crew_leader";
             }
             if (User.IsInRole("god"))
             {
-                roles.Add("god");
+                roles="god";
             }
             if (User.IsInRole("supergod"))
             {
-                roles.Add("supergod");
+                roles="supergod";
             }
 
             return roles;
