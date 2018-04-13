@@ -1,7 +1,7 @@
 <bargraph>
 
     <!--Div that will hold the pie chart-->
-    <div id="chart_div"></div>
+    <div id="chart_div" style="position:relative; overflow:hidden"></div>
 
 
     <script type="text/javascript">
@@ -64,7 +64,8 @@
                         var options = {
                             'title': 'Citywide Pothole Status',
                             'width': 600,
-                            'height': 400
+                            'height': 400,
+                            legend: {position: 'none'}
                         };
 
                         // Instantiate and draw our chart, passing in some options.

@@ -20,69 +20,24 @@
 }
 
 /*Desktops and Larger*/
-@media (min-width: 992px){
-    header h1{
-        text-align:left;
-    }
-    #regSize {
-        background-color: #A23B72;
-    }
-
-}
-
-/* Small Tablets */
-@media (min-width: 600px) and (max-width:991px) {
-    header h1{
-        text-align:center;
-        width:100%;
-    }
-  
-}
-
-    /*Anything under 600px (phones)*/
-    @media (max-width:600px) {
-        header h1 {
-            text-align: center;
-            width:100%;
-        }
-        #regSize{
-            background-color:orange;
-        }
-    }
-
-    /* Set width on the form input elements since they're 100% wide by default */
-    input,
-    select,
-    textarea {
-        max-width: 280px;
-    }
-
-    header {
+@media (min-width: 992px) {
+    header h1 {
+        text-align: left;
+        box-shadow: dimgrey 0 0 2px 3px;
         grid-area: header;
         color: #FBFEF9;
         background-color: black;
         border-radius: 10px;
-        box-shadow: dimgray 2px 2px 2px;
         padding-left: 10px;
     }
 
-    #regSize{
+    nav {
+        background-color: #A23B72;
         font-size: 30px;
         list-style-type: none;
         border-radius: 10px;
-      
         box-shadow: black 2px 2px 2px 2px;
         text-shadow: black 1px 1px;
-    }
-}
-
-    li:hover {
-        background-color: #59213F;
-    }
-
-    li {
-        display: inline;
-        padding: 10px;
     }
 
     a {
@@ -91,88 +46,167 @@
         text-decoration: none;
     }
 
-    #map {
-        display: inline-block;
-        width: 60%;
-        height: 400px;
-        background-color: grey;
-        border: 5px solid #A23B72;
-        border-radius: 5px;
-        box-shadow: black 4px 4px;
-        margin: auto;
+    li {
+        display: inline;
+        padding: 10px;
     }
+
+        li:hover {
+            background-color: #59213F;
+            border-radius: 10px;
+        }
+}
+
+/* Small Tablets */
+@media (min-width: 600px) and (max-width:991px) {
+        header h1 {
+            text-align: center;
+            width: 100%;
+            grid-area: header;
+            color: #FBFEF9;
+            background-color: black;
+            border-radius: 10px;
+        }
+
+        ul {
+            padding-left: 2px;
+        }
+
+        nav ul li {
+            background-color: #0090C1;
+            border-radius: 4px;
+            list-style: none;
+            flex-grow: 1;
+            margin-bottom: 3px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #FBFEF9;
+        }
+    }
+
+/*Anything under 600px (phones)*/
+@media (max-width:600px) {
+    header h1 {
+        text-align: center;
+        width: 100%;
+        grid-area: header;
+        color: #FBFEF9;
+        background-color: black;
+        border-radius: 10px;
+    }
+
+    ul{
+        padding-left:2px;
+    }
+
+    nav ul li {
+        background-color:#0090C1;
+        flex-grow: 1;
+        margin-bottom: 3px;
+    }
+
+    a{
+        text-decoration:none;
+        color:#FBFEF9;
+    }
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+header {
+}
+
+#map {
+    display: inline-block;
+    width: 60%;
+    height: 400px;
+    background-color: grey;
+    border: 5px solid #A23B72;
+    border-radius: 5px;
+    box-shadow: black 4px 4px;
+    margin: auto;
+}
 
 #chart_div {
     display: inline-block;
     width: 600px;
-    height: 400px;;
+    height: 400px;
     background-color: black;
     border: 5px solid #A23B72;
     border-radius: 5px;
     box-shadow: black 4px 4px;
+    margin: auto;
 }
-    table {
-        display: inline-block;
-        border: 5px solid #A23B72;
-        border-radius: 5px;
-        box-shadow: black 4px 4px 4px;
-        font-size: 25px;
-        border-collapse: collapse;
-    }
 
-    .table-index-page th {
-        background-color: #0090C1; /*teal*/
-        color: #FBFEF9;
+table {
+    display: inline-block;
+    border: 5px solid #A23B72;
+    border-radius: 5px;
+    box-shadow: black 4px 4px 4px;
+    font-size: 25px;
+    border-collapse: collapse;
+}
+
+.table-index-page th {
+    background-color: #0090C1; /*teal*/
+    color: #FBFEF9;
+    text-shadow: black 1px 1px;
+    font-size: 30px;
+}
+
+.table-index-page tr {
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+}
+
+.table-index-page td {
+    text-align: center;
+    color: black;
+    border: solid 1px black;
+}
+
+tr:nth-child(even) {
+    background-color: #FBFEF9; /*white*/
+}
+
+tr:nth-child(odd) {
+    background-color: #CFDBD5; /*darker*/
+}
+
+#loginSection {
+    border-radius: 4px;
+    margin: auto;
+    width: 1500px;
+    height: 345px;
+    background-color: #191923;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: black 4px 4px 4px;
+}
+
+    #loginSection h1 {
+        background-color: #0090C1;
+        text-align: center;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
         text-shadow: black 1px 1px;
-        font-size: 30px;
-    }
-
-    .table-index-page tr {
-        text-align: center;
-        padding: 10px;
-        margin: 5px;
-    }
-
-    .table-index-page td {
-        text-align: center;
-        color: black;
-        border: solid 1px black;
-    }
-
-    tr:nth-child(even) {
-        background-color: #FBFEF9; /*white*/
-    }
-
-    tr:nth-child(odd) {
-        background-color: #CFDBD5; /*darker*/
-    }
-
-    #loginSection {
-        border-radius: 4px;
-        margin: auto;
         width: 1500px;
-        height: 345px;
-        background-color: #191923;
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
-        box-shadow: black 4px 4px 4px;
+        margin: 0px;
     }
 
-        #loginSection h1 {
-            background-color: #0090C1;
-            text-align: center;
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
-            text-shadow: black 1px 1px;
-            width: 1500px;
-            margin: 0px;
-        }
+#loginForm {
+    vertical-align: top;
+    margin-top: 30px;
+}
 
-    #loginForm {
-        vertical-align: top;
-        margin-top: 30px;
-    }
-
-    #passwordRequirements {
-        margin: 0;
-    }
+#passwordRequirements {
+    margin: 0;
+}
