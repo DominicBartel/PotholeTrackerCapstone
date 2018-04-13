@@ -17,6 +17,8 @@ namespace Capstone.Web.DAL
 
         bool UpdatePothole(Pothole pothole);
 
+        bool DeletePothole(Pothole pothole);
+
 
 
 

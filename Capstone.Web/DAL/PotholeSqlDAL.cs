@@ -300,6 +300,8 @@ namespace Capstone.Web.DAL
                     cmd.Parameters.AddWithValue("@isValidated", pothole.IsValidated);
 
                     cmd.ExecuteNonQuery();
+
+                    confirm = true;
                 }
 
 
@@ -310,6 +312,30 @@ namespace Capstone.Web.DAL
                 throw;
             }
 
+            return confirm;
+        }
+
+        public bool DeletePothole(Pothole pothole)
+        {
+            bool confirm = false;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("Delete FROM PotHole WHERE PotHole_Id = @potholeId", conn);
+                    cmd.Parameters.AddWithValue("@potholeId", pothole.PotholeId);
+
+                    cmd.ExecuteNonQuery();
+                    confirm = true;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
             return confirm;
         }
 
@@ -539,8 +565,6 @@ namespace Capstone.Web.DAL
             return p;
 
         }
-
-
 
 
     }
