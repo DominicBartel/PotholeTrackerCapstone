@@ -1,11 +1,15 @@
 <editPothole>
     <form id="editPothole" style="display:none" method="post" action="/Home/AdminPotholeEdit">
-        <span>Success</span>
+
         <input hidden id="PotholeId" value="{potholeNum}" name="PotholeId" />
         <input hidden id="UserName" name="UserName" />
         <input id="Street1" type="text" name="Street1" />
         <input id="Street2" type="text" name="Street2" />
-        <input id="LocationDesc" type="text" name="LocationDesc" />
+        <input id="Latitude" type="text" name="Latitude" />
+        <input id="Longitude" type="text" name="Longitude" />
+        <!--<input id="ReportedDate" type="text" name="ReportedDate" />
+        <input id="InspedctedDate" type="text" name="InspectedDate" />
+        <input id="RepairedDate" type="text" name="RepairedDate" />-->
         <select name="Severity">
 
             <option id="1" value="1">1</option>
@@ -21,6 +25,9 @@
 
         </select>
         <input id="IsValidated" type="text" name="IsValidated" />
+
+        <textarea id="LocationDesc" rows="10" cols="24"></textarea>
+        <textarea id="PotholeDesc" rows="10" cols="24"></textarea>
         <button>Submit</button>
     </form>
 
@@ -44,7 +51,11 @@
             document.getElementById('UserName').value = pothole.UserName;
             document.getElementById('LocationDesc').value = pothole.LocationDesc;
             document.getElementById('IsValidated').value = pothole.IsValidated;
-            document.getElementById(pothole.Severity).value.selected = true;
+            document.getElementById(pothole.Severity.toString()).selected = true;
+            document.getElementById('Latitude').value = pothole.Latitude;
+            document.getElementById('Longitude').value = pothole.Longitude;
+            document.getElementById('PotholeDesc').value = pothole.PotholeDesc;
+            document.getElementById('IsValidated').value = pothole.IsValidated;
             this.update;
         })
 

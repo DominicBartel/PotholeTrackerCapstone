@@ -112,7 +112,6 @@ select * from PotHole order by PotHole_Id desc;
 
 delete from PotHole where PotHole_Id = 23;
 
-INSERT INTO PotHole (UserId, PotHoleDesc, Lat, Long, Severity, Street1, Street2, LocationDesc, DateReported, InspectedDate, RepairDate, IsValidated) VALUES ('DCBCB23C-93E2-488C-A293-0D1389946C4D', null, null, null, null, null, null, null, null, null, null, null)
 
 Select UserId
 FROM Users 
