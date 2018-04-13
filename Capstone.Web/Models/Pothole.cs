@@ -24,7 +24,7 @@ namespace Capstone.Web.Models
 
         public Pothole()
         {
-            UserName = "";
+            //UserName = "";
             PotholeDesc = "";
             Latitude = null;
             Longitude = null;

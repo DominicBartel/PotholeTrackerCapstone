@@ -66,15 +66,33 @@ namespace Capstone.Web.Controllers
             return roles;
         }
 
-        [HttpPost]
-        public ActionResult ReportPothole(string userName)
+
+        public ActionResult ReportPothole()
         {
-            Pothole pothole = new Pothole();
-            pothole.UserName = userName;
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult ReportPothole(Pothole pothole)
+        {
+            //Pothole pothole = new Pothole();
+            //pothole.UserName = userName;
 
             bool confirm = potholeDAL.ReportPothole(pothole);
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult AdminPotholeEdit(PotholeViewModel viewModel)
+        {
+            if(viewModel == null)
+            {
+                viewModel = new PotholeViewModel();
+            }
+
+            return View(viewModel);
+        }
+
 
     }
 }
