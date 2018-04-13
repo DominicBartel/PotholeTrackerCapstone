@@ -102,6 +102,15 @@
         margin: auto;
     }
 
+#chart_div {
+    display: inline-block;
+    width: 600px;
+    height: 400px;;
+    background-color: black;
+    border: 5px solid #A23B72;
+    border-radius: 5px;
+    box-shadow: black 4px 4px;
+}
     table {
         display: inline-block;
         border: 5px solid #A23B72;
