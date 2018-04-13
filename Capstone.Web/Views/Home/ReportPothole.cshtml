@@ -3,12 +3,74 @@
     ViewBag.Title = "ReportPothole";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>ReportPothole</h2>
-
 <!--Make sure that the Severity Property is a drop down-->
+<!--Make sure that I have the anti forgery token-->
 
+<section>
+    <h2>Report a pothole</h2>
+    <p>Please give us information about the pothole you would like to report: </p>
+    <p></p>
 
+    <div>
+        <form method="post" action="@Url.Action("ReportPothole", "Home")">
+            <fieldset>
+                @Html.AntiForgeryToken()
+                <div>
+                    <input type="hidden" name="UserName" value="@User.Identity.Name" readonly/>
+                </div>
+
+                <div>
+                    <p>Pothole description:</p>
+                    <textarea name="PotholeDesc" rows="5" cols="24">
+                        </textarea>
+                </div>
+
+                <div>
+                    <p>On a scale from 1 -10, with 10 being the worst pothole you have ever seen, how would you rank the severity of this pothole?</p>
+                    <select name="Severity">
+
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+
+                    </select>
+                </div>
+
+                <div>
+                    <p>On what stret is this pothole located? </p>
+                    <input type="text" name="Street1" />
+                </div>
+
+                <div>
+                    <p>What is the nearest cross-street to this pothole? </p>
+                    <input type="text" name="Street2" />
+                </div>
+
+                <div>
+                    <p>Additional location details: </p>
+                    <textarea name="PotholeDesc" rows="10" cols="24">
+                        </textarea>
+                </div>
+
+                <div>
+                    <input type="hidden" name="ReportedDate" value=@DateTime.Now readonly />
+                </div>
+
+                <div>
+                    <button>Submit!</button>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+</section>
 
 
 

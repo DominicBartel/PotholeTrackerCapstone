@@ -27,14 +27,14 @@ namespace Capstone.Web.Controllers
 
             PotholeViewModel newModel = new PotholeViewModel();
 
-            if(viewModel == null)
+            if (viewModel == null)
             {
                 viewModel = new PotholeViewModel();
             }
 
             newModel.Roles = GetRoles();
 
-            
+
             return View(newModel);
         }
 
@@ -74,6 +74,7 @@ namespace Capstone.Web.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ReportPothole(Pothole pothole)
         {
             //Pothole pothole = new Pothole();
@@ -85,7 +86,7 @@ namespace Capstone.Web.Controllers
 
         public ActionResult AdminPotholeEdit(PotholeViewModel viewModel)
         {
-            if(viewModel == null)
+            if (viewModel == null)
             {
                 viewModel = new PotholeViewModel();
             }
