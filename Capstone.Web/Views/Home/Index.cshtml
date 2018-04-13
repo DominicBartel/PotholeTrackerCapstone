@@ -3,107 +3,20 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-
-
-    //List<string> severitySelected = new List<string>();
-    //for (int i = 0; i <= 10 ; i++)
-    //{
-    //    severitySelected.Add("");
-    //}
-
-
-    //if (Model.Severity != null)
-    //{
-    //    if (Model.Severity == -1)
-    //    {
-    //        severitySelected[0] = "selected";
-    //    }
-    //    else
-    //    {
-
-
-    //        for (int i = 1; i <= 10; i++)
-    //        {
-
-
-    //            if (i == Model.Severity)
-    //            {
-    //                severitySelected[i] = "selected";
-    //            }
-    //        }
-    //    }
-    //}
-
 }
 
 
 <body>
-    <div style="text-align:center">
-        <potholemap></potholemap>
-        <bargraph></bargraph>
-        <p></p>
+    
+    <potholemap></potholemap>
+    <bargraph></bargraph>
+    <p></p>
 
-        @*<p>Search for Pothole:</p>
-        <form action="Index" method="get">
-            <input type="hidden" name="IsValidated" value="true" />
-            <input type="text" name="UserName" placeholder="Submitter Username" value="@Model.UserName" />
-            <input type="text" name="Street1" placeholder="On Street" value="@Model.Street1" />
-            <input type="text" name="Street2" placeholder="Neighboring Street" value="@Model.Street2" />
-            <input type="text" name="LocationDesc" placeholder="Location Keyword" value="@Model.LocationDesc" />
-            <input type="text" name="PotholeDesc" placeholder="Description Keyword" value="@Model.PotholeDesc" />
-            <select title="Severity" name="Severity">
-                <option value="">Severity Level</option>
-                <option value="-1" @severitySelected[0]>ANY</option>
-                <option value="1" @severitySelected[1]>1</option>
-                <option value="2" @severitySelected[2]>2</option>
-                <option value="3" @severitySelected[3]>3</option>
-                <option value="4" @severitySelected[4]>4</option>
-                <option value="5" @severitySelected[5]>5</option>
-                <option value="6" @severitySelected[7]>6</option>
-                <option value="7" @severitySelected[7]>7</option>
-                <option value="8" @severitySelected[8]>8</option>
-                <option value="9" @severitySelected[9]>9</option>
-                <option value="10" @severitySelected[10]>10</option>
-            </select>
-
-            <button>SEARCH</button>
-
-        </form>*@
-
-        <searchbar></searchbar>
-        <p></p>
-
-        <resultstable></resultstable>
-    </div>
-    @*<table class="table-index-page">
-        <th colspan="5">Current Confirmed Potholes:</th>
-
-        <tr style="font-weight:bold">
-            <td>Severity</td>
-            <td>First Cross Street</td>
-            <td>Second Cross Street</td>
-            <td>Location</td>
-            <td>Pothole Description</td>
-        </tr>
-        @foreach (var pothole in Model.PotholeList)
-        {
-            <tr>
-                <td>@pothole.Severity</td>
-                <td>@pothole.Street1</td>
-                <td>@pothole.Street2</td>
-                <td>@pothole.LocationDesc</td>
-                <td>@pothole.PotholeDesc</td>
-            </tr>
-        }
-    </table>*@
-
-    @*@if (Model.PotholeList.Count == 0)
-    {
-        <p>No results could be found for that search.</p>
-    }*@
-
+    
+    <searchbar></searchbar>
+    <p></p>
+    <resultstable></resultstable>
    
-
     <script src="~/RiotComponents/potholemap.tag" type="riot/tag">
     </script>
     <script src="~/RiotComponents/searchbar.tag" type="riot/tag">
@@ -112,8 +25,6 @@
     </script>
     <script src="~/RiotComponents/bargraph.tag" type="riot/tag">
     </script>
-
- 
 
     <script>
 
@@ -130,7 +41,7 @@
         riot.mount('resultstable', { bus: bus });
         riot.mount('bargraph', { bus: bus });
 
-        
+
     </script>
 
 </body>
