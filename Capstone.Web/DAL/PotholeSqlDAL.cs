@@ -135,7 +135,16 @@ namespace Capstone.Web.DAL
                     cmd = new SqlCommand("INSERT INTO PotHole(UserId, PotHoleDesc, Lat, Long, Severity, Street1, Street2, LocationDesc, DateReported, InspectedDate, RepairDate, IsValidated) VALUES(@userId, @potholeDesc, @latitude, @longitude, @severity, @street1, @street2, @locationDesc, @reportedDate, @inspectedDate, @repairedDate, @isValidated)", conn);
 
                     cmd.Parameters.AddWithValue("@userId", pothole.UserId);
-                    cmd.Parameters.AddWithValue("@potholeDesc", pothole.PotholeDesc);
+
+                    if (String.IsNullOrEmpty(pothole.PotholeDesc))
+                    {
+                        cmd.Parameters.AddWithValue("@potholeDesc", "");
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@potholeDesc", pothole.PotholeDesc);
+                    }
+
                     if (pothole.Latitude == null)
                     {
                         cmd.Parameters.AddWithValue("@latitude", DBNull.Value);
@@ -163,10 +172,33 @@ namespace Capstone.Web.DAL
                         cmd.Parameters.AddWithValue("@severity", pothole.Severity);
                     }
 
-                    cmd.Parameters.AddWithValue("@street1", pothole.Street1);
-                    cmd.Parameters.AddWithValue("@street2", pothole.Street2);
-                    cmd.Parameters.AddWithValue("@locationDesc", pothole.LocationDesc);
+                    if (String.IsNullOrEmpty(pothole.Street1))
+                    {
+                        cmd.Parameters.AddWithValue("@street1", "");
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@street1", pothole.Street1);
+                    }
 
+                    if (String.IsNullOrEmpty(pothole.Street2))
+                    {
+                        cmd.Parameters.AddWithValue("@street2", "");
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@street2", pothole.Street2);
+                    }
+
+                    if (String.IsNullOrEmpty(pothole.LocationDesc))
+                    {
+                        cmd.Parameters.AddWithValue("@locationDesc", "");
+                    }
+                    else
+                    {
+                    cmd.Parameters.AddWithValue("@locationDesc", pothole.LocationDesc);
+                    }
+              
                     if (pothole.ReportedDate == null)
                     {
                         cmd.Parameters.AddWithValue("@reportedDate", DBNull.Value);
