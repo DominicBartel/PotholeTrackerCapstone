@@ -27,11 +27,6 @@ namespace Capstone.Web.Controllers
 
             PotholeViewModel newModel = new PotholeViewModel();
 
-            if(viewModel == null)
-            {
-                viewModel = new PotholeViewModel();
-            }
-
             newModel.Roles = GetRoles();
 
             
@@ -66,20 +61,40 @@ namespace Capstone.Web.Controllers
             return roles;
         }
 
-
-        public ActionResult ReportPothole()
+        [HttpGet]
+        public ActionResult ReportPothole(PotholeViewModel viewModel)
         {
-            return View();
+
+            PotholeViewModel newModel = new PotholeViewModel();
+
+            newModel.Roles = GetRoles();
+
+            return View(newModel);
         }
 
 
         [HttpPost]
-        public ActionResult ReportPothole(Pothole pothole)
+        public ActionResult ReportPotholePost(PotholeViewModel viewModel)
         {
             //Pothole pothole = new Pothole();
             //pothole.UserName = userName;
 
-            bool confirm = potholeDAL.ReportPothole(pothole);
+            Pothole p = new Pothole();
+            p.UserName = viewModel.UserName;
+            p.PotholeDesc = viewModel.PotholeDesc;
+            p.Latitude = viewModel.Latitude;
+            p.Longitude = viewModel.Longitude;
+            p.Severity = viewModel.Severity;
+            p.Street1 = viewModel.Street1;
+            p.Street2 = viewModel.Street2;
+            p.LocationDesc = viewModel.LocationDesc;
+            p.ReportedDate = viewModel.ReportedDate;
+            p.InspectedDate = viewModel.InspectedDate;
+            p.RepairedDate = viewModel.RepairedDate;
+            p.IsValidated = Convert.ToBoolean(viewModel.IsValidated);
+
+
+            bool confirm = potholeDAL.ReportPothole(p);
             return RedirectToAction("Index", "Home");
         }
 
