@@ -267,9 +267,10 @@ namespace Capstone.Web.DAL
 
                     conn.Open();
 
-                    cmd = new SqlCommand("Update PotHole Set UserId = @userId, PotHoleDesc = @potholeDesc, Lat = @latitude, Long = @longitude, Severity = @severity, Street1 = @street1, Street2 = @street2, LocationDesc = @locationDesc, DateReported = @reportedDate, InspectedDate = @inspectedDate, RepairDate = @repairedDate, IsValidated = @isValidated WHERE PotHole_Id = 23", conn);
+                    cmd = new SqlCommand("Update PotHole Set UserId = @userId, PotHoleDesc = @potholeDesc, Lat = @latitude, Long = @longitude, Severity = @severity, Street1 = @street1, Street2 = @street2, LocationDesc = @locationDesc, DateReported = @reportedDate, InspectedDate = @inspectedDate, RepairDate = @repairedDate, IsValidated = @isValidated WHERE PotHole_Id = @potholeId", conn);
 
                     cmd.Parameters.AddWithValue("@userId", pothole.UserId);
+                    cmd.Parameters.AddWithValue("@potholeId", pothole.PotholeId);
 
                     if (String.IsNullOrEmpty(pothole.PotholeDesc))
                     {

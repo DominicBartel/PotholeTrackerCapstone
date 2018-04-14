@@ -113,10 +113,10 @@ namespace Capstone.Web.Controllers
         public ActionResult AdminPotholeEdit(Pothole pothole)
         {
             potholeDAL.UpdatePothole(pothole); 
-            PotholeViewModel returnModel = new PotholeViewModel();
-            returnModel.PotholeList = new List<Pothole>();
-            returnModel.PotholeList.Add(pothole);
-            return RedirectToAction("AdminPotholeEdit", returnModel);
+            //PotholeViewModel returnModel = new PotholeViewModel();
+            //returnModel.PotholeList = new List<Pothole>();
+            //returnModel.PotholeList.Add(pothole);
+            return RedirectToAction("AdminPotholeEdit"/*, returnModel*/);
         }
 
     }

@@ -1,8 +1,8 @@
 <editPothole>
     <form id="editPothole" style="display:none" method="post" action="/Home/AdminPotholeEdit">
 
-        <input hidden id="PotholeId" value="{potholeNum}" name="PotholeId" />
-        <input hidden id="UserName" name="UserName" />
+        <input type="hidden" id="PotholeId" name="PotholeId" />
+        <input type="hidden" hidden id="UserName" name="UserName" />
         <input id="Street1" type="text" name="Street1" />
         <input id="Street2" type="text" name="Street2" />
         <input id="Latitude" type="text" name="Latitude" />
@@ -26,8 +26,8 @@
         </select>
         <input id="IsValidated" type="text" name="IsValidated" />
 
-        <textarea id="LocationDesc" rows="10" cols="24"></textarea>
-        <textarea id="PotholeDesc" rows="10" cols="24"></textarea>
+        <textarea id="LocationDesc" rows="10" cols="24" name="LocationDesc"></textarea>
+        <textarea id="PotholeDesc" rows="10" cols="24" name="PotholeDesc"></textarea>
         <button>Submit</button>
     </form>
 
@@ -40,12 +40,14 @@
         
         this.opts.bus.on('selectedPothole', data => {
             potholeNum = data;
-            //console.log(potholeNum + "hello");
+            console.log(potholeNum + "hello");
+            //document.getElementById('PotholeId').value = potholeNum;
             document.getElementById("editPothole").style.display = "";
         })
 
         this.opts.bus.on('searchresult', data => {
             pothole = data[0];
+            document.getElementById('PotholeId').value = pothole.PotholeId;
             document.getElementById('Street1').value = pothole.Street1;
             document.getElementById('Street2').value = pothole.Street2;
             document.getElementById('UserName').value = pothole.UserName;
