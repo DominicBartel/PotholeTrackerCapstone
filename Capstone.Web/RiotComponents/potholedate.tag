@@ -4,8 +4,8 @@
         <form method="post" action="/Home/AdminPotholeEdit">
 
             <div class="inputs_edit align_right">
-                
-                
+
+
                 <p class="input_p spacer">Street:</p>
                 <p class="input_p spacer">Cross Street:</p>
                 <p class="input_p spacer">Latitude:</p>
@@ -21,10 +21,10 @@
                 <p class="input_p"><input id="Latitude" type="text" name="Latitude" /></p>
                 <p class="input_p"><input id="Longitude" type="text" name="Longitude" /></p>
                 <!--<input id="ReportedDate" type="text" name="ReportedDate" />
-        <input id="InspedctedDate" type="text" name="InspectedDate" />
-        <input id="RepairedDate" type="text" name="RepairedDate" />-->
+                <input id="InspedctedDate" type="text" name="InspectedDate" />
+                <input id="RepairedDate" type="text" name="RepairedDate" />-->
                 <p class="input_p">
-                    
+
                     <select name="Severity">
 
                         <option id="1" value="1">1</option>
@@ -55,14 +55,16 @@
     </div>
 
     <style>
-        .spacer{
-            padding:18px
+        .spacer {
+            padding: 18px
         }
-        .align_right{
-            text-align:right;
+
+        .align_right {
+            text-align: right;
         }
+
         .inputs_edit {
-            vertical-align:top;
+            vertical-align: top;
             display: inline-block;
             padding: 0;
             margin: 0;
