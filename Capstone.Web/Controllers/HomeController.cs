@@ -119,5 +119,12 @@ namespace Capstone.Web.Controllers
             return RedirectToAction("AdminPotholeEdit"/*, returnModel*/);
         }
 
+        [HttpPost]
+        public ActionResult DeletePothole(Pothole potholeDelete)
+        {
+            potholeDAL.DeletePothole(potholeDelete);
+            return RedirectToAction("AdminPotholeEdit");
+        }
+
     }
 }

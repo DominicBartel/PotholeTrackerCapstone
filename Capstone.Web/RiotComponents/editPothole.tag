@@ -1,11 +1,11 @@
 <editPothole>
     <div class="edit_pothole_div" id="editPothole" style="display:none">
         <h1>Edit Pothole #<span id="pothole_number"></span></h1>
-        <form method="post" action="/Home/AdminPotholeEdit">
+        <form id="form_submit" method="post" action="/Home/AdminPotholeEdit">
 
             <div class="inputs_edit align_right">
-                
-                
+
+
                 <p class="input_p spacer">Street:</p>
                 <p class="input_p spacer">Cross Street:</p>
                 <p class="input_p spacer">Latitude:</p>
@@ -21,10 +21,10 @@
                 <p class="input_p"><input id="Latitude" type="text" name="Latitude" /></p>
                 <p class="input_p"><input id="Longitude" type="text" name="Longitude" /></p>
                 <!--<input id="ReportedDate" type="text" name="ReportedDate" />
-        <input id="InspedctedDate" type="text" name="InspectedDate" />
-        <input id="RepairedDate" type="text" name="RepairedDate" />-->
+                <input id="InspedctedDate" type="text" name="InspectedDate" />
+                <input id="RepairedDate" type="text" name="RepairedDate" />-->
                 <p class="input_p">
-                    
+
                     <select name="Severity">
 
                         <option id="1" value="1">1</option>
@@ -51,18 +51,23 @@
                 <textarea id="PotholeDesc" rows="10" cols="24" name="PotholeDesc"></textarea>
             </div>
             <button>Submit</button>
+            <button onclick="{deletePothole}">Delete</button>
         </form>
+
+
     </div>
 
     <style>
-        .spacer{
-            padding:18px
+        .spacer {
+            padding: 18px
         }
-        .align_right{
-            text-align:right;
+
+        .align_right {
+            text-align: right;
         }
+
         .inputs_edit {
-            vertical-align:top;
+            vertical-align: top;
             display: inline-block;
             padding: 0;
             margin: 0;
@@ -81,10 +86,20 @@
 
         this.opts.bus.on('selectedPothole', data => {
             potholeNum = data;
-            console.log(potholeNum + "hello");
-            //document.getElementById('PotholeId').value = potholeNum;
             document.getElementById("editPothole").style.display = "";
         })
+
+        this.deletePothole = function () {
+            if (confirm("Are you sure you want to delete this pothole?")) {
+                deletePothole();
+            }
+        }
+
+        function deletePothole() {
+            var form = document.getElementById("form_submit");
+            form.action = "/Home/DeletePothole";
+            form.submit();
+        }
 
         this.opts.bus.on('searchresult', data => {
             pothole = data[0];
