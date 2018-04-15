@@ -1,54 +1,26 @@
-<editPothole>
+<potholedate>
     <div class="edit_pothole_div" id="editPothole" style="display:none">
-        <h1>Edit Pothole #<span id="pothole_number"></span></h1>
+        <h1>Edit Pothole Date(s)<span id="pothole_number"></span></h1>
         <form method="post" action="/Home/AdminPotholeEdit">
 
             <div class="inputs_edit align_right">
-
-
-                <p class="input_p spacer">Street:</p>
-                <p class="input_p spacer">Cross Street:</p>
-                <p class="input_p spacer">Latitude:</p>
-                <p class="input_p spacer">Longitude:</p>
-                <p class="input_p spacer">Severity:</p>
-                <p class="input_p spacer">Validate:</p>
+                <p class="input_p spacer">Date Reported:</p>
+                <p class="input_p spacer">Date Inspected:</p>
+                <p class="input_p spacer">Repair Date:</p>
             </div>
             <div class="inputs_edit align_right">
+                <p class="input_p">{DateReported}</p>
+                <p class="input_p"><input id="InspectedDate" type="text" name="InspectedDate" /></p>
+                <p class="input_p"><input id="RepairedDate" type="text" name="RepairedDate" /></p>
+                <input type="hidden" id="Street2" name="Street2" />
+                <input type="hidden" id="Latitude" name="Latitude" />
+                <input type="hidden" id="Longitude" name="Longitude" />
                 <input type="hidden" id="PotholeId" name="PotholeId" />
-                <input type="hidden" hidden id="UserName" name="UserName" />
-                <p class="input_p"><input id="Street1" type="text" name="Street1" /></p>
-                <p class="input_p"><input id="Street2" type="text" name="Street2" /></p>
-                <p class="input_p"><input id="Latitude" type="text" name="Latitude" /></p>
-                <p class="input_p"><input id="Longitude" type="text" name="Longitude" /></p>
-                <!--<input id="ReportedDate" type="text" name="ReportedDate" />
-                <input id="InspedctedDate" type="text" name="InspectedDate" />
-                <input id="RepairedDate" type="text" name="RepairedDate" />-->
-                <p class="input_p">
-
-                    <select name="Severity">
-
-                        <option id="1" value="1">1</option>
-                        <option id="2" value="2">2</option>
-                        <option id="3" value="3">3</option>
-                        <option id="4" value="4">4</option>
-                        <option id="5" value="5">5</option>
-                        <option id="6" value="6">6</option>
-                        <option id="7" value="7">7</option>
-                        <option id="8" value="8">8</option>
-                        <option id="9" value="9">9</option>
-                        <option id="10" value="10">10</option>
-
-                    </select>
-                </p>
-                <p class="input_p"><input id="IsValidated" type="text" name="IsValidated" /></p>
-            </div>
-            <div class="inputs_edit">
-                <p class="input_p">Location Description</p>
-                <textarea id="LocationDesc" rows="10" cols="24" name="LocationDesc"></textarea>
-            </div>
-            <div class="inputs_edit">
-                <p class="input_p">Pothole Description</p>
-                <textarea id="PotholeDesc" rows="10" cols="24" name="PotholeDesc"></textarea>
+                <input type="hidden" id="UserName" name="UserName" />
+                <input type="hidden" id="Severity" name="Severity" />
+                <input type="hidden" id="IsValidated" name="IsValidated" /></p>
+                <textarea hidden id="LocationDesc" rows="10" cols="24" name="LocationDesc"></textarea>
+                <textarea hidden id="PotholeDesc" rows="10" cols="24" name="PotholeDesc"></textarea>
             </div>
             <button>Submit</button>
         </form>
@@ -102,9 +74,35 @@
             document.getElementById('Longitude').value = pothole.Longitude;
             document.getElementById('PotholeDesc').value = pothole.PotholeDesc;
             document.getElementById('IsValidated').value = pothole.IsValidated;
+            document.getElementById('DateReported').value = pothole.DateReported;
+            document.getElementById('InspectedDate').value = pothole.InspectedDate;
+            document.getElementById('RepairDate').value = pothole.RepairDate;
             this.update;
         })
 
-
     </script>
-</editPothole>
+</potholedate>
+
+<!--
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Datepicker - Default functionality</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+</script>
+</head>
+<body>
+
+    <p>Date: <input type="text" id="datepicker"></p>
+
+</body>
+</html>
+
+-->

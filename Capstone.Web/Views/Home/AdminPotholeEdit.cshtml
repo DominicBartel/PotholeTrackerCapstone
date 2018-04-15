@@ -12,6 +12,7 @@
     <searchbar></searchbar>
     <p></p>
     <editPothole></editPothole>
+    @*<potholedate></potholedate>*@
     <resultstable></resultstable>
 </div>
 
@@ -24,9 +25,11 @@
 <script src="~/RiotComponents/resultstable.tag" type="riot/tag">
 </script>
 <script src="~/RiotComponents/bargraph.tag" type="riot/tag">
-</script><script src="~/RiotComponents/editPothole.tag" type="riot/tag">
 </script>
-
+<script src="~/RiotComponents/editPothole.tag" type="riot/tag">
+</script>
+@*<script src="~/RiotComponents/potholedate.tag" type="riot/tag">
+</script>*@
 
 
 <script>
@@ -44,6 +47,7 @@
     riot.mount('searchbar', { bus: bus });
     riot.mount('resultstable', { bus: bus });
     riot.mount('bargraph', { bus: bus });
+    //riot.mount('potholedate', { bus: bus });
 
 
 </script>
