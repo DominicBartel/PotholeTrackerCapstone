@@ -31,28 +31,31 @@ namespace Capstone.Web.DAL
                 {
                     conn.Open();
 
+                    string query = "SELECT PotHole.PotHole_Id, PotHole.UserId, Users.UserName, PotHole.PotHoleDesc, PotHole.Lat, PotHole.Long, PotHole.Severity, PotHole.Street1, PotHole.Street2, PotHole.LocationDesc, PotHole.DateReported, PotHole.InspectedDate, PotHole.RepairDate, PotHole.IsValidated FROM PotHole JOIN Users ON PotHole.UserId = Users.UserId WHERE 1=1";
 
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM PotHole WHERE IsValidated = 1", conn);
+                    SqlCommand cmd = new SqlCommand(query, conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        Pothole p = new Pothole();
+                        //Pothole p = new Pothole();
 
-                        p.PotholeId = Convert.ToInt32(reader["PotHole_Id"]);
-                        p.UserId = (Guid)reader["UserId"];
-                        p.PotholeDesc = Convert.ToString(reader["PotHoleDesc"]);
-                        p.Latitude = Convert.ToDouble(reader["Lat"]);
-                        p.Longitude = Convert.ToDouble(reader["Long"]);
-                        p.Severity = Convert.ToInt32(reader["Severity"]);
-                        p.Street1 = Convert.ToString(reader["Street1"]);
-                        p.Street2 = Convert.ToString(reader["Street2"]);
-                        p.LocationDesc = Convert.ToString(reader["LocationDesc"]);
-                        p.ReportedDate = Convert.ToDateTime(reader["DateReported"]);
-                        p.InspectedDate = Convert.ToDateTime(reader["InspectedDate"]);
-                        p.RepairedDate = Convert.ToDateTime(reader["RepairDate"]);
-                        p.IsValidated = Convert.ToBoolean(reader["IsValidated"]);
+                        //p.PotholeId = Convert.ToInt32(reader["PotHole_Id"]);
+                        //p.UserId = (Guid)reader["UserId"];
+                        //p.PotholeDesc = Convert.ToString(reader["PotHoleDesc"]);
+                        //p.Latitude = Convert.ToDouble(reader["Lat"]);
+                        //p.Longitude = Convert.ToDouble(reader["Long"]);
+                        //p.Severity = Convert.ToInt32(reader["Severity"]);
+                        //p.Street1 = Convert.ToString(reader["Street1"]);
+                        //p.Street2 = Convert.ToString(reader["Street2"]);
+                        //p.LocationDesc = Convert.ToString(reader["LocationDesc"]);
+                        //p.ReportedDate = Convert.ToDateTime(reader["DateReported"]);
+                        //p.InspectedDate = Convert.ToDateTime(reader["InspectedDate"]);
+                        //p.RepairedDate = Convert.ToDateTime(reader["RepairDate"]);
+                        //p.IsValidated = Convert.ToBoolean(reader["IsValidated"]);
+
+                        Pothole p = MapRows(reader);
 
                         allPotholes.Add(p);
                     }
