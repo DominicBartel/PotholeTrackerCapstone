@@ -56,7 +56,7 @@ namespace Capstone.Web.DAL
                         //p.IsValidated = Convert.ToBoolean(reader["IsValidated"]);
 
                         Pothole p = MapRows(reader);
-
+                         
                         allPotholes.Add(p);
                     }
                 }
