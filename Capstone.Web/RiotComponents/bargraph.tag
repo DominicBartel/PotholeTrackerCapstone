@@ -24,13 +24,23 @@
                 .then(json => {
                     this.potholes = json;
                     console.log(this.potholes);
-                    for (i = 0; i < this.potholes.length; i + 1) {
-                        if (this.potholes[i].RepairedDate != null) {
-                            repaired++;
-                            confirmed++;
-                            i++;
-                            console.log(i);
+                    for (i = 0; i < this.potholes.length; i++) {
 
+                        if (this.potholes[i].ReportedDate == null) {
+                            
+                        }
+                        else {
+                            confirmed++;
+                        }
+
+                        if (this.potholes[i].RepairedDate == null) {
+                            //confirmed++;
+                            //i++;
+                        }
+                        else {
+                            repaired++;
+                            confirmed--;
+                            console.log(i);
                         }
                     }
 
@@ -56,7 +66,7 @@
                         data.addColumn({ type: 'string', role: 'style' });
                         data.addRows([
 
-                            ['Total Confirmed Potholes', confirmed, '#0090C1'],
+                            ['Total Potholes In Need of Repair', confirmed, '#0090C1'],
                             ['Total Repaired Potholes', repaired, '#0090C1']
                         ]);
 

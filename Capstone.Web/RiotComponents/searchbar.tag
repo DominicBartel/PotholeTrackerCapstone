@@ -7,7 +7,13 @@
         </div>-->
     <div>
         <p>Search Pothole Database:</p>
-        <input id="isvalidated" type="hidden" name="IsValidated" value="true" />
+        <select id="isvalidated">
+            <option value="">Pothole Validity</option>
+            <option value="null">All Reported Potholes</option>
+            <option value="true">Validated Potholes</option>
+            <option value="false">Potholes Awaiting Validation</option>
+        </select>
+        <!--<input id="isvalidated" type="hidden" name="IsValidated" value="null" />-->
         <input id="street1" type="text" name="Street1" placeholder="On Street" />
         <input id="street2" type="text" name="Street2" placeholder="Neighboring Street" />
         <input id="locationdesc" type="text" name="LocationDesc" placeholder="Location Keyword" />
@@ -20,7 +26,7 @@
         <input id="inspectedDate" type="text" name="inspectedDate" placeholder="Submitter Username" />
         <input id="repairedDate" type="text" name="repairedDate" placeholder="Submitter Username" />
 
-        <select id="severity">
+        <select id="severity"><!--  -->
             <option value="">Severity Level</option>
             <option value="-1">ANY</option>
             <option value="1">1</option>
@@ -87,7 +93,8 @@
 
         function search() {
 
-            const isvalidatedE = document.querySelector('#isvalidated');
+            const isvalidatedO = document.querySelector('#isvalidated');
+            const isvalidatedE = isvalidatedO.options[isvalidatedO.selectedIndex];
             const isvalidated = isvalidatedE.value;
             const usernameE = document.querySelector('#username');
             const username = usernameE.value;
