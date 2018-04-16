@@ -20,7 +20,7 @@ namespace Capstone.Web.DAL
 
         bool DeletePothole(Pothole pothole);
 
-        bool ScheduleWorkOrder(WorkOrder workOrder, List<User> userList, List<Pothole> potholeList);
+        bool ScheduleWorkOrder(WorkOrder workOrder, string userList, string potholeList);
 
         List<User> GetAllCrewMembers();
 

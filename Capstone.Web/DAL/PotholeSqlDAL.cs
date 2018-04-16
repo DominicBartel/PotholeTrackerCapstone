@@ -680,9 +680,61 @@ namespace Capstone.Web.DAL
             throw new NotImplementedException();
         }
 
-        public bool ScheduleWorkOrder(WorkOrder workOrder, List<User> userList, List<Pothole> potholeList)
+        public bool ScheduleWorkOrder(WorkOrder workOrder, string userList, string potholeList)
         {
-            throw new NotImplementedException();
+            bool confirm = false;
+            List<string> userListSplit = userList.Split(',').ToList<string>();
+            List<Guid> userIdList = new List<Guid>();
+
+            foreach (var userId in userListSplit)
+            {
+                userIdList.Add(Guid.Parse(userId));
+            }
+
+            List<string> potholeListSplit = potholeList.Split(',').ToList<string>();
+            List<int> potholeIdList = new List<int>();
+
+            foreach (var potholeId in potholeListSplit)
+            {
+                potholeIdList.Add(Convert.ToInt32(potholeId));
+            }
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection())
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("INSERT INTO WorkOrder VALUES (@ToInspectDate, @ToRepairDate, @InspectionComplete, @RepairComplete, @TypeOfJob, @Notes);", conn);
+                    cmd.ExecuteNonQuery();
+
+                    cmd = new SqlCommand("select top 1 * from WorkOrder Order By WorkOrderId DESC;", conn);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while(reader.Read())
+                    {
+                        //workOrder.
+                    }
+
+
+
+
+                }
+
+
+
+            }
+            catch(SqlException ex)
+            {
+                throw;
+            }
+
+
+
+
+      
+            return confirm;
         }
     }
 }

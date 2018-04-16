@@ -7,6 +7,7 @@ namespace Capstone.Web.Models
 {
     public class WorkOrder
     {
+        public int? WorkOrderId { get; set; }
         public DateTime? ToInspectDate { get; set; }
         public DateTime? ToRepairDate { get; set; }
         public bool? InspectionComplete { get; set; }
