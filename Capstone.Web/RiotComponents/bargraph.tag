@@ -63,8 +63,6 @@
                         // Set chart options
                         var options = {
                             'title': 'Citywide Pothole Status',
-                            'width': 600,
-                            'height': 400,
                             legend: { position: 'none' }
                         };
 
