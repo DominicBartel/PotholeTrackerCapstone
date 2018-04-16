@@ -1,4 +1,5 @@
-﻿using Capstone.Web.Models;
+﻿using Capstone.Web.Authentication;
+using Capstone.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,13 @@ namespace Capstone.Web.DAL
 
         bool DeletePothole(Pothole pothole);
 
+        bool ScheduleWorkOrder(WorkOrder workOrder, List<User> userList, List<Pothole> potholeList);
 
+        List<User> GetAllCrewMembers();
+
+        List<User> GetAllCrewLeaders();
+
+        List<WorkOrder> GetAllWorkOrders();
 
 
 

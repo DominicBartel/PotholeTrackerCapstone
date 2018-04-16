@@ -7,6 +7,11 @@ namespace Capstone.Web.Models
 {
     public class WorkOrder
     {
-
+        public DateTime? ToInspectDate { get; set; }
+        public DateTime? ToRepairDate { get; set; }
+        public bool? InspectionComplete { get; set; }
+        public bool? RepairComplete { get; set; }
+        public string TypeOfJob { get; set; }
+        public string Notes { get; set; }
     }
 }

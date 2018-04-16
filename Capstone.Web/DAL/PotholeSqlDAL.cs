@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using Capstone.Web.Authentication;
 using Capstone.Web.Models;
 
 
@@ -634,6 +635,24 @@ namespace Capstone.Web.DAL
 
         }
 
+        public List<User> GetAllCrewMembers()
+        {
+            throw new NotImplementedException();
+        }
 
+        public List<User> GetAllCrewLeaders()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<WorkOrder> GetAllWorkOrders()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool ScheduleWorkOrder(WorkOrder workOrder, List<User> userList, List<Pothole> potholeList)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
