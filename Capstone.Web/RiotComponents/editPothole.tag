@@ -3,29 +3,43 @@
         <h1>Edit Pothole #<span id="pothole_number"></span></h1>
         <form id="form_submit" method="post" action="/Home/AdminPotholeEdit">
 
-            <div class="inputs_edit align_right">
+            <!--<div class="inputs_edit align_right">
 
 
-                <p class="input_p spacer">Street:</p>
-                <p class="input_p spacer">Cross Street:</p>
-                <p class="input_p spacer">Latitude:</p>
-                <p class="input_p spacer">Longitude:</p>
-                <p class="input_p spacer">Severity:</p>
-                <p class="input_p spacer">Validate:</p>
-            </div>
+        <p class="input_p spacer">Street:</p>
+        <p class="input_p spacer">Cross Street:</p>
+        <p class="input_p spacer">Latitude:</p>
+        <p class="input_p spacer">Longitude:</p>
+        <p class="input_p spacer">Severity:</p>
+        <p class="input_p spacer">Validate:</p>
+    </div>-->
             <div class="inputs_edit align_right">
                 <input type="hidden" id="PotholeId" name="PotholeId" />
                 <input type="hidden" hidden id="UserName" name="UserName" />
-                <p class="input_p"><input id="Street1" type="text" name="Street1" /></p>
-                <p class="input_p"><input id="Street2" type="text" name="Street2" /></p>
-                <p class="input_p"><input id="Latitude" type="text" name="Latitude" /></p>
-                <p class="input_p"><input id="Longitude" type="text" name="Longitude" /></p>
-                <p class="input_p"><input readonly id="ReportedDate" type="text" name="ReportedDate" /></p>
-                <p class="input_p"><input id="InspectedDate" type="text" name="InspectedDate" /></p>
-                <p class="input_p"><input id="RepairDate" type="text" name="RepairedDate" /></p>
-                <p class="input_p">
+                <p></p>
+                <p class="input_p">Street: <input id="Street1" type="text" name="Street1" /></p>
+                <p class="input_p">Cross Street: <input id="Street2" type="text" name="Street2" /></p>
+                <p class="input_p">Latitude: <input readonly id="Latitude" type="text" name="Latitude" /></p>
+                <p class="input_p">Longitude: <input readonly id="Longitude" type="text" name="Longitude" /></p>
+                <p class="input_p">Severity: <input readonly id="ReportedDate" type="text" name="ReportedDate" /></p>
+                <p class="input_p">Inspected Date: <input id="InspectedDate" type="text" name="InspectedDate" /></p>
+                <p class="input_p">Repaired Date: <input id="RepairDate" type="text" name="RepairedDate" /></p>
 
-                    <select name="Severity">
+            </div>
+            <div class="inputs_edit">
+                <p class="input_p">Location Description</p>
+                <textarea id="LocationDesc" rows="10" cols="24" name="LocationDesc"></textarea>
+            </div>
+            <div class="inputs_edit">
+                <p class="input_p">Pothole Description</p>
+                <textarea id="PotholeDesc" rows="10" cols="24" name="PotholeDesc"></textarea>
+            </div>
+            <div class="inputs_edit">
+                <button>Submit</button>
+                <button onclick="{deletePothole}">Delete</button>
+                <p><p class="input_p">
+
+                    Severity: <select name="Severity">
 
                         <option id="1" value="1">1</option>
                         <option id="2" value="2">2</option>
@@ -40,18 +54,9 @@
 
                     </select>
                 </p>
-                <p class="input_p"><span>Validate Pothole: </span><input id="IsValidated" onclick="{checkValidate}" value="" type="checkbox" name="IsValidated" /></p>
+                <p class="input_p"><span>Validate Pothole: </span><input id="IsValidated" onclick="{checkValidate}" value="" type="checkbox" name="IsValidated" /></p></p>
             </div>
-            <div class="inputs_edit">
-                <p class="input_p">Location Description</p>
-                <textarea id="LocationDesc" rows="10" cols="24" name="LocationDesc"></textarea>
-            </div>
-            <div class="inputs_edit">
-                <p class="input_p">Pothole Description</p>
-                <textarea id="PotholeDesc" rows="10" cols="24" name="PotholeDesc"></textarea>
-            </div>
-            <button>Submit</button>
-            <button onclick="{deletePothole}">Delete</button>
+            
         </form>
 
 
