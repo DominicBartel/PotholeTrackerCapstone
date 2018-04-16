@@ -707,7 +707,40 @@ namespace Capstone.Web.DAL
 
         public List<WorkOrder> GetAllWorkOrders()
         {
-            throw new NotImplementedException();
+            List<WorkOrder> workOrders = new List<WorkOrder>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM WorkOrder", conn);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        WorkOrder w = new WorkOrder();
+
+                        
+                        w.WorkOrderId = Convert.ToInt32(reader["WorkOrderId"]);
+                        w.ToInspectDate = Convert.ToDateTime(reader["ToInspectDate"]);
+                        w.ToRepairDate = Convert.ToDateTime(reader["ToRepairDate"]);
+                        w.InspectionComplete = Convert.ToBoolean(reader["InspectionComplete"]);
+                        w.RepairComplete = Convert.ToBoolean(reader["RepairComplete"]);
+                        w.TypeOfJob = Convert.ToString(reader["TypeOfJob"]);
+                        w.Notes = Convert.ToString(reader["Notes"]);
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+
+            return workOrders;
         }
 
         public bool ScheduleWorkOrder(WorkOrder workOrder, string userList, string potholeList)
