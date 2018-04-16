@@ -20,9 +20,9 @@
                 <p class="input_p"><input id="Street2" type="text" name="Street2" /></p>
                 <p class="input_p"><input id="Latitude" type="text" name="Latitude" /></p>
                 <p class="input_p"><input id="Longitude" type="text" name="Longitude" /></p>
-                <!--<input id="ReportedDate" type="text" name="ReportedDate" />
-                <input id="InspedctedDate" type="text" name="InspectedDate" />
-                <input id="RepairedDate" type="text" name="RepairedDate" />-->
+                <p class="input_p"><input readonly id="ReportedDate" type="text" name="ReportedDate" /></p>
+                <p class="input_p"><input id="InspectedDate" type="text" name="InspectedDate" /></p>
+                <p class="input_p"><input id="RepairDate" type="text" name="RepairedDate" /></p>
                 <p class="input_p">
 
                     <select name="Severity">
@@ -40,7 +40,7 @@
 
                     </select>
                 </p>
-                <p class="input_p"><input id="IsValidated" type="text" name="IsValidated" /></p>
+                <p class="input_p"><span>Validate Pothole: </span><input id="IsValidated" onclick="{checkValidate}" value="" type="checkbox" name="IsValidated" /></p>
             </div>
             <div class="inputs_edit">
                 <p class="input_p">Location Description</p>
@@ -94,7 +94,14 @@
                 deletePothole();
             }
         }
-
+        this.checkValidate = function () {
+            var checkbox = document.getElementById('IsValidated');
+            if (checkbox.checked == true) {
+                checkbox.value = "true";
+            } else {
+                checkbox.value = "false";
+            }
+        }
         function deletePothole() {
             var form = document.getElementById("form_submit");
             form.action = "/Home/DeletePothole";
@@ -109,12 +116,17 @@
             document.getElementById('Street2').value = pothole.Street2;
             document.getElementById('UserName').value = pothole.UserName;
             document.getElementById('LocationDesc').value = pothole.LocationDesc;
+            document.getElementById('IsValidated').checked = pothole.IsValidated;
             document.getElementById('IsValidated').value = pothole.IsValidated;
             document.getElementById(pothole.Severity.toString()).selected = true;
             document.getElementById('Latitude').value = pothole.Latitude;
             document.getElementById('Longitude').value = pothole.Longitude;
             document.getElementById('PotholeDesc').value = pothole.PotholeDesc;
             document.getElementById('IsValidated').value = pothole.IsValidated;
+
+            document.getElementById('ReportedDate').value = pothole.ReportedDate;
+            document.getElementById('InspectedDate').value = pothole.InspectedDate;
+            document.getElementById('RepairDate').value = pothole.RepairedDate;
             this.update;
         })
 

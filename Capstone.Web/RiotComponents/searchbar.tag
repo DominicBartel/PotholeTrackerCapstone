@@ -8,7 +8,6 @@
     <div>
         <p>Search Pothole Database:</p>
         <select id="isvalidated">
-            <option value="">Pothole Validity</option>
             <option value="null">All Reported Potholes</option>
             <option value="true">Validated Potholes</option>
             <option value="false">Potholes Awaiting Validation</option>
