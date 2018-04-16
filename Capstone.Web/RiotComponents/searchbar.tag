@@ -42,7 +42,7 @@
         </select>
         <input type="button" onclick="{fullSearch}" value="SEARCH" />
     </div>
-
+      
 
     <script>
 
@@ -72,7 +72,7 @@
 
         //    });-->
 
-
+         
 
         this.on('mount', () => {
             search();
