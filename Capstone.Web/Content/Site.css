@@ -20,7 +20,7 @@
 }
 
 /*Desktops and Larger*/
-@media (min-width: 992px) {
+@media (min-width: 1610px) {
     header h1 {
         text-align: left;
         box-shadow: dimgrey 0 0 2px 3px;
@@ -55,41 +55,40 @@
             background-color: #59213F;
             border-radius: 10px;
         }
-}
 
-#loginSection {
-    border-radius: 4px;
-    margin: auto;
-    width: 100%;
-    height: 345px;
-    background-color: #191923;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    box-shadow: black 4px 4px 4px;
-}
-
-    #loginSection h1 {
-        background-color: #0090C1;
-        text-align: center;
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
-        text-shadow: black 1px 1px;
-        width: 100%;
-        margin: 0px;
+    #loginSection {
+        border-radius: 4px;
+        margin: auto;
+        width: 60%;
+        height: 345px;
+        background-color: #191923;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        box-shadow: black 4px 4px 4px;
     }
 
-#loginForm {
-    vertical-align: top;
-    margin-top: 30px;
+        #loginSection h1 {
+            background-color: #0090C1;
+            text-align: center;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            text-shadow: black 1px 1px;
+            width: 100%;
+            margin: 0px;
+        }
+
+    #loginForm {
+        vertical-align: top;
+        margin-top: 30px;
+    }
+
+    #passwordRequirements {
+        margin: 0;
+    }
 }
 
-#passwordRequirements {
-    margin: 0;
-}
-
-
-/* Small Tablets */
-@media (max-width:991px) {
+/*small screens*/
+@media(max-width: 1609px) {
     header h1 {
         text-align: center;
         width: 100%;
@@ -101,54 +100,40 @@
 
     ul {
         padding-left: 2px;
-        list-style: none;
     }
 
     nav ul li {
         background-color: #A23B72;
-        border-radius: 4px;
-        list-style: none;
         flex-grow: 1;
         margin-bottom: 3px;
+        list-style-type:none;
+    }
+
+    li:hover {
+        background-color: #59213F;
+        border-radius: 10px;
     }
 
     a {
         text-decoration: none;
         color: #FBFEF9;
+        text-align: left;
     }
-}
+    
 
-#loginSection {
-    border-radius: 4px;
-    margin: auto;
-    width: 100%;
-    height: 345px;
-    background-color: #191923;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    box-shadow: black 4px 4px 4px;
-}
+
+    #loginForm {
+        text-align: center;
+    }
+
+    #loginSection img {
+        display: none;
+    }
 
     #loginSection h1 {
-        background-color: #0090C1;
-        text-align: center;
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
-        text-shadow: black 1px 1px;
-        width: 100%;
-        margin: 0px;
+        background-color: #191923;
     }
-
-#loginForm {
-    vertical-align: top;
-    margin-top: 30px;
 }
-
-#passwordRequirements {
-    margin: 0;
-}
-
-
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
@@ -162,7 +147,7 @@ header {
 
 #map {
     display: inline-block;
-    width:100%;
+    width: 100%;
     height: 400px;
     background-color: grey;
     border: 5px solid #A23B72;
@@ -216,4 +201,3 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
     background-color: #CFDBD5; /*darker*/
 }
-
