@@ -205,6 +205,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pothole.cs" />
     <Compile Include="Models\PotholeViewModel.cs" />
+    <Compile Include="Models\WorkOrder.cs" />
+    <Compile Include="Models\WorkOrderViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -258,6 +260,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\ReportPothole.cshtml" />
     <Content Include="Views\Home\AdminPotholeEdit.cshtml" />
+    <Content Include="Views\Home\WorkOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

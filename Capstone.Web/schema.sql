@@ -40,6 +40,8 @@ CREATE TABLE [dbo].[WorkOrder]
 	[ToRepairDate]			DATETIME			NULL,
 	[InspectionComplete]	BIT					NULL,
 	[RepairComplete]		BIT				    NULL,
+	[TypeOfJob]				VARCHAR(50)			NULL,
+	[Notes]					VARCHAR(4000)		NULL,
 );
 
 
@@ -68,7 +70,7 @@ CREATE TABLE [dbo].[WorkOrder]
 	[RepairOrderPothole_Id] int identity(1, 1)	NOT NULL PRIMARY KEY,
 	[WorkOrderId]			int	NOT NULL,
 	[PotHole_Id]			int	NOT NULL,
-	[UserId]				UNIQUEIDENTIFIER	NOT NULL
+	[UserId]				UNIQUEIDENTIFIER	NOT NULL,
 
 	CONSTRAINT fk_RepairId FOREIGN KEY (WorkOrderId) REFERENCES WorkOrder(WorkOrderId),
 	CONSTRAINT fk_PotHole_Id FOREIGN KEY (PotHole_Id) REFERENCES PotHole(PotHole_Id),
