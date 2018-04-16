@@ -8,13 +8,23 @@
             @Html.AntiForgeryToken()
 
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+        @if (User.IsInRole("supergod"))
+    {
+        <li>@Html.ActionLink('\u2654' + " Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
         <li>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { id = "homeLink" }) </li>
         <li>@Html.ActionLink("Report a New Pothole", "ReportPothole", "Home", routeValues: null, htmlAttributes: new { id = "reportLink" }) </li>
+}
+else
+{
+    <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+    <li>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { id = "homeLink" }) </li>
+    <li>@Html.ActionLink("Report a New Pothole", "ReportPothole", "Home", routeValues: null, htmlAttributes: new { id = "reportLink" }) </li>
+}
+
         @if (!User.IsInRole("citizen"))
-        {
+    {
         <li>@Html.ActionLink("Edit Pothole Database", "AdminPotholeEdit", "Home", routeValues: null, htmlAttributes: new { id = "EditLink" }) </li>
-        }
+}
         <li>@Html.ActionLink("Information on Potholes", "Index", "Home", routeValues: null, htmlAttributes: new { id = "reportLink" }) </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
