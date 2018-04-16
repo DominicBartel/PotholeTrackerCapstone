@@ -18,12 +18,12 @@
         <input id="locationdesc" type="text" name="LocationDesc" placeholder="Location Keyword" />
         <input id="potholedesc" type="text" name="PotholeDesc" placeholder="Description Keyword" />
         <input id="username" type="text" name="UserName" placeholder="Submitter Username" />
-        <input id="latitude" type="text" name="latitude" placeholder="Submitter Username" />
-        <input id="longitude" type="text" name="longitude" placeholder="Submitter Username" />
+        <input id="latitude" type="text" name="latitude" placeholder="Latitude" />
+        <input id="longitude" type="text" name="longitude" placeholder="Longitude" />
         <input hidden id="potholeId" type="text" name="potholeId" />
-        <input id="reportedDate" type="text" name="reportedDate" placeholder="Submitter Username" />
-        <input id="inspectedDate" type="text" name="inspectedDate" placeholder="Submitter Username" />
-        <input id="repairedDate" type="text" name="repairedDate" placeholder="Submitter Username" />
+        <input id="reportedDate" type="text" name="reportedDate" placeholder="Reported Date" />
+        <input id="inspectedDate" type="text" name="inspectedDate" placeholder="Inspected Date" />
+        <input id="repairedDate" type="text" name="repairedDate" placeholder="Repaired Date" />
 
         <select id="severity"><!--  -->
             <option value="">Severity Level</option>
