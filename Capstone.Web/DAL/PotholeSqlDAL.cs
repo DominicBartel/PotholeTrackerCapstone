@@ -57,7 +57,7 @@ namespace Capstone.Web.DAL
                         //p.IsValidated = Convert.ToBoolean(reader["IsValidated"]);
 
                         Pothole p = MapRows(reader);
-                         
+
                         allPotholes.Add(p);
                     }
                 }
@@ -200,9 +200,9 @@ namespace Capstone.Web.DAL
                     }
                     else
                     {
-                    cmd.Parameters.AddWithValue("@locationDesc", pothole.LocationDesc);
+                        cmd.Parameters.AddWithValue("@locationDesc", pothole.LocationDesc);
                     }
-              
+
                     if (pothole.ReportedDate == null)
                     {
                         cmd.Parameters.AddWithValue("@reportedDate", DBNull.Value);
@@ -649,7 +649,7 @@ namespace Capstone.Web.DAL
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    while(reader.Read())
+                    while (reader.Read())
                     {
                         User u = new User();
                         u.UserId = (Guid)reader["UserId"];
@@ -662,7 +662,7 @@ namespace Capstone.Web.DAL
                     }
                 }
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 throw;
             }
@@ -701,39 +701,101 @@ namespace Capstone.Web.DAL
 
             try
             {
-                using (SqlConnection conn = new SqlConnection())
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO WorkOrder VALUES (@ToInspectDate, @ToRepairDate, @InspectionComplete, @RepairComplete, @TypeOfJob, @Notes);", conn);
-                    cmd.ExecuteNonQuery();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO WorkOrder VALUES (@toInspectDate, @toRepairDate, @inspectionComplete, @repairComplete, @typeOfJob, @notes);", conn);
 
-                    cmd = new SqlCommand("select top 1 * from WorkOrder Order By WorkOrderId DESC;", conn);
+                    if (workOrder.ToInspectDate == null)
+                    {
+                        cmd.Parameters.AddWithValue("@toInspectDate", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@toInspectDate", workOrder.ToInspectDate);
+                    }
+
+                    if(workOrder.ToRepairDate == null)
+                    {
+                        cmd.Parameters.AddWithValue("@toRepairDate", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@toRepairDate", workOrder.ToRepairDate);
+                    }
+
+                    if(workOrder.InspectionComplete == null)
+                    {
+                        cmd.Parameters.AddWithValue("@inspectionComplete", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@inspectionComplete", workOrder.InspectionComplete);
+                    }
+
+                    if(workOrder.RepairComplete == null)
+                    {
+                        cmd.Parameters.AddWithValue("@repairComplete", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@repairComplete", workOrder.RepairComplete);
+                    }
+
+                    if(String.IsNullOrEmpty(workOrder.TypeOfJob))
+                    {
+                        cmd.Parameters.AddWithValue("@typeOfJob", "");
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@typeOfJob", workOrder.TypeOfJob);
+                    }
+
+                    if(String.IsNullOrEmpty(workOrder.Notes))
+                    {
+                        cmd.Parameters.AddWithValue("@notes", "");
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@notes", workOrder.Notes);
+                    }
+
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+                    cmd = new SqlCommand("SELECT TOP 1 * FROM WorkOrder Order By WorkOrderId DESC;", conn);
+                    conn.Open();
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    while(reader.Read())
+                    while (reader.Read())
                     {
-                        //workOrder.
+                        workOrder.WorkOrderId = Convert.ToInt32(reader["WorkOrderId"]);
                     }
 
+                    conn.Close();
 
+                    conn.Open();
 
-
+                    foreach (int potholeId in potholeIdList)
+                    {
+                        foreach (Guid userId in userIdList)
+                        {
+                            cmd = new SqlCommand("INSERT INTO WorkOrderPotholeUser VALUES (@workOrderId, @potholeId, @userId)", conn);
+                            cmd.Parameters.AddWithValue("@workOrderId", workOrder.WorkOrderId);
+                            cmd.Parameters.AddWithValue("@potholeId", potholeId);
+                            cmd.Parameters.AddWithValue("@userId", userId);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
                 }
-
-
-
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 throw;
             }
 
-
-
-
-      
             return confirm;
         }
     }
