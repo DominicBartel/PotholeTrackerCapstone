@@ -53,7 +53,7 @@ namespace Capstone.Web.Controllers
 
         [HttpGet]
         [Route("api/advancedpotholessearch")]
-        public IHttpActionResult SearchValidPotHoles(bool isvalidated, string userName, string street1, string street2, string locationDesc, string potholeDesc, int? severity, int? potholeId,  string latitude, string longitude, string reportedDate, string inspectedDate, string repairedDate)
+        public IHttpActionResult SearchValidPotHoles(bool? isvalidated, string userName, string street1, string street2, string locationDesc, string potholeDesc, int? severity, int? potholeId,  string latitude, string longitude, string reportedDate, string inspectedDate, string repairedDate)
         {
 
             
