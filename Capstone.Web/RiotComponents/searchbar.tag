@@ -5,7 +5,7 @@
     <div id="advancedSearch">
       <p>DO SOMETHING NOW YOU SOMETHING SOMETHING SOMETHING!!!!!!</p>
         </div>-->
-    <div>
+    <div style="display:none" id="searchBar">
         <p>Search Pothole Database:</p>
         <select id="isvalidated">
             <option value="null">All Reported Potholes</option>
@@ -41,7 +41,7 @@
         </select>
         <input type="button" onclick="{fullSearch}" value="SEARCH" />
     </div>
-      
+      <p id="refresh" style="display:none"><input type="button" onclick="{fullSearch}" value="Refresh Potholes" /></p>
 
     <script>
 
@@ -74,6 +74,14 @@
          
 
         this.on('mount', () => {
+            
+
+            if (this.opts.bus.page == "workorder") {
+
+                document.querySelector('#isvalidated').value = true;
+                document.getElementById("searchBar").style.display = "none";
+                document.getElementById("refresh").style.display = "";
+            }
             search();
         });
 

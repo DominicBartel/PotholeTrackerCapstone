@@ -1,7 +1,38 @@
 ﻿
 @{
-    ViewBag.Title = "WorkOrder";
+    ViewBag.Title = "AdminPotholeEdit";
 }
 
-<h2>WorkOrder</h2>
+<div id="admin" style="text-align:center">
 
+
+
+    <searchbar></searchbar>
+    <workorderadd></workorderadd>
+    <resultstable></resultstable>
+</div>
+
+<script src="~/RiotComponents/searchbar.tag" type="riot/tag">
+</script>
+<script src="~/RiotComponents/resultstable.tag" type="riot/tag">
+</script>
+<script src="~/RiotComponents/workorderadd.tag" type="riot/tag">
+</script>
+
+<script>
+
+    let bus = {
+        page: 'workorder'
+    };
+
+    riot.observable(bus);   
+
+    
+    riot.mount('searchbar', { bus: bus });
+    riot.mount('resultstable', { bus: bus });
+    riot.mount('workorderadd', { bus: bus });
+    
+   
+
+
+</script>

@@ -7,5 +7,7 @@ namespace Capstone.Web.Models
 {
     public class WorkOrderViewModel
     {
+
+        
     }
 }

@@ -126,5 +126,10 @@ namespace Capstone.Web.Controllers
             return RedirectToAction("AdminPotholeEdit");
         }
 
+
+        public ActionResult WorkOrder()
+        {
+            return View();
+        }
     }
 }
