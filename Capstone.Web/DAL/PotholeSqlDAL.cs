@@ -637,7 +637,37 @@ namespace Capstone.Web.DAL
 
         public List<User> GetAllCrewMembers()
         {
-            throw new NotImplementedException();
+            List<User> crew = new List<User>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM Users JOIN UserRoles ON UserRoles.UserId = Users.UserId WHERE UserRoles.Role = 'crew_member';", conn);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while(reader.Read())
+                    {
+                        User u = new User();
+                        u.UserId = (Guid)reader["UserId"];
+                        u.UserName = Convert.ToString(reader["UserName"]);
+                        u.PasswordHash = Convert.ToString(reader["PasswordHash"]);
+                        u.SecurityStamp = Convert.ToString(reader["SecurityStamp"]);
+                        u.Roles.Add(Convert.ToString(reader["Role"]));
+
+                        crew.Add(u);
+                    }
+                }
+            }
+            catch(SqlException ex)
+            {
+                throw;
+            }
+
+            return crew;
         }
 
         public List<User> GetAllCrewLeaders()
