@@ -50,12 +50,17 @@
         </table>
     </div>
     <div>
-        <form method="post" action="/Home/SubmitWorkOrder">
+        <form id="workOrderSubmit" method="post" action="/Home/SubmitWorkOrder">
             <input id="usersString" hidden name="Users" value="" />
             <input id="potholesString" hidden name="PotHoles" value="" />
-
+            <select name="TypeOfJob">
+                <option value="Inspection">Inspection</option>
+                <option value="Repair">Repair</option>
+            </select>
+            <input type="date" name="ToInspectDate" />
+            <input type="date" name="ToRepairDate" />
         </form>
-        <table class="table-index-page">
+        <table class="table-index-page" onclick="{submitWorkorder}">
             <th>Submit Workorder</th>
         </table>
     </div>
@@ -66,25 +71,58 @@
         this.potholesWorkorder = [];
         this.usersWorkorder = [];
         this.users = [];
+        let selectedPotholes = [];
+        let selectedUsers = [];
+
+        this.submitWorkorder = function () {
+            if (this.potholesWorkorder < 1) {
+                if (confirm("There are no potholes on the workorder, submit anyways?")) {
+                    submitWorkorder();
+                }
+            } else {
+                submitWorkorder();
+            }
+        }
+
+        function submitWorkorder() {
+            let users;
+            let potholes;
+            for (i = 0; i < selectedUsers.length; i++) {
+                users += selectedUsers[i].UserId + ',';
+            }
+            for (i = 0; i < selectedPotholes; i++) {
+                potholes += selectedPotholes[i].PotholeId + ',';
+            }
+
+            document.getElementById('usersString').value = users;
+            document.getElementById('potholesString').value = potholes;
+            document.getElementById('workOrderSubmit').submit();
+        }
 
         this.on('mount', () => {
+            selectedPotholes = this.potholesWorkorder;
+            selectedUsers = this.usersWorkorder;
             searchUsers();
-        });
+        })
 
         this.opts.bus.on('searchresult', data => {
             //console.log(data);
             this.potholes = data;
             this.update();
-        });
+        })
 
         this.opts.bus.on('users', data => {
-            console.log(data);
+            //console.log(data);
             this.users = data;
             this.update();
-        });
+        })
 
         this.addUser = function (data) {
-            this.usersWorkorder.push(data.item);
+            //console.log(data);
+            let worker = data.item;
+            this.usersWorkorder.push(worker);
+            searchUsers();
+            
         }
 
         this.addPothole = function (data) {
@@ -93,12 +131,13 @@
 
             this.potholesWorkorder.push(this.potholes[0]);
             console.log(this.potholesWorkorder)
-            this.update;
+            this.opts.bus.trigger('searchRefresh', 'Please search again')
         }
 
         this.fullSearch = function () {
-            this.opts.bus.trigger('searchRefresh', 'Please search again')
+            this.opts.bus.trigger('searchRefresh', 'Please search again');
         }
+
         function searchUsers() {
 
             const url = `http://localhost:55900/api/users`;
