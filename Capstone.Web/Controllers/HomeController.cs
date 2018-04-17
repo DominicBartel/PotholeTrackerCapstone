@@ -21,13 +21,21 @@ namespace Capstone.Web.Controllers
             this.potholeDAL = dal;
         }
 
-        public ActionResult RoleAssignment(RoleAssignModel viewModel)
-        {
-            RoleAssignModel newModel = new RoleAssignModel();
-            return View(newModel);
-        }
+		public ActionResult RoleAssignment(RoleAssignModel viewModel)
+		{
+			RoleAssignModel newModel = new RoleAssignModel();
+			newModel.users = potholeDAL.GetAllUsers();
+			return View(newModel);
+		}
 
-        public ActionResult Index(PotholeViewModel viewModel)
+		[HttpPost]
+		public ActionResult ChangeRole (Guid guid, string role)
+		{
+			potholeDAL.UpdateUserRole(guid, role);
+			return RedirectToAction("RoleAssignment");
+		}
+
+		public ActionResult Index(PotholeViewModel viewModel)
         {
 
             PotholeViewModel newModel = new PotholeViewModel();

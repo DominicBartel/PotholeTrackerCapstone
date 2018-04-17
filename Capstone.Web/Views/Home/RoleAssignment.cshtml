@@ -1,25 +1,32 @@
 ﻿@model Capstone.Web.Models.RoleAssignModel
 @{
-    ViewBag.Title = "SuperGod_RoleAssignment";
+    ViewBag.Title = "Role Manager";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <section>
     <h2>User Role Assignment</h2>
-    <form method="post" action="@Url.Action()">
-        <fieldset style="background-color:black">
-            <div>
-                <input type="checkbox" id="God"/>
-                <label for="God" style="background-color:#F4D06F; text-shadow:gray 1px 1px">@('\u2655' + " God")</label>
-                <input type="checkbox" id="Admin" />
-                <label for="Admin" style="background-color:#76bf2a">@('\u2656' + " Admin")</label>
-                <input type="checkbox" id="CrewLeader" />
-                <label for="CrewLeader" style="background-color:#083D77">@('\u2657' + " Crew_Leader")</label>
-                <input type="checkbox" id="CrewMember" />
-                <label for="CrewMember" style="background-color:#453823">@('\u2658' + " Crew_Member")</label>
-                <input type="checkbox" id="Citizen" />
-                <label for="Citizen" style="background-color:#A23B72">@('\u2659' + " Citizen")</label>
-            </div>
-        </fieldset>
-    </form>
+    @foreach (var user in Model.users)
+    {
+        <form method="post" action="@Url.Action("ChangeRole", "Home")">
+            <fieldset style="background-color:black">
+                <div>
+                    <input type="radio" value="god" name="role" id="God" />
+                    <label for="God" style="background-color:#F4D06F; text-shadow:gray 1px 1px">@('\u2655' + " God")</label>
+                    <input type="radio" value="admin" name="role" id="Admin" />
+                    <label for="Admin" style="background-color:#76bf2a">@('\u2656' + " Admin")</label>
+                    <input type="radio" value="crew_leader" name="role" id="CrewLeader" />
+                    <label for="CrewLeader" style="background-color:#083D77">@('\u2657' + " Crew_Leader")</label>
+                    <input type="radio" value="crew_member" name="role" id="CrewMember" />
+                    <label for="CrewMember" style="background-color:#453823">@('\u2658' + " Crew_Member")</label>
+                    <input type="radio" value="citizen" name="role" id="Citizen" />
+                    <label for="Citizen" style="background-color:#A23B72">@('\u2659' + " Citizen")</label>
+                    <span>@user.UserName</span>
+                    <input type="hidden" value="@user.Id" name="guid" />
+                    <span>@user.Roles[0]</span>
+                    <button>SUBMIT</button>
+                </div>
+            </fieldset>
+        </form>
+    }
 </section>
