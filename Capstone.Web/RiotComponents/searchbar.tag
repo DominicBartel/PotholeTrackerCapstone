@@ -79,7 +79,7 @@
             if (this.opts.bus.page == "workorder") {
 
                 document.querySelector('#isvalidated').value = true;
-                document.getElementById("refresh").style.display = "";
+               
             }
             search();
         });

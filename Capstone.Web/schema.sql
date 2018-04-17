@@ -106,10 +106,15 @@ Insert UserRoles values('2528EB34-77EE-4AE8-B906-D29563AFC7DA', 'god');
 Insert Users values('10DD883C-C3D0-499C-8421-784B7F4FF7DE', 'supergod@pt.com', 'AOuiueJNVWPKaEWQNBIyW7dwPeOUzsLyr2EVpujXnYGGJD9AGlcOorw5dvDl0U44lw==', 'f28925a4-15ac-4e73-8e54-02a1fdf7dba4');
 Insert UserRoles values ('10DD883C-C3D0-499C-8421-784B7F4FF7DE', 'supergod')
 
-
-
-
-
+--Additional CrewMembers to populate WorkOrder
+Insert Users values('1BBEBA9C-CFBF-4F44-B5FA-AEB1019FA783', 'Bob_Builder@pt.com', 'AMi2do9/Lmzg8lOlEHudWqmh+gVwcBqUuiP8q4Q7f9E3kbLoicfv/wpSY8BUz7m7ZQ==', '15eb1082-ffbc-4791-b584-2af9b2c0ea9e');
+Insert UserRoles values('1BBEBA9C-CFBF-4F44-B5FA-AEB1019FA783', 'crew_member');
+Insert Users values('1BEEBA9C-CFBF-4F44-B5FA-AEB1019FA783', 'Tom_Builder@pt.com', 'AMi2do9/Lmzg8lOlEHudWqmh+gVwcBqUuiP8q4Q7f9E3kbLoicfv/wpSY8BUz7m7ZQ==', '15eb1082-ffbc-4791-b584-2af9b2c0ea9e');
+Insert UserRoles values('1BEEBA9C-CFBF-4F44-B5FA-AEB1019FA783', 'crew_member');
+Insert Users values('1BBEEA9C-CFBF-4F44-B5FA-AEB1019FA783', 'Roger_Builder@pt.com', 'AMi2do9/Lmzg8lOlEHudWqmh+gVwcBqUuiP8q4Q7f9E3kbLoicfv/wpSY8BUz7m7ZQ==', '15eb1082-ffbc-4791-b584-2af9b2c0ea9e');
+Insert UserRoles values('1BBEEA9C-CFBF-4F44-B5FA-AEB1019FA783', 'crew_member');
+Insert Users values('1B9EEA9C-CFBF-4F44-B5FA-AEB1019FA783', 'Daniel_Driver@pt.com', 'AMi2do9/Lmzg8lOlEHudWqmh+gVwcBqUuiP8q4Q7f9E3kbLoicfv/wpSY8BUz7m7ZQ==', '15eb1082-ffbc-4791-b584-2af9b2c0ea9e');
+Insert UserRoles values('1B9EEA9C-CFBF-4F44-B5FA-AEB1019FA783', 'crew_member');
 
 
 

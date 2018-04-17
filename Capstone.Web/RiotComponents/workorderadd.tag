@@ -1,44 +1,64 @@
 <workorderadd>
-    <p id="refresh"><input type="button" onclick="{fullSearch}" value="Refresh Potholes" /></p>
-    <table class="table-index-page">
-        <th colspan="3">Potholes For Workorder</th>
 
-        <tr style="font-weight:bold">
-            <td>Severity</td>
-            <td>First Cross Street</td>
-            <td>Location</td>
-        </tr>
+    <div>
+        <table class="table-index-page">
+            <th colspan="3" width="580">Workers</th>
+            <tr style="font-weight:bold">
+                <td>Username</td>
+                <td>Role</td>
+                <td>Reset</td>
+            </tr>
+            <tr onclick="{removeUser}" each="{usersWorkorder}">
+                <td>{UserName}</td>
+                <td></td>
+                <td>Remove Worker</td>
 
-        <tr onclick="{removePothole}" each="{potholesWorkorder}">
-            <td>{Severity}</td>
-            <td>{Street1}</td>
-            <td>{LocationDesc}</td>
+            </tr>
+        </table>
 
-            <th colspan="3">Workers</th>
-
-        <tr onclick="{removeUser}" each="{usersWorkorder}">
-            <td>{UserName}</td>
-            <td></td>
-            <td>Remove Worker</td>
-
-        </tr>
-    </table>
-
-    <table class="table-index-page">
-        <tr each="{users}" onclick="{addUser}">
-            <td>{UserName}</td>
-            <td>Add CrewMember</td>
-        </tr>
-    </table>
-
-    <table class="table-index-page">
-        <tr onclick="{addPothole}">
-            <td>#{potholes[0].PotholeId}</td>
-            <td>Add To Ticket</td>
-        </tr>
-    </table>
+        <table class="table-index-page">
+            <tr each="{users}" onclick="{addUser}">
+                <td>{UserName}</td>
+                <td>Add CrewMember</td>
+            </tr>
+        </table>
 
 
+
+        <table class="table-index-page">
+            <th colspan="3" width="580">Potholes For Workorder</th>
+
+            <tr style="font-weight:bold">
+                <td>Severity</td>
+                <td>First Cross Street</td>
+                <td>Location</td>
+            </tr>
+
+            <tr onclick="{removePothole}" each="{potholesWorkorder}">
+                <td>{Severity}</td>
+                <td>{Street1}</td>
+                <td>{LocationDesc}</td>
+
+        </table>
+
+        <table class="table-index-page">
+            <th colspan="3" onclick="{fullSearch}">Refresh Potholes</th>
+            <tr onclick="{addPothole}">
+                <td>#{potholes[0].PotholeId}</td>
+                <td>Add To Ticket</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <form method="post" action="/Home/SubmitWorkOrder">
+            <input id="usersString" hidden name="Users" value="" />
+            <input id="potholesString" hidden name="PotHoles" value="" />
+
+        </form>
+        <table class="table-index-page">
+            <th>Submit Workorder</th>
+        </table>
+    </div>
 
 
     <script>
@@ -63,11 +83,15 @@
             this.update();
         });
 
+        this.addUser = function (data) {
+            this.usersWorkorder.push(data.item);
+        }
+
         this.addPothole = function (data) {
             //console.log(data);
             //this.opts.bus.trigger('addedPothole', data.item.PotholeId);
-            if (this.potholesWorkorder)
-                this.potholesWorkorder.push(this.potholes[0]);
+
+            this.potholesWorkorder.push(this.potholes[0]);
             console.log(this.potholesWorkorder)
             this.update;
         }
