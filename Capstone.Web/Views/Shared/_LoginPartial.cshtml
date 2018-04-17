@@ -12,6 +12,7 @@
                 {
                     <li style="background-color:#F85A3E; border-radius: 5px; padding-bottom: 1px; padding-top: 3px; padding-right: 3px;">
                 @Html.ActionLink('\u2654' + " Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+               
 
                 }
                 else if (User.IsInRole("god")) //Queen
