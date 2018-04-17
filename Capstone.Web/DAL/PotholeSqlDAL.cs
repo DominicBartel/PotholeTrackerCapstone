@@ -715,7 +715,7 @@ namespace Capstone.Web.DAL
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM WorkOrder", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM WorkOrder ORDER BY WorkOrder.WorkOrderId DESC", conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -997,12 +997,226 @@ namespace Capstone.Web.DAL
 
         public List<WorkOrder> GetLeaderOrders(string userName)
         {
-            throw new NotImplementedException();
+            List<WorkOrder> result = new List<WorkOrder>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM WorkOrder WHERE WorkOrder.LeaderId = (SELECT Users.UserId from Users where users.UserName = @leaderUserName) ORDER BY WorkOrder.WorkOrderId DESC;", conn);
+                    cmd.Parameters.AddWithValue("@leaderUserName", userName);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while(reader.Read())
+                    {
+                        WorkOrder w = new WorkOrder();
+
+                        w.WorkOrderId = Convert.ToInt32(reader["WorkOrderId"]);
+
+                        if(reader["ToInspectDate"] == DBNull.Value)
+                        {
+                            w.ToInspectDate = null;
+                        }
+                        else
+                        {
+                            w.ToInspectDate = Convert.ToDateTime(reader["ToInspectDate"]);
+                        }
+
+                        if(reader["ToRepairDate"] == DBNull.Value)
+                        {
+                            w.ToRepairDate = null;
+                        }
+                        else
+                        {
+                            w.ToRepairDate = Convert.ToDateTime(reader["ToRepairDate"]);
+                        }
+
+                        if(reader["InspectionComplete"] == DBNull.Value)
+                        {
+                            w.InspectionComplete = null;
+                        }
+                        else
+                        {
+                            w.InspectionComplete = Convert.ToBoolean(reader["InspectionComplete"]);
+                        }
+
+                        if (reader["RepairComplete"] == DBNull.Value)
+                        {
+                            w.RepairComplete = null;
+                        }
+                        else
+                        {
+                            w.RepairComplete = Convert.ToBoolean(reader["RepairComplete"]);
+                        }
+
+                        if(String.IsNullOrEmpty(Convert.ToString(reader["TypeOfJob"])))
+                        {
+                            w.TypeOfJob = "";
+                        }
+                        else
+                        {
+                            w.TypeOfJob = Convert.ToString(reader["TypeOfJob"]);
+                        }
+
+                        if (String.IsNullOrEmpty(Convert.ToString(reader["Notes"])))
+                        {
+                            w.Notes = "";
+                        }
+                        else
+                        {
+                            w.Notes = Convert.ToString(reader["Notes"]);
+                        }
+
+                        if(reader["LeaderId"] == DBNull.Value)
+                        {
+                            w.LeaderId = null;
+                        }
+                        else
+                        {
+                            w.LeaderId = (Guid)reader["LeaderId"];
+                        }
+
+                        result.Add(w);
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+
+            return result;
         }
 
         public List<WorkOrder> GetMemberOrders(string userName)
         {
-            throw new NotImplementedException();
+            List<WorkOrder> result = new List<WorkOrder>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM WorkOrder JOIN WorkOrderPotholeUser ON WorkOrder.WorkOrderId = WorkOrderPotholeUser.WorkOrderId WHERE WorkOrderPotholeUser.UserId = @userId ORDER BY WorkOrder.WorkOrderId DESC;", conn);
+                    cmd.Parameters.AddWithValue("@userId", GetUserId(userName));
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        WorkOrder w = new WorkOrder();
+
+                        w.WorkOrderId = Convert.ToInt32(reader["WorkOrderId"]);
+
+                        if (reader["ToInspectDate"] == DBNull.Value)
+                        {
+                            w.ToInspectDate = null;
+                        }
+                        else
+                        {
+                            w.ToInspectDate = Convert.ToDateTime(reader["ToInspectDate"]);
+                        }
+
+                        if (reader["ToRepairDate"] == DBNull.Value)
+                        {
+                            w.ToRepairDate = null;
+                        }
+                        else
+                        {
+                            w.ToRepairDate = Convert.ToDateTime(reader["ToRepairDate"]);
+                        }
+
+                        if (reader["InspectionComplete"] == DBNull.Value)
+                        {
+                            w.InspectionComplete = null;
+                        }
+                        else
+                        {
+                            w.InspectionComplete = Convert.ToBoolean(reader["InspectionComplete"]);
+                        }
+
+                        if (reader["RepairComplete"] == DBNull.Value)
+                        {
+                            w.RepairComplete = null;
+                        }
+                        else
+                        {
+                            w.RepairComplete = Convert.ToBoolean(reader["RepairComplete"]);
+                        }
+
+                        if (String.IsNullOrEmpty(Convert.ToString(reader["TypeOfJob"])))
+                        {
+                            w.TypeOfJob = "";
+                        }
+                        else
+                        {
+                            w.TypeOfJob = Convert.ToString(reader["TypeOfJob"]);
+                        }
+
+                        if (String.IsNullOrEmpty(Convert.ToString(reader["Notes"])))
+                        {
+                            w.Notes = "";
+                        }
+                        else
+                        {
+                            w.Notes = Convert.ToString(reader["Notes"]);
+                        }
+
+                        if (reader["LeaderId"] == DBNull.Value)
+                        {
+                            w.LeaderId = null;
+                        }
+                        else
+                        {
+                            w.LeaderId = (Guid)reader["LeaderId"];
+                        }
+
+                        result.Add(w);
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+
+            return result;
+        }
+
+        public Guid GetUserId(string userName)
+        {
+            Guid userId = new Guid();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("Select Users.UserId from users where Users.UserName = @userName;", conn);
+                    cmd.Parameters.AddWithValue("@userName", userName);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while(reader.Read())
+                    {
+                        userId = (Guid)reader["UserId"];
+                    }
+                }
+            }
+            catch(SqlException ex)
+            {
+                throw;
+            }
+
+            return userId;
+
         }
     }
 }
