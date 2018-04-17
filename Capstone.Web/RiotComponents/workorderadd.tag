@@ -57,8 +57,9 @@
                 <option value="Inspection">Inspection</option>
                 <option value="Repair">Repair</option>
             </select>
-            <input type="date" name="ToInspectDate" />
-            <input type="date" name="ToRepairDate" />
+            Inspection On: <input type="date" name="ToInspectDate" />
+            Repair On:<input type="date" name="ToRepairDate" />
+            <textarea name="notes" placeholder="Enter notes here"></textarea>
         </form>
         <table class="table-index-page" onclick="{submitWorkorder}">
             <th>Submit Workorder</th>
