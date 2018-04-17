@@ -198,15 +198,30 @@ header {
     box-shadow: black 4px 4px;
     margin: auto;
 }
-
-#chart_div {
-    display: inline-block;
+.searchGraph{
+    display:inline-flex;
+    margin-bottom:7px;
+}
+  #bargraph{
     height: 400px;
     background-color: black;
     border: 5px solid #A23B72;
     border-radius: 5px;
     box-shadow: black 4px 4px;
-    margin: auto;
+    position: relative;
+    overflow: hidden;
+    display:inline-block;
+}
+
+#search {
+    display: inline-grid;
+    border: #A23B72 solid 5px;
+    border-radius: 5px;
+    box-shadow: black 4px 4px;
+    margin-left: 10px;
+    background-color: #0090C1;
+    width: 50%;
+    text-align: center;
 }
 
 table {

@@ -5,8 +5,8 @@
     <div id="advancedSearch">
       <p>DO SOMETHING NOW YOU SOMETHING SOMETHING SOMETHING!!!!!!</p>
         </div>-->
-    <div style="display:none" id="searchBar">
-        <p>Search Pothole Database:</p>
+    
+        <p style="text-shadow:black 1px 1px">Search Pothole Database</p>
         <select id="isvalidated">
             <option value="null">All Reported Potholes</option>
             <option value="true">Validated Potholes</option>
@@ -40,7 +40,7 @@
             <option value="10">10</option>
         </select>
         <input type="button" onclick="{fullSearch}" value="SEARCH" />
-    </div>
+    
       <p id="refresh" style="display:none"><input type="button" onclick="{fullSearch}" value="Refresh Potholes" /></p>
 
     <script>

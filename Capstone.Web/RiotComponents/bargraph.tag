@@ -1,7 +1,7 @@
 <bargraph>
 
     <!--Div that will hold the pie chart-->
-    <div id="chart_div" style="position:relative; overflow:hidden"></div>
+    <!-- <div id="searchGraph" style="position:relative; overflow:hidden"></div>-->
 
 
     <script type="text/javascript">
@@ -27,7 +27,7 @@
                     for (i = 0; i < this.potholes.length; i++) {
 
                         if (this.potholes[i].ReportedDate == null) {
-                            
+
                         }
                         else {
                             confirmed++;
@@ -77,7 +77,7 @@
                         };
 
                         // Instantiate and draw our chart, passing in some options.
-                        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+                        var chart = new google.visualization.ColumnChart(document.getElementById('bargraph'));
                         chart.draw(data, options);
                     }
 
