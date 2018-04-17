@@ -137,5 +137,24 @@ namespace Capstone.Web.Controllers
         {
             return RedirectToAction("WorkOrder");
         }
+
+
+        [HttpGet]
+        public ActionResult ReviewMyWorkOrders(WorkOrderViewModel viewModel)
+        {
+
+            WorkOrderViewModel newModel = new WorkOrderViewModel();
+
+
+            return View(newModel);
+        }
+
+        [HttpPost]
+        public ActionResult  SubmitMyWorkOrders(WorkOrderViewModel viewModel)
+        {
+            return RedirectToAction("ReviewMyWorkOrders");
+        }
+
+
     }
 }
