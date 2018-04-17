@@ -211,10 +211,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\account.png" />
-    <Content Include="Content\chess.png" />
-    <Content Include="Content\lock.png" />
-    <Content Include="Content\map.png" />
     <Content Include="Content\pothole.ico" />
     <Content Include="Content\road_night.jpg" />
     <Content Include="Global.asax" />
