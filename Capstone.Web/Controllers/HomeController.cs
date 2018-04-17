@@ -140,6 +140,7 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public ActionResult SubmitWorkOrder(string PotHoles, string Users, WorkOrder order)
         {
+            order.LeaderId = potholeDAL.GetUserId(User.Identity.Name);
             potholeDAL.ScheduleWorkOrder(order, Users, PotHoles);
             return RedirectToAction("WorkOrder");
         }

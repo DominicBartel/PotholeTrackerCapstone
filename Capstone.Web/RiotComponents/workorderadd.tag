@@ -76,10 +76,14 @@
 
         this.submitWorkorder = function () {
             if (this.potholesWorkorder < 1) {
-                if (confirm("There are no potholes on the workorder, submit anyways?")) {
-                    submitWorkorder();
+                if (confirm("There are no potholes on the workorder, please add a pothole to your order.")) {
+                   
                 }
-            } else {
+            } else if(this.usersWorkorder < 1) {
+                if (confirm("There are no crew members on the workorder, please add a crew member to your order.")) {
+
+                }
+            }else {
                 submitWorkorder();
             }
         }
@@ -88,10 +92,18 @@
             let submitUsers = "";
             let submitPotholes = "";
             for (i = 0; i < selectedUsers.length; i++) {
-                submitUsers += selectedUsers[i].UserId + ',';
+
+                if (i > 0) {
+                    submitUsers += ',';
+                }
+                submitUsers += selectedUsers[i].UserId;
+               
             }
             for (i = 0; i < selectedPotholes.length; i++) {
-                submitPotholes += selectedPotholes[i].PotholeId + ',';
+                if (i > 0) {
+                    submitPotholes += ',';
+                }
+                submitPotholes += selectedPotholes[i].PotholeId;
             }
 
             document.getElementById('usersString').value = submitUsers;
