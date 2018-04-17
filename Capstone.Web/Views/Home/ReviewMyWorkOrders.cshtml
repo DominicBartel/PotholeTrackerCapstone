@@ -1,7 +1,72 @@
-﻿
+﻿@model Capstone.Web.Models.WorkOrderViewModel
 @{
     ViewBag.Title = "ReviewMyWorkOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string selectedValue = "";
 }
 
-<h2>ReviewMyWorkOrders</h2>
+<section>
+    <h2>Review My Work Orders</h2>
+    <p>View or update the statuses of your work orders.</p>
+    <p> </p>
 
+
+
+
+    @*@if(User.IsInRole("crew_"))*@
+    @foreach (var workOrder in Model.WorkOrders)
+    {
+        <div>
+            <form method="post" action="@Url.Action("SubmitMyWorkOrders", "Home")">
+                <fieldset>
+                    <p>Work Order @workOrder.WorkOrderId</p>
+                    <div style="vertical-align:middle">
+                        <input type="hidden" name="WorkOrderId" value="@workOrder.WorkOrderId" />
+                        @if (workOrder.TypeOfJob == "Inspection")
+                        {
+                            <span style="vertical-align:middle">Inspection Status</span>
+                            <select style="vertical-align:middle" name="InspectionComplete">
+                                @*<option value="null">Inspection Status</option>*@
+                                @if (workOrder.InspectionComplete == false || workOrder.InspectionComplete == null)
+                                {
+                                    selectedValue = "selected";
+                                }
+                                <option value="false" @selectedValue>Incomplete</option>
+                                @(selectedValue = "")
+                                @if (workOrder.InspectionComplete == true)
+                                {
+                                    selectedValue = "selected";
+                                }
+                                <option value="true" @selectedValue>Complete</option>
+                                @(selectedValue = "")
+                            </select>
+                        }
+                        else if (workOrder.TypeOfJob == "Repair")
+                        {
+                            <span style="vertical-align:middle">Repair Status</span>
+                            <select style="vertical-align:middle" name="RepairComplete">
+                                @*<option value="null">Repair Status</option>*@
+                                @if (workOrder.RepairComplete == false || workOrder.RepairComplete == null)
+                                {
+                                    selectedValue = "selected";
+                                }
+                                <option value="false" @selectedValue>Incomplete</option>
+                                @(selectedValue = "")
+                                @if (workOrder.RepairComplete == true)
+                                {
+                                    selectedValue = "selected";
+                                }
+                                <option value="true" @selectedValue>Complete</option>
+                                @(selectedValue = "")
+                            </select>
+                        }
+                        <textarea style="vertical-align:middle" name="Notes" value="@workOrder.Notes">@workOrder.Notes</textarea>
+                        <button style="vertical-align:middle">Update</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    }
+
+
+</section>
