@@ -938,6 +938,7 @@ namespace Capstone.Web.DAL
             {
                 using (SqlConnection conn = new SqlConnection(ConnectionString))
                 {
+                    conn.Open();
                     SqlCommand cmd = new SqlCommand("select users.UserId, users.UserName, UserRoles.Role from users join UserRoles on users.UserId = UserRoles.UserId;", conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -962,9 +963,17 @@ namespace Capstone.Web.DAL
             return users;
         }
 
-        public bool UpdateUserRole(Guid userId)
+        public bool UpdateUserRole(Guid userId, string role)
         {
-            throw new NotImplementedException();
+            bool result = false;
+
+            //try
+            //{
+
+            //}
+
+
+            return result;
         }
 
         public bool UpdateWorkOrder(WorkOrder workOrder)

@@ -30,7 +30,7 @@ namespace Capstone.Web.DAL
 
         List<User> GetAllUsers();
 
-        bool UpdateUserRole(Guid userId);
+        bool UpdateUserRole(Guid userId, string role);
 
         bool UpdateWorkOrder(WorkOrder workOrder);
 
