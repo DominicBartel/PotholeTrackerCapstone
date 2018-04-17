@@ -38,6 +38,8 @@ namespace Capstone.Web.DAL
 
         List<WorkOrder> GetMemberOrders(string userName);
 
+        Guid GetUserId(string userName);
+
 
 
 

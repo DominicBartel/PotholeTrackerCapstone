@@ -997,12 +997,69 @@ namespace Capstone.Web.DAL
 
         public List<WorkOrder> GetLeaderOrders(string userName)
         {
-            throw new NotImplementedException();
+            List<WorkOrder> result = new List<WorkOrder>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM WorkOrder WHERE WorkOrder.LeaderId = (SELECT Users.UserId from Users where users.UserName = @leaderUserName);", conn);
+                    cmd.Parameters.AddWithValue("@leaderUserName", userName);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while(reader.Read())
+                    {
+                        WorkOrder w = new WorkOrder();
+
+                        //w.WorkOrderId = Convert.ToInt32()
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+
+            return result;
         }
 
         public List<WorkOrder> GetMemberOrders(string userName)
         {
             throw new NotImplementedException();
+        }
+
+        public Guid GetUserId(string userName)
+        {
+            Guid userId = new Guid();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("Select Users.UserId from users where Users.UserName = @userName;", conn);
+                    cmd.Parameters.AddWithValue("@userName", userName);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while(reader.Read())
+                    {
+                        userId = (Guid)reader["UserId"];
+                    }
+                }
+            }
+            catch(SqlException ex)
+            {
+                throw;
+            }
+
+            return userId;
+
         }
     }
 }
