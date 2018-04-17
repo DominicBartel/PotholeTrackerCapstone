@@ -21,10 +21,9 @@ namespace Capstone.Web.Controllers
             this.potholeDAL = dal;
         }
 
-		public ActionResult RoleAssignment (RoleAssignModel viewModel)
+		public ActionResult RoleAssignment ()
 		{
-			RoleAssignModel newModel = new RoleAssignModel();
-			return View(newModel);
+			return View();
 		}
 
 		public ActionResult Index(PotholeViewModel viewModel)

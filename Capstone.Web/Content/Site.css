@@ -260,3 +260,8 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
     background-color: lightgray; /*darker*/
 }
+
+label{
+    padding:5px;
+    text-align:center;
+}

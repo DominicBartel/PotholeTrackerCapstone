@@ -4,5 +4,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>SuperGod_RoleAssignment</h2>
-
+<section>
+    <h2>User Role Assignment</h2>
+    <form method="post" action="@Url.Action()">
+        <fieldset style="background-color:black">
+            <div>
+                <input type="checkbox" id="God"/>
+                <label for="God" style="background-color:#F4D06F; text-shadow:gray 1px 1px">@('\u2655' + " God")</label>
+                <input type="checkbox" id="Admin" />
+                <label for="Admin" style="background-color:#76bf2a">@('\u2656' + " Admin")</label>
+                <input type="checkbox" id="CrewLeader" />
+                <label for="CrewLeader" style="background-color:#083D77">@('\u2657' + " Crew_Leader")</label>
+                <input type="checkbox" id="CrewMember" />
+                <label for="CrewMember" style="background-color:#453823">@('\u2658' + " Crew_Member")</label>
+                <input type="checkbox" id="Citizen" />
+                <label for="Citizen" style="background-color:#A23B72">@('\u2659' + " Citizen")</label>
+            </div>
+        </fieldset>
+    </form>
+</section>
