@@ -39,7 +39,7 @@
             <option value="9">9</option>
             <option value="10">10</option>
         </select>
-        <input type="button" onclick="{fullSearch}" value="SEARCH" />
+        <input type="button" onclick="{search}" value="SEARCH" />
     
       
 
@@ -87,6 +87,7 @@
         this.search = function () {
             search();
         }
+
         this.opts.bus.on('selectedPothole', data => {
             document.querySelector('#potholeId').value = data;
             search();
