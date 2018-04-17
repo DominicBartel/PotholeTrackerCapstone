@@ -795,6 +795,7 @@ namespace Capstone.Web.DAL
                             w.LeaderId = (Guid)reader["LeaderId"];
                         }
 
+                        workOrders.Add(w);
                     }
 
                 }
