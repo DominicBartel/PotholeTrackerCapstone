@@ -142,15 +142,24 @@ namespace Capstone.Web.Controllers
         [HttpGet]
         public ActionResult ReviewMyWorkOrders(WorkOrderViewModel viewModel)
         {
+            if(!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Index");
+            }
 
+            if(User.IsInRole("crew_leader"))
+            {
+
+            }
             WorkOrderViewModel newModel = new WorkOrderViewModel();
+            newModel.WorkOrders = potholeDAL.GetAllWorkOrders();
 
 
             return View(newModel);
         }
 
         [HttpPost]
-        public ActionResult  SubmitMyWorkOrders(WorkOrderViewModel viewModel)
+        public ActionResult  SubmitMyWorkOrders(WorkOrder workOrder)
         {
             return RedirectToAction("ReviewMyWorkOrders");
         }

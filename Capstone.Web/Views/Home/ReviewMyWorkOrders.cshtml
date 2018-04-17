@@ -3,6 +3,36 @@
     ViewBag.Title = "ReviewMyWorkOrders";
     Layout = "~/Views/Shared/_Layout.cshtml";
     string selectedValue = "";
+
+
+
+
+    string GetDateString(DateTime date)
+    {
+        string result = "";
+        result += date.Year.ToString() + "-";
+        if (date.Month.ToString().Length == 1)
+        {
+            result += "0" + date.Month.ToString() + "-";
+        }
+        else
+        {
+            result += date.Month.ToString() + "-";
+        }
+
+        if (date.Day.ToString().Length == 1)
+        {
+            result += "0" + date.Day.ToString();
+        }
+        else
+        {
+            result += date.Day.ToString();
+        }
+
+        return result;
+    }
+
+
 }
 
 <section>
@@ -13,59 +43,88 @@
 
 
 
-    @*@if(User.IsInRole("crew_"))*@
-    @foreach (var workOrder in Model.WorkOrders)
+    @if (User.IsInRole("crew_member") || User.IsInRole("crew_leader"))
     {
-        <div>
-            <form method="post" action="@Url.Action("SubmitMyWorkOrders", "Home")">
-                <fieldset>
-                    <p>Work Order @workOrder.WorkOrderId</p>
-                    <div style="vertical-align:middle">
-                        <input type="hidden" name="WorkOrderId" value="@workOrder.WorkOrderId" />
-                        @if (workOrder.TypeOfJob == "Inspection")
-                        {
-                            <span style="vertical-align:middle">Inspection Status</span>
-                            <select style="vertical-align:middle" name="InspectionComplete">
-                                @*<option value="null">Inspection Status</option>*@
-                                @if (workOrder.InspectionComplete == false || workOrder.InspectionComplete == null)
+        foreach (var workOrder in Model.WorkOrders)
+        {
+            <div>
+                <form method="post" action="@Url.Action("SubmitMyWorkOrders", "Home")">
+                    <fieldset>
+                        <p>Work Order: @workOrder.WorkOrderId</p>
+                        <p> Type: @workOrder.TypeOfJob</p>
+                        <div style="vertical-align:middle">
+                            <input type="hidden" name="WorkOrderId" value="@workOrder.WorkOrderId" />
+                            <input type="hidden" name="TypeOfJob" value="@workOrder.TypeOfJob" />
+                            <input type="hidden" name="LeaderId" value="@workOrder.LeaderId" />
+                            @if (workOrder.TypeOfJob == "Inspection")
+                            {
+                                <span style="vertical-align:middle">Inspection Status</span>
+                                <select style="vertical-align:middle" name="InspectionComplete">
+                                    @if (workOrder.InspectionComplete == false || workOrder.InspectionComplete == null)
+                                    {
+                                        selectedValue = "selected";
+                                    }
+                                    <option value="false" @selectedValue>Incomplete</option>
+                                    @(selectedValue = "")
+                                    @if (workOrder.InspectionComplete == true)
+                                    {
+                                        selectedValue = "selected";
+                                    }
+                                    <option value="true" @selectedValue>Complete</option>
+                                    @(selectedValue = "")
+                                </select>
+                                if (User.IsInRole("crew_leader"))
                                 {
-                                    selectedValue = "selected";
+                                    <span>Inspection Date: </span>
+                                    <input type="date" value="@GetDateString(Convert.ToDateTime(workOrder.ToInspectDate))" name="ToInspectDate" />
                                 }
-                                <option value="false" @selectedValue>Incomplete</option>
-                                @(selectedValue = "")
-                                @if (workOrder.InspectionComplete == true)
+                                else
                                 {
-                                    selectedValue = "selected";
+                                    <input readonly type="date" value="@GetDateString(Convert.ToDateTime(workOrder.ToInspectDate))" name="ToInspectDate" />
                                 }
-                                <option value="true" @selectedValue>Complete</option>
-                                @(selectedValue = "")
-                            </select>
-                        }
-                        else if (workOrder.TypeOfJob == "Repair")
-                        {
-                            <span style="vertical-align:middle">Repair Status</span>
-                            <select style="vertical-align:middle" name="RepairComplete">
-                                @*<option value="null">Repair Status</option>*@
-                                @if (workOrder.RepairComplete == false || workOrder.RepairComplete == null)
+                                <input type="hidden" value="@GetDateString(Convert.ToDateTime(workOrder.ToRepairDate))" name="ToRepairDate" />
+                                <input type="hidden" name="RepairComplete" value="@workOrder.RepairComplete" />
+
+                            }
+                            else if (workOrder.TypeOfJob == "Repair")
+                            {
+                                <span style="vertical-align:middle">Repair Status</span>
+                                <select style="vertical-align:middle" name="RepairComplete">
+                                    @if (workOrder.RepairComplete == false || workOrder.RepairComplete == null)
+                                    {
+                                        selectedValue = "selected";
+                                    }
+                                    <option value="false" @selectedValue>Incomplete</option>
+                                    @(selectedValue = "")
+                                    @if (workOrder.RepairComplete == true)
+                                    {
+                                        selectedValue = "selected";
+                                    }
+                                    <option value="true" @selectedValue>Complete</option>
+                                    @(selectedValue = "")
+                                </select>
+                                if (User.IsInRole("crew_leader"))
                                 {
-                                    selectedValue = "selected";
+                                    <span>Repair Date: </span>
+                                    <input type="date" value="@GetDateString(Convert.ToDateTime(workOrder.ToRepairDate))" name="ToRepairDate" />
                                 }
-                                <option value="false" @selectedValue>Incomplete</option>
-                                @(selectedValue = "")
-                                @if (workOrder.RepairComplete == true)
+                                else
                                 {
-                                    selectedValue = "selected";
+                                    <input readonly type="date" value="@GetDateString(Convert.ToDateTime(workOrder.ToRepairDate))" name="ToRepairDate" />
                                 }
-                                <option value="true" @selectedValue>Complete</option>
-                                @(selectedValue = "")
-                            </select>
-                        }
-                        <textarea style="vertical-align:middle" name="Notes" value="@workOrder.Notes">@workOrder.Notes</textarea>
-                        <button style="vertical-align:middle">Update</button>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
+                                <input type="hidden" value="@GetDateString(Convert.ToDateTime(workOrder.ToInspectDate))" name="ToInspectDate" />
+                                <input type="hidden" name="InspectionComplete" value="@workOrder.InspectionComplete" />
+
+                            }
+                            <span>Notes: </span>
+                            <textarea style="vertical-align:middle" name="Notes" value="@workOrder.Notes">@workOrder.Notes</textarea>
+
+                            <button style="vertical-align:middle">Update</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        }
     }
 
 
