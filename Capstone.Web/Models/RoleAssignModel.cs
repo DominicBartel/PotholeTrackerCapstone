@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Capstone.Web.Models
 {
-	public class SuperGod_RoleAssignment
+	public class RoleAssignModel
 	{
 	}
 }

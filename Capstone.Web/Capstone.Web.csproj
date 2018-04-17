@@ -205,7 +205,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pothole.cs" />
     <Compile Include="Models\PotholeViewModel.cs" />
-    <Compile Include="Models\SuperGod_RoleAssignment.cs" />
+    <Compile Include="Models\RoleAssignModel.cs" />
     <Compile Include="Models\WorkOrder.cs" />
     <Compile Include="Models\WorkOrderViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -260,7 +260,7 @@
     <Content Include="Views\Home\AdminPotholeEdit.cshtml" />
     <Content Include="Views\Home\WorkOrder.cshtml" />
     <Content Include="Views\Home\ReviewMyWorkOrders.cshtml" />
-    <Content Include="Views\Home\SuperGod_RoleAssignment.cshtml" />
+    <Content Include="Views\Home\RoleAssignment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

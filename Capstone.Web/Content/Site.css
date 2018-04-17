@@ -201,6 +201,7 @@ header {
 .searchGraph{
     display:inline-flex;
     margin-bottom:7px;
+    vertical-align:top;
 }
   #bargraph{
     height: 400px;
@@ -231,9 +232,9 @@ table {
     box-shadow: black 4px 4px 4px;
     font-size: 25px;
     border-collapse: collapse;
+    width: 60%;
 }
-
-.table-index-page th {
+    .table-index-page th {
     background-color: #0090C1; /*teal*/
     color: #FBFEF9;
     text-shadow: black 1px 1px;
