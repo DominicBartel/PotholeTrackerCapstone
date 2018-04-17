@@ -929,5 +929,57 @@ namespace Capstone.Web.DAL
 
             return confirm;
         }
+
+        public List<User> GetAllUsers()
+        {
+            List<User> users = new List<User>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("select users.UserId, users.UserName, UserRoles.Role from users join UserRoles on users.UserId = UserRoles.UserId;", conn);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while(reader.Read())
+                    {
+                        User u = new User();
+
+                        u.UserId = (Guid)reader["UserId"];
+                        u.UserName = Convert.ToString(reader["UserName"]);
+                        u.Roles.Add(Convert.ToString(reader["Role"]));
+
+                        users.Add(u);
+                    }
+                }
+            }
+            catch(SqlException ex)
+            {
+                throw;
+            }
+
+            return users;
+        }
+
+        public bool UpdateUserRole(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateWorkOrder(WorkOrder workOrder)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<WorkOrder> GetLeaderOrders(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<WorkOrder> GetMemberOrders(string userName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

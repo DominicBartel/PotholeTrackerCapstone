@@ -28,6 +28,18 @@ namespace Capstone.Web.DAL
 
         List<WorkOrder> GetAllWorkOrders();
 
+        List<User> GetAllUsers();
+
+        bool UpdateUserRole(Guid userId);
+
+        bool UpdateWorkOrder(WorkOrder workOrder);
+
+        List<WorkOrder> GetLeaderOrders(string userName);
+
+        List<WorkOrder> GetMemberOrders(string userName);
+
+
+
 
 
 
