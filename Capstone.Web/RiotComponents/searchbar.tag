@@ -41,7 +41,7 @@
         </select>
         <input type="button" onclick="{fullSearch}" value="SEARCH" />
     
-      <p id="refresh" style="display:none"><input type="button" onclick="{fullSearch}" value="Refresh Potholes" /></p>
+      
 
     <script>
 
@@ -79,7 +79,6 @@
             if (this.opts.bus.page == "workorder") {
 
                 document.querySelector('#isvalidated').value = true;
-                document.getElementById("searchBar").style.display = "none";
                 document.getElementById("refresh").style.display = "";
             }
             search();
@@ -92,11 +91,12 @@
             document.querySelector('#potholeId').value = data;
             search();
         })
+        
 
-        this.fullSearch = function() {
+        this.opts.bus.on('searchRefresh', data => {
             document.querySelector('#potholeId').value = null;
             search();
-        }
+        });
 
         function search() {
 

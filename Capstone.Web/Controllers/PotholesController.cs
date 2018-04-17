@@ -30,6 +30,15 @@ namespace Capstone.Web.Controllers
         }
 
         [HttpGet]
+        [Route("api/users")]
+        public IHttpActionResult GetAllUsers()
+        {
+            var users = potholeDAL.GetAllCrewMembers();
+
+            return Ok(users);
+        }
+
+        [HttpGet]
         [Route("api/potholessearch")]
         public IHttpActionResult SearchValidPotHoles(bool isvalidated, string userName, string street1, string street2, string locationDesc, string potholeDesc, int? severity)
         {

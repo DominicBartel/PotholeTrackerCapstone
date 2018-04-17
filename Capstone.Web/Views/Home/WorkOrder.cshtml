@@ -5,7 +5,7 @@
 
 <div id="admin" style="text-align:center">
 
-    <searchbar></searchbar>
+    <div style="display:none"><searchbar></searchbar></div>
     <workorderadd></workorderadd>
     <resultstable></resultstable>
 </div>
@@ -23,14 +23,14 @@
         page: 'workorder'
     };
 
-    riot.observable(bus);   
+    riot.observable(bus);
 
-    
+
     riot.mount('searchbar', { bus: bus });
     riot.mount('resultstable', { bus: bus });
     riot.mount('workorderadd', { bus: bus });
-    
-   
+
+
 
 
 </script>
