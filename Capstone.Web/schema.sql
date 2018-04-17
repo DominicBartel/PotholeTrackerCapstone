@@ -42,6 +42,9 @@ CREATE TABLE [dbo].[WorkOrder]
 	[RepairComplete]		BIT				    NULL,
 	[TypeOfJob]				VARCHAR(50)			NULL,
 	[Notes]					VARCHAR(4000)		NULL,
+	[LeaderId]				UNIQUEIDENTIFIER	NULL,
+
+	CONSTRAINT fk_LeaderId_UserId FOREIGN KEY (LeaderId) REFERENCES Users(UserId) 
 );
 
 
@@ -146,6 +149,4 @@ select * from users;
 select * from PotHole order by PotHole_Id desc;
 
 
-Select UserId
-FROM Users 
-where UserName = 'dog@gmail.com';
+

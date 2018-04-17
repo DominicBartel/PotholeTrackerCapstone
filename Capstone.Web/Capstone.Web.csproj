@@ -262,6 +262,7 @@
     <Content Include="Views\Home\ReportPothole.cshtml" />
     <Content Include="Views\Home\AdminPotholeEdit.cshtml" />
     <Content Include="Views\Home\WorkOrder.cshtml" />
+    <Content Include="Views\Home\ReviewMyWorkOrders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -14,5 +14,6 @@ namespace Capstone.Web.Models
         public bool? RepairComplete { get; set; }
         public string TypeOfJob { get; set; }
         public string Notes { get; set; }
+        public Guid? LeaderId { get; set; }
     }
 }

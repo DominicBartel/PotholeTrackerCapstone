@@ -723,14 +723,78 @@ namespace Capstone.Web.DAL
                     {
                         WorkOrder w = new WorkOrder();
 
-                        
-                        w.WorkOrderId = Convert.ToInt32(reader["WorkOrderId"]);
-                        w.ToInspectDate = Convert.ToDateTime(reader["ToInspectDate"]);
-                        w.ToRepairDate = Convert.ToDateTime(reader["ToRepairDate"]);
-                        w.InspectionComplete = Convert.ToBoolean(reader["InspectionComplete"]);
-                        w.RepairComplete = Convert.ToBoolean(reader["RepairComplete"]);
-                        w.TypeOfJob = Convert.ToString(reader["TypeOfJob"]);
-                        w.Notes = Convert.ToString(reader["Notes"]);
+                        if (reader["WorkOrderId"] == DBNull.Value)
+                        {
+                            w.WorkOrderId = null;
+                        }
+                        else
+                        {
+                            w.WorkOrderId = Convert.ToInt32(reader["WorkOrderId"]);
+                        }
+
+                        if (reader["ToInspectDate"] == DBNull.Value)
+                        {
+                            w.ToInspectDate = null;
+                        }
+                        else
+                        {
+                            w.ToInspectDate = Convert.ToDateTime(reader["ToInspectDate"]);
+                        }
+
+                        if (reader["ToRepairDate"] == DBNull.Value)
+                        {
+                            w.ToRepairDate = null;
+                        }
+                        else
+                        {
+                            w.ToRepairDate = Convert.ToDateTime(reader["ToRepairDate"]);
+                        }
+
+                        if (reader["InspectionComplete"] == DBNull.Value)
+                        {
+                            w.InspectionComplete = null;
+                        }
+                        else
+                        {
+                            w.InspectionComplete = Convert.ToBoolean(reader["InspectionComplete"]);
+                        }
+
+                        if (reader["RepairComplete"] == DBNull.Value)
+                        {
+                            w.RepairComplete = null;
+                        }
+                        else
+                        {
+                            w.RepairComplete = Convert.ToBoolean(reader["RepairComplete"]);
+                        }
+
+                        if (reader["TypeOfJob"] == DBNull.Value)
+                        {
+                            w.TypeOfJob = "";
+                        }
+                        else
+                        {
+                            w.TypeOfJob = Convert.ToString(reader["TypeOfJob"]);
+                        }
+
+                        if (reader["Notes"] == DBNull.Value)
+                        {
+                            w.Notes = "";
+                        }
+                        else
+                        {
+                            w.Notes = Convert.ToString(reader["Notes"]);
+                        }
+
+                        if (reader["LeaderId"] == DBNull.Value)
+                        {
+                            w.LeaderId = null;
+                        }
+                        else
+                        {
+                            w.LeaderId = (Guid)reader["LeaderId"];
+                        }
+
                     }
 
                 }
@@ -761,14 +825,14 @@ namespace Capstone.Web.DAL
             {
                 potholeIdList.Add(Convert.ToInt32(potholeId));
             }
-             
+
             try
             {
                 using (SqlConnection conn = new SqlConnection(ConnectionString))
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("INSERT INTO WorkOrder VALUES (@toInspectDate, @toRepairDate, @inspectionComplete, @repairComplete, @typeOfJob, @notes);", conn);
+                    SqlCommand cmd = new SqlCommand("INSERT INTO WorkOrder VALUES (@toInspectDate, @toRepairDate, @inspectionComplete, @repairComplete, @typeOfJob, @notes, @leaderId);", conn);
 
                     if (workOrder.ToInspectDate == null)
                     {
@@ -779,7 +843,7 @@ namespace Capstone.Web.DAL
                         cmd.Parameters.AddWithValue("@toInspectDate", workOrder.ToInspectDate);
                     }
 
-                    if(workOrder.ToRepairDate == null)
+                    if (workOrder.ToRepairDate == null)
                     {
                         cmd.Parameters.AddWithValue("@toRepairDate", DBNull.Value);
                     }
@@ -788,7 +852,7 @@ namespace Capstone.Web.DAL
                         cmd.Parameters.AddWithValue("@toRepairDate", workOrder.ToRepairDate);
                     }
 
-                    if(workOrder.InspectionComplete == null)
+                    if (workOrder.InspectionComplete == null)
                     {
                         cmd.Parameters.AddWithValue("@inspectionComplete", DBNull.Value);
                     }
@@ -797,7 +861,7 @@ namespace Capstone.Web.DAL
                         cmd.Parameters.AddWithValue("@inspectionComplete", workOrder.InspectionComplete);
                     }
 
-                    if(workOrder.RepairComplete == null)
+                    if (workOrder.RepairComplete == null)
                     {
                         cmd.Parameters.AddWithValue("@repairComplete", DBNull.Value);
                     }
@@ -806,7 +870,7 @@ namespace Capstone.Web.DAL
                         cmd.Parameters.AddWithValue("@repairComplete", workOrder.RepairComplete);
                     }
 
-                    if(String.IsNullOrEmpty(workOrder.TypeOfJob))
+                    if (String.IsNullOrEmpty(workOrder.TypeOfJob))
                     {
                         cmd.Parameters.AddWithValue("@typeOfJob", "");
                     }
@@ -815,7 +879,7 @@ namespace Capstone.Web.DAL
                         cmd.Parameters.AddWithValue("@typeOfJob", workOrder.TypeOfJob);
                     }
 
-                    if(String.IsNullOrEmpty(workOrder.Notes))
+                    if (String.IsNullOrEmpty(workOrder.Notes))
                     {
                         cmd.Parameters.AddWithValue("@notes", "");
                     }
@@ -823,6 +887,9 @@ namespace Capstone.Web.DAL
                     {
                         cmd.Parameters.AddWithValue("@notes", workOrder.Notes);
                     }
+
+
+                    cmd.Parameters.AddWithValue("@leaderId", workOrder.LeaderId);
 
                     cmd.ExecuteNonQuery();
                     conn.Close();
