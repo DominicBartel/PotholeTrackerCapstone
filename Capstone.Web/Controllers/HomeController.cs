@@ -131,5 +131,11 @@ namespace Capstone.Web.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult SubmitWorkOrder(string PotHoles, string Users, WorkOrder order)
+        {
+            return RedirectToAction("WorkOrder");
+        }
     }
 }
