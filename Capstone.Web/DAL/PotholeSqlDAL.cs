@@ -1102,7 +1102,7 @@ namespace Capstone.Web.DAL
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM WorkOrder JOIN WorkOrderPotholeUser ON WorkOrder.WorkOrderId = WorkOrderPotholeUser.WorkOrderId WHERE WorkOrderPotholeUser.UserId = @userId ORDER BY WorkOrder.WorkOrderId DESC;", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT WorkOrder.WorkOrderId, WorkOrder.ToInspectDate, WorkOrder.ToRepairDate, WorkOrder.InspectionComplete, WorkOrder.RepairComplete, WorkOrder.TypeOfJob, WorkOrder.Notes, WorkOrder.LeaderId FROM WorkOrder JOIN WorkOrderPotholeUser ON WorkOrder.WorkOrderId = WorkOrderPotholeUser.WorkOrderId WHERE WorkOrderPotholeUser.UserId = @userId GROUP BY WorkOrder.WorkOrderId, WorkOrder.ToInspectDate, WorkOrder.ToRepairDate, WorkOrder.InspectionComplete, WorkOrder.RepairComplete, WorkOrder.TypeOfJob, WorkOrder.Notes, WorkOrder.LeaderId ORDER BY WorkOrder.WorkOrderId DESC;", conn);
                     cmd.Parameters.AddWithValue("@userId", GetUserId(userName));
 
                     SqlDataReader reader = cmd.ExecuteReader();
