@@ -967,10 +967,24 @@ namespace Capstone.Web.DAL
         {
             bool result = false;
 
-            //try
-            //{
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    conn.Open();
 
-            //}
+                    SqlCommand cmd = new SqlCommand("update UserRoles set Role = @role where UserId = @userId", conn);
+                    cmd.Parameters.AddWithValue("@role", role);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+
+                    cmd.ExecuteNonQuery();
+                    result = true;
+                }
+            }
+            catch(SqlException ex)
+            {
+                throw;
+            }
 
 
             return result;
