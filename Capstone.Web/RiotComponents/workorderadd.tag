@@ -85,17 +85,18 @@
         }
 
         function submitWorkorder() {
-            let users;
-            let potholes;
+            let submitUsers = "";
+            let submitPotholes = "";
             for (i = 0; i < selectedUsers.length; i++) {
-                users += selectedUsers[i].UserId + ',';
+                submitUsers += selectedUsers[i].UserId + ',';
             }
-            for (i = 0; i < selectedPotholes; i++) {
-                potholes += selectedPotholes[i].PotholeId + ',';
+            for (i = 0; i < selectedPotholes.length; i++) {
+                submitPotholes += selectedPotholes[i].PotholeId + ',';
             }
 
-            document.getElementById('usersString').value = users;
-            document.getElementById('potholesString').value = potholes;
+            document.getElementById('usersString').value = submitUsers;
+            document.getElementById('potholesString').value = submitPotholes;
+
             document.getElementById('workOrderSubmit').submit();
         }
 
