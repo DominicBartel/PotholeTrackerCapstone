@@ -21,20 +21,20 @@ namespace Capstone.Web.Controllers
             this.potholeDAL = dal;
         }
 
-		public ActionResult RoleAssignment (RoleAssignModel viewModel)
-		{
-			RoleAssignModel newModel = new RoleAssignModel();
-			return View(newModel);
-		}
+        public ActionResult RoleAssignment(RoleAssignModel viewModel)
+        {
+            RoleAssignModel newModel = new RoleAssignModel();
+            return View(newModel);
+        }
 
-		public ActionResult Index(PotholeViewModel viewModel)
+        public ActionResult Index(PotholeViewModel viewModel)
         {
 
             PotholeViewModel newModel = new PotholeViewModel();
 
             newModel.Roles = GetRoles();
 
-            
+
             return View(newModel);
         }
 
@@ -56,11 +56,11 @@ namespace Capstone.Web.Controllers
             }
             if (User.IsInRole("god"))
             {
-                roles="god";
+                roles = "god";
             }
             if (User.IsInRole("supergod"))
             {
-                roles="supergod";
+                roles = "supergod";
             }
 
             return roles;
@@ -106,7 +106,7 @@ namespace Capstone.Web.Controllers
 
         public ActionResult AdminPotholeEdit(PotholeViewModel viewModel)
         {
-            if(viewModel == null)
+            if (viewModel == null)
             {
                 viewModel = new PotholeViewModel();
             }
@@ -117,7 +117,7 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public ActionResult AdminPotholeEdit(Pothole pothole)
         {
-            potholeDAL.UpdatePothole(pothole); 
+            potholeDAL.UpdatePothole(pothole);
             //PotholeViewModel returnModel = new PotholeViewModel();
             //returnModel.PotholeList = new List<Pothole>();
             //returnModel.PotholeList.Add(pothole);
@@ -149,24 +149,30 @@ namespace Capstone.Web.Controllers
         [HttpGet]
         public ActionResult ReviewMyWorkOrders(WorkOrderViewModel viewModel)
         {
-            if(!Request.IsAuthenticated)
+
+            WorkOrderViewModel newModel = new WorkOrderViewModel();
+
+            if (!Request.IsAuthenticated)
             {
                 return RedirectToAction("Index");
             }
 
-            if(User.IsInRole("crew_leader"))
+            if (User.IsInRole("crew_leader"))
             {
-
+                newModel.WorkOrders = potholeDAL.GetLeaderOrders(User.Identity.Name);
             }
-            WorkOrderViewModel newModel = new WorkOrderViewModel();
-            newModel.WorkOrders = potholeDAL.GetAllWorkOrders();
+
+            if (User.IsInRole("crew_member"))
+            {
+                newModel.WorkOrders = potholeDAL.GetMemberOrders(User.Identity.Name);
+            }
 
 
             return View(newModel);
         }
 
         [HttpPost]
-        public ActionResult  SubmitMyWorkOrders(WorkOrder workOrder)
+        public ActionResult SubmitMyWorkOrders(WorkOrder workOrder)
         {
             return RedirectToAction("ReviewMyWorkOrders");
         }
