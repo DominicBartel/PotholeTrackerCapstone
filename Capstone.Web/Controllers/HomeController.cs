@@ -182,6 +182,8 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public ActionResult SubmitMyWorkOrders(WorkOrder workOrder)
         {
+            potholeDAL.UpdateWorkOrder(workOrder);
+
             return RedirectToAction("ReviewMyWorkOrders");
         }
 

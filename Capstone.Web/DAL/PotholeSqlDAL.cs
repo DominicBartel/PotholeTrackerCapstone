@@ -992,7 +992,87 @@ namespace Capstone.Web.DAL
 
         public bool UpdateWorkOrder(WorkOrder workOrder)
         {
-            throw new NotImplementedException();
+            bool result = false;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("UPDATE WorkOrder SET ToInspectDate = @toInspectDate, ToRepairDate = @toRepairDate, InspectionComplete = @inspectionComplete, RepairComplete = @repairComplete, TypeOfJob = @typeOfJob, Notes = @notes, LeaderId = @leaderId WHERE WorkOrderId = @WorkOrderId;", conn);
+
+                    cmd.Parameters.AddWithValue("@workOrderId", workOrder.WorkOrderId);
+
+                    if (workOrder.ToInspectDate == null)
+                    {
+                        cmd.Parameters.AddWithValue("@toInspectDate", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@toInspectDate", workOrder.ToInspectDate);
+                    }
+
+                    if (workOrder.ToRepairDate == null)
+                    {
+                        cmd.Parameters.AddWithValue("@toRepairDate", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@toRepairDate", workOrder.ToRepairDate);
+                    }
+
+                    if (workOrder.InspectionComplete == null)
+                    {
+                        cmd.Parameters.AddWithValue("@inspectionComplete", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@inspectionComplete", workOrder.InspectionComplete);
+                    }
+
+                    if (workOrder.RepairComplete == null)
+                    {
+                        cmd.Parameters.AddWithValue("@repairComplete", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@repairComplete", workOrder.RepairComplete);
+                    }
+
+                    if (String.IsNullOrEmpty(workOrder.TypeOfJob))
+                    {
+                        cmd.Parameters.AddWithValue("@typeOfJob", "");
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@typeOfJob", workOrder.TypeOfJob);
+                    }
+
+                    if (String.IsNullOrEmpty(workOrder.Notes))
+                    {
+                        cmd.Parameters.AddWithValue("@notes", "");
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@notes", workOrder.Notes);
+                    }
+
+                    cmd.Parameters.AddWithValue("@leaderId", workOrder.LeaderId);
+
+                    cmd.ExecuteNonQuery();
+
+                }
+                    result = true;
+            }
+            catch(SqlException ex)
+            {
+
+            }
+
+
+            return result;
+
         }
 
         public List<WorkOrder> GetLeaderOrders(string userName)
