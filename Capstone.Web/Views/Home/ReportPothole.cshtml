@@ -8,6 +8,9 @@
 
 <section>
     <h2>Report a pothole</h2>
+
+    <div id="map"></div>
+
     <p>Please give us information about the pothole you would like to report: </p>
     <p></p>
 
@@ -16,7 +19,7 @@
             <fieldset>
                 @Html.AntiForgeryToken()
                 <div>
-                    <input type="hidden" name="UserName" value="@User.Identity.Name" readonly/>
+                    <input type="hidden" name="UserName" value="@User.Identity.Name" readonly />
                 </div>
 
                 <div>
@@ -54,6 +57,16 @@
                 </div>
 
                 <div>
+                    <p>If you know, what is the latitude location of this pothole? </p>
+                    <input type="text" id="Latitude" name="Latitude" />
+                </div>
+
+                <div>
+                    <p>If you know, what is the longitude location of this pothole? </p>
+                    <input type="text" id="Longitude" name="Longitude" />
+                </div>
+
+                <div>
                     <p>Additional location details: </p>
                     <textarea name="PotholeDesc" rows="10" cols="24">
                         </textarea>
@@ -70,10 +83,45 @@
         </form>
 
     </div>
+
+    <script>
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 11,
+            center: { lat: 41.504745, lng: -81.677486 }
+        });
+
+        
+        // var latlng = { lat: Latitude, lng: Longitude };
+        
+        map.addListener('click', function (e) {
+            placeMarker(e.latLng, map);
+            document.getElementById('Latitude').value = e.latLng.lat();
+            document.getElementById('Longitude').value = e.latLng.lng();
+            this.update;
+            console.log(e.latLng.lng());
+        });
+
+        var marker;
+
+        function placeMarker(latLng, map) {
+            if (marker == null) {
+                 marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map
+                });
+            }
+            else {
+                marker.setPosition(latLng);
+            }
+        
+        }
+        
+
+    </script>
+
 </section>
 
 
 
-
-
-
+       
