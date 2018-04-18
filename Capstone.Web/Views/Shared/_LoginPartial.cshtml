@@ -11,14 +11,15 @@
                 @if (User.IsInRole("supergod")) //King
                 {
                     <li style="background-color:#F85A3E; border-radius: 5px; padding-bottom: 1px; padding-top: 3px; padding-right: 3px;">
-                @Html.ActionLink('\u2654' + " Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
-               <li>@Html.ActionLink("Role Manager", "RoleAssignment", "Home", routeValues: null, htmlAttributes: new { title = "Role Assign" })</li>
+                        @Html.ActionLink('\u2654' + " Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    </li>
+                    <li>@Html.ActionLink("Role Manager", "RoleAssignment", "Home", routeValues: null, htmlAttributes: new { title = "Role Assign" })</li>
 
 
 
                 }
-               else if (User.IsInRole("god")) //Queen
-               {
+                else if (User.IsInRole("god")) //Queen
+                {
                     <li style="background-color:#F4D06F; border-radius: 5px; padding-bottom: 1px; padding-top: 3px; padding-right: 3px;">@Html.ActionLink('\u2655' + " Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
                 }
                 else if (User.IsInRole("admin")) //Rook
@@ -44,6 +45,18 @@
                 @if (!User.IsInRole("citizen"))
                 {
                     <li>@Html.ActionLink("Edit Pothole Database", "AdminPotholeEdit", "Home", routeValues: null, htmlAttributes: new { id = "EditLink" }) </li>
+                    if (User.IsInRole("crew_leader") || User.IsInRole("crew_member") || User.IsInRole("god"))
+                    {
+                        if (User.IsInRole("crew_leader") || User.IsInRole("god"))
+                        {
+                            <li>
+                                @Html.ActionLink("Create Work Order", "WorkOrder", "Home", routeValues: null, htmlAttributes: new { id = "EditLink" })
+                            </li>
+                        }
+                        <li>
+                            @Html.ActionLink("Review Work Orders", "ReviewMyWorkOrders", "Home", routeValues: null, htmlAttributes: new { id = "EditLink" })
+                        </li>
+                    }
                 }
                 <li>@Html.ActionLink("Information on Potholes", "Index", "Home", routeValues: null, htmlAttributes: new { id = "reportLink" }) </li>
                 <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
