@@ -7,12 +7,12 @@
                 <tr style="font-weight:bold">
                     <td>Username</td>
                     <td>Role</td>
-                    <td>Reset</td>
+                    <td onclick="{resetCrewlist}">Reset</td>
                 </tr>
-                <tr onclick="{removeUser}" each="{usersWorkorder}">
+                <tr each="{usersWorkorder}">
                     <td>{UserName}</td>
                     <td></td>
-                    <td>Remove Worker</td>
+                    <td onclick="{removeUser}" >Remove Worker</td>
 
                 </tr>
             </table>
@@ -29,18 +29,20 @@
 
         <div>
             <table class="table-index-page">
-                <th colspan="3" width="580">Potholes For Workorder</th>
+                <th colspan="4" width="580">Potholes For Workorder</th>
 
                 <tr style="font-weight:bold">
                     <td>Severity</td>
                     <td>First Cross Street</td>
                     <td>Location</td>
+                    <td onclick="{resetPothole}">Reset</td>
                 </tr>
 
-                <tr onclick="{removePothole}" each="{potholesWorkorder}">
+                <tr  each="{potholesWorkorder}">
                     <td>{Severity}</td>
                     <td>{Street1}</td>
                     <td>{LocationDesc}</td>
+                    <td onclick="{removePothole}">Remove Pothole</td>
 
             </table>
 
@@ -114,6 +116,20 @@
         let selectedPotholes = [];
         let selectedUsers = [];
 
+        this.resetCrewlist = function () {
+            if (confirm("Remove all crew members from order?")) {
+                this.usersWorkorder = [];
+            }
+            this.update;
+        }
+
+        this.resetPothole = function () {
+            if (confirm("Remove all potholes from order?")) {
+                this.potholesWorkorder = [];
+            }
+            this.update;
+        }
+
         this.submitWorkorder = function () {
             if (this.potholesWorkorder < 1) {
                 if (confirm("There are no potholes on the workorder, please add a pothole to your order.")) {
@@ -126,6 +142,28 @@
             }else {
                 submitWorkorder();
             }
+        }
+
+        this.removeUser = function (data) {
+
+            for (i = 0; i < this.usersWorkorder.length; i++) {
+                if (this.usersWorkorder[i].UserId == data.item.UserId) {
+                    this.usersWorkorder.splice(i, 1);
+                }
+            }
+
+            this.update;
+        }
+
+        this.removePothole = function (data) {
+
+            for (i = 0; i < this.potholesWorkorder.length; i++) {
+                if (this.potholesWorkorder[i].PotholeId == data.item.PotholeId) {
+                    this.potholesWorkorder.splice(i, 1);
+                }
+            }
+            
+            this.update;
         }
 
         function submitWorkorder() {
