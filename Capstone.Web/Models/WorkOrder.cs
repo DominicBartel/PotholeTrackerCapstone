@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capstone.Web.Authentication;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,5 +16,8 @@ namespace Capstone.Web.Models
         public string TypeOfJob { get; set; }
         public string Notes { get; set; }
         public Guid? LeaderId { get; set; }
+
+        public List<User> Crew { get; set; }
+        public List<Pothole> Potholes { get; set; }
     }
 }

@@ -38,12 +38,11 @@ namespace Capstone.Web.DAL
 
         List<WorkOrder> GetMemberOrders(string userName);
 
+        List<User> GetOrderCrewMembers(int orderId);
+
+        List<Pothole> GetOrderPotholes(int orderId);
+
         Guid GetUserId(string userName);
-
-
-
-
-
 
     }
 }

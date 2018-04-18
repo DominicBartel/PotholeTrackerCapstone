@@ -118,8 +118,27 @@
                             }
                             <span>Notes: </span>
                             <textarea style="vertical-align:middle" name="Notes" value="@workOrder.Notes">@workOrder.Notes</textarea>
-
                             <button style="vertical-align:middle">Update</button>
+                            <div style="vertical-align:middle;">
+                                <div style="display:inline-block; vertical-align:top;">
+                                    <fieldset style="background-color: rgb(162, 59, 114);">
+                                        <p style="font-weight:bold">Potholes to Address: </p>
+                                        @foreach (var pothole in workOrder.Potholes)
+                                        {
+                                            <p>Pothole #@pothole.PotholeId on @pothole.Street1</p>
+                                        }
+                                    </fieldset>
+                                </div>
+                                <div style="display:inline-block; vertical-align:top; margin-left:.05vw">
+                                    <fieldset style="background-color: rgb(162, 59, 114);">
+                                        <p style="font-weight:bold">Order Crew: </p>
+                                        @foreach (var crewmember in workOrder.Crew)
+                                        {
+                                            <p>@crewmember.UserName</p>
+                                        }
+                                    </fieldset>
+                                </div>
+                            </div>
                         </div>
                     </fieldset>
                 </form>

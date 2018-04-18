@@ -635,6 +635,7 @@ namespace Capstone.Web.DAL
 
         }
 
+
         public List<User> GetAllCrewMembers()
         {
             List<User> crew = new List<User>();
@@ -703,109 +704,6 @@ namespace Capstone.Web.DAL
             }
 
             return crew;
-        }
-
-        public List<WorkOrder> GetAllWorkOrders()
-        {
-            List<WorkOrder> workOrders = new List<WorkOrder>();
-
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(ConnectionString))
-                {
-                    conn.Open();
-
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM WorkOrder ORDER BY WorkOrder.WorkOrderId DESC", conn);
-
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        WorkOrder w = new WorkOrder();
-
-                        if (reader["WorkOrderId"] == DBNull.Value)
-                        {
-                            w.WorkOrderId = null;
-                        }
-                        else
-                        {
-                            w.WorkOrderId = Convert.ToInt32(reader["WorkOrderId"]);
-                        }
-
-                        if (reader["ToInspectDate"] == DBNull.Value)
-                        {
-                            w.ToInspectDate = null;
-                        }
-                        else
-                        {
-                            w.ToInspectDate = Convert.ToDateTime(reader["ToInspectDate"]);
-                        }
-
-                        if (reader["ToRepairDate"] == DBNull.Value)
-                        {
-                            w.ToRepairDate = null;
-                        }
-                        else
-                        {
-                            w.ToRepairDate = Convert.ToDateTime(reader["ToRepairDate"]);
-                        }
-
-                        if (reader["InspectionComplete"] == DBNull.Value)
-                        {
-                            w.InspectionComplete = null;
-                        }
-                        else
-                        {
-                            w.InspectionComplete = Convert.ToBoolean(reader["InspectionComplete"]);
-                        }
-
-                        if (reader["RepairComplete"] == DBNull.Value)
-                        {
-                            w.RepairComplete = null;
-                        }
-                        else
-                        {
-                            w.RepairComplete = Convert.ToBoolean(reader["RepairComplete"]);
-                        }
-
-                        if (reader["TypeOfJob"] == DBNull.Value)
-                        {
-                            w.TypeOfJob = "";
-                        }
-                        else
-                        {
-                            w.TypeOfJob = Convert.ToString(reader["TypeOfJob"]);
-                        }
-
-                        if (reader["Notes"] == DBNull.Value)
-                        {
-                            w.Notes = "";
-                        }
-                        else
-                        {
-                            w.Notes = Convert.ToString(reader["Notes"]);
-                        }
-
-                        if (reader["LeaderId"] == DBNull.Value)
-                        {
-                            w.LeaderId = null;
-                        }
-                        else
-                        {
-                            w.LeaderId = (Guid)reader["LeaderId"];
-                        }
-
-                        workOrders.Add(w);
-                    }
-
-                }
-            }
-            catch (SqlException ex)
-            {
-                throw;
-            }
-
-            return workOrders;
         }
 
         public bool ScheduleWorkOrder(WorkOrder workOrder, string userList, string potholeList)
@@ -1159,6 +1057,10 @@ namespace Capstone.Web.DAL
                             w.LeaderId = (Guid)reader["LeaderId"];
                         }
 
+                        w.Crew = GetOrderCrewMembers(Convert.ToInt32(w.WorkOrderId));
+                        w.Potholes = GetOrderPotholes(Convert.ToInt32(w.WorkOrderId));
+
+
                         result.Add(w);
                     }
 
@@ -1256,6 +1158,9 @@ namespace Capstone.Web.DAL
                             w.LeaderId = (Guid)reader["LeaderId"];
                         }
 
+                        w.Crew = GetOrderCrewMembers(Convert.ToInt32(w.WorkOrderId));
+                        w.Potholes = GetOrderPotholes(Convert.ToInt32(w.WorkOrderId));
+
                         result.Add(w);
                     }
 
@@ -1268,6 +1173,113 @@ namespace Capstone.Web.DAL
 
             return result;
         }
+
+        public List<WorkOrder> GetAllWorkOrders()
+        {
+            List<WorkOrder> workOrders = new List<WorkOrder>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM WorkOrder ORDER BY WorkOrder.WorkOrderId DESC", conn);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        WorkOrder w = new WorkOrder();
+
+                        if (reader["WorkOrderId"] == DBNull.Value)
+                        {
+                            w.WorkOrderId = null;
+                        }
+                        else
+                        {
+                            w.WorkOrderId = Convert.ToInt32(reader["WorkOrderId"]);
+                        }
+
+                        if (reader["ToInspectDate"] == DBNull.Value)
+                        {
+                            w.ToInspectDate = null;
+                        }
+                        else
+                        {
+                            w.ToInspectDate = Convert.ToDateTime(reader["ToInspectDate"]);
+                        }
+
+                        if (reader["ToRepairDate"] == DBNull.Value)
+                        {
+                            w.ToRepairDate = null;
+                        }
+                        else
+                        {
+                            w.ToRepairDate = Convert.ToDateTime(reader["ToRepairDate"]);
+                        }
+
+                        if (reader["InspectionComplete"] == DBNull.Value)
+                        {
+                            w.InspectionComplete = null;
+                        }
+                        else
+                        {
+                            w.InspectionComplete = Convert.ToBoolean(reader["InspectionComplete"]);
+                        }
+
+                        if (reader["RepairComplete"] == DBNull.Value)
+                        {
+                            w.RepairComplete = null;
+                        }
+                        else
+                        {
+                            w.RepairComplete = Convert.ToBoolean(reader["RepairComplete"]);
+                        }
+
+                        if (reader["TypeOfJob"] == DBNull.Value)
+                        {
+                            w.TypeOfJob = "";
+                        }
+                        else
+                        {
+                            w.TypeOfJob = Convert.ToString(reader["TypeOfJob"]);
+                        }
+
+                        if (reader["Notes"] == DBNull.Value)
+                        {
+                            w.Notes = "";
+                        }
+                        else
+                        {
+                            w.Notes = Convert.ToString(reader["Notes"]);
+                        }
+
+                        if (reader["LeaderId"] == DBNull.Value)
+                        {
+                            w.LeaderId = null;
+                        }
+                        else
+                        {
+                            w.LeaderId = (Guid)reader["LeaderId"];
+                        }
+
+                        w.Crew = GetOrderCrewMembers(Convert.ToInt32(w.WorkOrderId));
+                        w.Potholes = GetOrderPotholes(Convert.ToInt32(w.WorkOrderId));
+
+                        workOrders.Add(w);
+                    }
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+
+            return workOrders;
+        }
+
 
         public Guid GetUserId(string userName)
         {
@@ -1297,6 +1309,72 @@ namespace Capstone.Web.DAL
 
             return userId;
 
+        }
+
+        public List<User> GetOrderCrewMembers(int orderId)
+        {
+            List<User> crew = new List<User>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT Users.UserId, Users.UserName FROM Users JOIN WorkOrderPotholeUser ON USERS.UserId = WorkOrderPotholeUser.UserId WHERE WorkOrderPotholeUser.WorkOrderId = @workOrderId GROUP BY Users.UserId, Users.UserName;", conn);
+                    cmd.Parameters.AddWithValue("@workOrderId", orderId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        User u = new User();
+                        u.UserId = (Guid)reader["UserId"];
+                        u.UserName = Convert.ToString(reader["UserName"]);
+
+                        crew.Add(u);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+
+            return crew;
+        }
+
+        public List<Pothole> GetOrderPotholes(int orderId)
+        {
+            List<Pothole> orderPotholes = new List<Pothole>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                {
+                    conn.Open();
+
+                    string query = "SELECT PotHole.PotHole_Id, PotHole.UserId, Users.UserName, PotHole.PotHoleDesc, PotHole.Lat, PotHole.Long, PotHole.Severity, PotHole.Street1, PotHole.Street2, PotHole.LocationDesc, PotHole.DateReported, PotHole.InspectedDate, PotHole.RepairDate, PotHole.IsValidated FROM PotHole JOIN Users on Users.UserId = PotHole.UserId JOIN WorkOrderPotholeUser ON PotHole.PotHole_Id = WorkOrderPotholeUser.PotHole_Id WHERE WorkOrderPotholeUser.WorkOrderId = @workOrderId GROUP BY PotHole.PotHole_Id, PotHole.UserId, Users.UserName, PotHole.PotHoleDesc, PotHole.Lat, PotHole.Long, PotHole.Severity, PotHole.Street1, PotHole.Street2, PotHole.LocationDesc, PotHole.DateReported, PotHole.InspectedDate, PotHole.RepairDate, PotHole.IsValidated;";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@workOrderId", orderId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        Pothole p = MapRows(reader);
+
+                        orderPotholes.Add(p);
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+
+            return orderPotholes;
         }
     }
 }
