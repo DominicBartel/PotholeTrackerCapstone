@@ -43,7 +43,7 @@
 
 
 
-    @if (User.IsInRole("crew_member") || User.IsInRole("crew_leader"))
+    @if (Request.IsAuthenticated && !User.IsInRole("citizen"))
     {
         foreach (var workOrder in Model.WorkOrders)
         {
