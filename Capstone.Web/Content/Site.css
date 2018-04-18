@@ -212,7 +212,6 @@ header {
     border-radius: 5px;
     box-shadow: black 4px 4px;
     position: relative;
-    overflow: hidden;
     display:inline-block;
 }
 
