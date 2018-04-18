@@ -11,16 +11,16 @@
 
     <div id="map"></div>
 
-    <p>Please give us information about the pothole you would like to report: </p>
+    <h3>Please give us information about the pothole you would like to report: </h3>
     <p></p>
 
     <div>
         <form method="post" action="@Url.Action("ReportPotholePost", "Home")">
             <fieldset>
-                <h4>(Click on the map above to set the location of the pothole you are reporting)</h4>
+                <h3 style="text-align: center">(Click on the map above to set the location of the pothole you are reporting)</h3>
                 @Html.AntiForgeryToken()
-                <div style="column-count: 2; column-gap: 2px">
-                    <div style="column-width: auto">
+                <div style="column-count: 2; column-gap: 50px">
+                    <div style="column-width: auto; padding-top: 5px; vertical-align: top">
                         <div>
                             <p>On a scale from 1 -10, with 10 being the worst pothole you have ever seen, how would you rank the severity of this pothole?</p>
                             <select name="Severity">
@@ -58,7 +58,7 @@
 
                     </div>
 
-                    <div style="column-width: auto">
+                    <div style="column-width: auto; padding-top: 20px; vertical-align: top">
 
                         <div>
                             <p>Pothole description:</p>
