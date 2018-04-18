@@ -85,6 +85,7 @@
         });
 
         this.search = function () {
+            document.querySelector('#potholeId').value = null;
             search();
         }
 
@@ -135,6 +136,7 @@
                     opts.bus.trigger('searchresult', json);
                     //console.log(json);
                 });
+
         }
 
 
