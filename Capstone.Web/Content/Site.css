@@ -328,7 +328,8 @@ label{
         box-shadow: dimgray 1px 1px;
         border-radius: 3px;
         text-align:center;
-        
+        text-shadow:black 1px 1px;
+        padding:4px;
     }
 
     .roleButtons role{
