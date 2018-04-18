@@ -101,7 +101,8 @@ Insert UserRoles values('1E18474B-DF8F-48C1-A668-7A520650AB37', 'crew_leader');
 --Username "god@pt.com" Password "Password1!" Role "god"
 Insert Users values('2528EB34-77EE-4AE8-B906-D29563AFC7DA', 'god@pt.com', 'AGQhNDi1PEK0TFu3AKOU1brhxpiQijIHyw9B8kwKRguaHYYhJ5moeNlBC3YkmX3idA==', '377472a5-9a67-4d3e-92f2-d93171a4b01b');
 Insert UserRoles values('2528EB34-77EE-4AE8-B906-D29563AFC7DA', 'god');
-
+Insert Users values('3D51E04F-2874-443B-BDE0-F1F072BAAA91', 'wozthetechwiz@gmail.com','ALqbmGC/RKl4pju4OlFfOC32CV/htteSeeAI6OnDJYA8JxRKuIrJEGEgcifDY26cmg==', '50983e0b-3f2e-49bf-81e7-c99e4cd5b713');
+Insert UserRoles values('3D51E04F-2874-443B-BDE0-F1F072BAAA91', 'god');
 --Username "supergod@pt.com"
 Insert Users values('10DD883C-C3D0-499C-8421-784B7F4FF7DE', 'supergod@pt.com', 'AOuiueJNVWPKaEWQNBIyW7dwPeOUzsLyr2EVpujXnYGGJD9AGlcOorw5dvDl0U44lw==', 'f28925a4-15ac-4e73-8e54-02a1fdf7dba4');
 Insert UserRoles values ('10DD883C-C3D0-499C-8421-784B7F4FF7DE', 'supergod')
