@@ -232,7 +232,7 @@ table {
     box-shadow: black 4px 4px 4px;
     font-size: 25px;
     border-collapse: collapse;
-    width: 60%;
+    max-width: 60%;
 }
     .table-index-page th {
     background-color: #0090C1; /*teal*/

@@ -7,13 +7,15 @@
 
 
 <body>
-        <potholemap></potholemap>
+    <potholemap></potholemap>
     <p></p>
+    <div style="text-align:center">
         <section class="searchGraph">
             <bargraph id="bargraph"></bargraph>
             <searchbar id="search"></searchbar>
         </section>
-            <resultstable style="text-align:center"></resultstable>
+        <resultstable></resultstable>
+    </div>
     <script src="~/RiotComponents/potholemap.tag" type="riot/tag">
     </script>
     <script src="~/RiotComponents/searchbar.tag" type="riot/tag">
@@ -37,7 +39,7 @@
         riot.mount('searchbar', { bus: bus });
         riot.mount('resultstable', { bus: bus });
         riot.mount('bargraph', { bus: bus });
-        
+
     </script>
 
 </body>
