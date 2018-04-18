@@ -3,18 +3,24 @@
     ViewBag.Title = "AdminPotholeEdit";
 }
 
-<div id="admin" style="text-align:center">
-    
+<div @*id="admin"*@ style="text-align:center">
+
     <potholemap></potholemap>
-    <bargraph></bargraph>
-    <p></p>
 
+    <div style="text-align:center">
+        <editPothole></editPothole>
+        <section class="searchGraph">
+            <bargraph id="bargraph"></bargraph>
+            <searchbar id="search"></searchbar>
+        </section>
 
-    <searchbar></searchbar>
-    <p></p>
-    <editPothole></editPothole>
+        <resultstable></resultstable>
+
+    </div>
+    </div>
+    
     @*<potholedate></potholedate>*@
-    <resultstable></resultstable>
+
 </div>
 
 
@@ -30,7 +36,7 @@
 <script src="~/RiotComponents/editPothole.tag" type="riot/tag">
 </script>
 @*<script src="~/RiotComponents/potholedate.tag" type="riot/tag">
-</script>*@
+    </script>*@
 
 
 <script>
