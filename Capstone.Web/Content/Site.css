@@ -106,10 +106,11 @@
         border-radius: 10px;
         box-shadow: black 2px 2px 2px 2px;
         text-shadow: black 1px 1px;
+        padding: 0px;
     }
 
-    ul{
-        flex-grow:1;
+    ul {
+        flex-grow: 1;
     }
 
     a {
@@ -149,8 +150,8 @@
         border-radius: 10px;
     }
 
-    ul{
-        padding-left:0;
+    ul {
+        padding-left: 0;
     }
 
     nav ul li {
@@ -159,7 +160,6 @@
         margin-bottom: 3px;
         list-style-type: none;
         width: 100%;
-
     }
 
     a {
@@ -198,12 +198,14 @@ header {
     box-shadow: black 4px 4px;
     margin: auto;
 }
-.searchGraph{
-    display:inline-flex;
-    margin-bottom:7px;
-    vertical-align:top;
+
+.searchGraph {
+    display: inline-flex;
+    margin-bottom: 7px;
+    vertical-align: top;
 }
-  #bargraph{
+
+#bargraph {
     height: 400px;
     background-color: black;
     border: 5px solid #A23B72;
@@ -211,7 +213,7 @@ header {
     box-shadow: black 4px 4px;
     position: relative;
     overflow: hidden;
-    display:inline-block;
+    display: inline-block;
 }
 
 #search {
@@ -234,7 +236,8 @@ table {
     border-collapse: collapse;
     width: 60%;
 }
-    .table-index-page th {
+
+.table-index-page th {
     background-color: #0090C1; /*teal*/
     color: #FBFEF9;
     text-shadow: black 1px 1px;
@@ -261,7 +264,18 @@ tr:nth-child(odd) {
     background-color: lightgray; /*darker*/
 }
 
-label{
-    padding:5px;
-    text-align:center;
-}
+
+    .roleButtons fieldset {
+        display: inline;
+        padding: 5px;
+        text-align: left;
+        text-shadow: black 1px 1px;
+        background-color: black;
+        width:90%;
+        height:auto;
+        margin:auto;
+    }
+
+
+
+
