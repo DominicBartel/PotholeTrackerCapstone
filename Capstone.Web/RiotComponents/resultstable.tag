@@ -1,7 +1,7 @@
 <resultstable>
 
     <table class="table-index-page table-scroll">
-        <th colspan="5">Current Confirmed Potholes:</th>
+        <th colspan="5">Pothole Search Results:</th>
 
         <tr style="font-weight:bold">
             <td>Severity</td>

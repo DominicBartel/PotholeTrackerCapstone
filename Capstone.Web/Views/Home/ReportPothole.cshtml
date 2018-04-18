@@ -17,67 +17,74 @@
     <div>
         <form method="post" action="@Url.Action("ReportPotholePost", "Home")">
             <fieldset>
+                <h4>(Click on the map above to set the location of the pothole you are reporting)</h4>
                 @Html.AntiForgeryToken()
-                <div>
-                    <input type="hidden" name="UserName" value="@User.Identity.Name" readonly />
-                </div>
+                <div style="column-count: 2; column-gap: 2px">
+                    <div style="column-width: auto">
+                        <div>
+                            <p>On a scale from 1 -10, with 10 being the worst pothole you have ever seen, how would you rank the severity of this pothole?</p>
+                            <select name="Severity">
 
-                <div>
-                    <p>Pothole description:</p>
-                    <textarea name="PotholeDesc" rows="5" cols="24">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+
+                            </select>
+                        </div>
+
+                        <div>
+                            <p>On what street is this pothole located? </p>
+                            <input type="text" name="Street1" />
+                        </div>
+
+                        <div>
+                            <p>What is the nearest cross-street to this pothole? </p>
+                            <input type="text" name="Street2" />
+                        </div>
+
+                        <div>
+                            
+                            <span><input type="hidden" id="Latitude" name="Latitude" /></span>
+                            <span><input type="hidden" id="Longitude" name="Longitude" /></span>
+                        </div>
+                        <p></p>
+
+                    </div>
+
+                    <div style="column-width: auto">
+
+                        <div>
+                            <p>Pothole description:</p>
+                            <textarea name="PotholeDesc" rows="3" cols="100">
                         </textarea>
-                </div>
+                        </div>
 
-                <div>
-                    <p>On a scale from 1 -10, with 10 being the worst pothole you have ever seen, how would you rank the severity of this pothole?</p>
-                    <select name="Severity">
+                        <div>
+                            <input type="hidden" name="UserName" value="@User.Identity.Name" readonly />
+                        </div>
 
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-
-                    </select>
-                </div>
-
-                <div>
-                    <p>On what street is this pothole located? </p>
-                    <input type="text" name="Street1" />
-                </div>
-
-                <div>
-                    <p>What is the nearest cross-street to this pothole? </p>
-                    <input type="text" name="Street2" />
-                </div>
-
-                <div>
-                    <p>If you know, what is the latitude location of this pothole? </p>
-                    <input type="text" id="Latitude" name="Latitude" />
-                </div>
-
-                <div>
-                    <p>If you know, what is the longitude location of this pothole? </p>
-                    <input type="text" id="Longitude" name="Longitude" />
-                </div>
-
-                <div>
-                    <p>Additional location details: </p>
-                    <textarea name="PotholeDesc" rows="10" cols="24">
+                        <div>
+                            <p>Additional location details: </p>
+                            <textarea name="PotholeDesc" rows="5" cols="100">
                         </textarea>
-                </div>
+                        </div>
 
-                <div>
-                    <input type="hidden" name="ReportedDate" value=@DateTime.Now readonly />
-                </div>
+                        <div>
+                            <input type="hidden" name="ReportedDate" value=@DateTime.Now readonly />
+                        </div>
 
-                <div>
-                    <button>Submit!</button>
+                        <div>
+                            <button>Submit!</button>
+                        </div>
+
+                    </div>
                 </div>
             </fieldset>
         </form>
@@ -91,9 +98,7 @@
             center: { lat: 41.504745, lng: -81.677486 }
         });
 
-        
-        // var latlng = { lat: Latitude, lng: Longitude };
-        
+      
         map.addListener('click', function (e) {
             placeMarker(e.latLng, map);
             document.getElementById('Latitude').value = e.latLng.lat();
