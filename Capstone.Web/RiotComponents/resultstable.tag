@@ -1,6 +1,6 @@
 <resultstable>
 
-    <table class="table-index-page">
+    <table class="table-index-page table-scroll">
         <th colspan="5">Current Confirmed Potholes:</th>
 
         <tr style="font-weight:bold">

@@ -37,7 +37,7 @@
                     <li>@Html.ActionLink('\u2659' + " Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
 
                 }
-                <li>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { id = "homeLink" }) </li>
+                @*<li>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { id = "homeLink" }) </li>*@
                 <li>@Html.ActionLink("Report a New Pothole", "ReportPothole", "Home", routeValues: null, htmlAttributes: new { id = "reportLink" }) </li>
 
                 @if (!User.IsInRole("citizen"))
@@ -64,7 +64,7 @@
     else
     {
         <ul class="nav navbar-nav navbar-right">
-            <li>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { id = "homeLink" }) </li>
+            @*<li>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { id = "homeLink" }) </li>*@
             <li>@Html.ActionLink("Log In", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
             <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
             @*<li>@Html.ActionLink("Report a New Pothole", "Index", "Home", routeValues: null, htmlAttributes: new { id = "reportLink" }) </li>*@
