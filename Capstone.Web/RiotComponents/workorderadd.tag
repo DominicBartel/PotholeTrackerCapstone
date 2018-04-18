@@ -1,71 +1,110 @@
 <workorderadd>
 
     <div>
-        <table class="table-index-page">
-            <th colspan="3" width="580">Workers</th>
-            <tr style="font-weight:bold">
-                <td>Username</td>
-                <td>Role</td>
-                <td>Reset</td>
-            </tr>
-            <tr onclick="{removeUser}" each="{usersWorkorder}">
-                <td>{UserName}</td>
-                <td></td>
-                <td>Remove Worker</td>
+        <div>
+            <table class="table-index-page">
+                <th colspan="3" width="580">Workers</th>
+                <tr style="font-weight:bold">
+                    <td>Username</td>
+                    <td>Role</td>
+                    <td>Reset</td>
+                </tr>
+                <tr onclick="{removeUser}" each="{usersWorkorder}">
+                    <td>{UserName}</td>
+                    <td></td>
+                    <td>Remove Worker</td>
 
-            </tr>
-        </table>
+                </tr>
+            </table>
 
-        <table class="table-index-page">
-            <tr each="{users}" onclick="{addUser}">
-                <td>{UserName}</td>
-                <td>Add CrewMember</td>
-            </tr>
-        </table>
+            <table class="table-index-page">
+                <tr each="{users}" onclick="{addUser}">
+                    <td>{UserName}</td>
+                    <td>Add CrewMember</td>
+                </tr>
+            </table>
+        </div>
 
 
 
-        <table class="table-index-page">
-            <th colspan="3" width="580">Potholes For Workorder</th>
+        <div>
+            <table class="table-index-page">
+                <th colspan="3" width="580">Potholes For Workorder</th>
 
-            <tr style="font-weight:bold">
-                <td>Severity</td>
-                <td>First Cross Street</td>
-                <td>Location</td>
-            </tr>
+                <tr style="font-weight:bold">
+                    <td>Severity</td>
+                    <td>First Cross Street</td>
+                    <td>Location</td>
+                </tr>
 
-            <tr onclick="{removePothole}" each="{potholesWorkorder}">
-                <td>{Severity}</td>
-                <td>{Street1}</td>
-                <td>{LocationDesc}</td>
+                <tr onclick="{removePothole}" each="{potholesWorkorder}">
+                    <td>{Severity}</td>
+                    <td>{Street1}</td>
+                    <td>{LocationDesc}</td>
 
-        </table>
+            </table>
 
-        <table class="table-index-page">
-            <th colspan="3" onclick="{fullSearch}">Refresh Potholes</th>
-            <tr onclick="{addPothole}">
-                <td>#{potholes[0].PotholeId}</td>
-                <td>Add To Ticket</td>
-            </tr>
-        </table>
+            <table class="table-index-page">
+                <th colspan="3" onclick="{fullSearch}">Selected Pothole</th>
+                <tr onclick="{addPothole}">
+                    <td>#{potholes[0].PotholeId}</td>
+                    <td>Add To Ticket</td>
+                </tr>
+            </table>
+        </div>
+        
     </div>
-    <div>
+    <div class="table-index-page updiv">
         <form id="workOrderSubmit" method="post" action="/Home/SubmitWorkOrder">
-            <input id="usersString" hidden name="Users" value="" />
-            <input id="potholesString" hidden name="PotHoles" value="" />
-            <select name="TypeOfJob">
-                <option value="Inspection">Inspection</option>
-                <option value="Repair">Repair</option>
-            </select>
-            Inspection On: <input type="date" name="ToInspectDate" />
-            Repair On:<input type="date" name="ToRepairDate" />
+            <div class="orderInfo">
+                <input id="usersString" hidden name="Users" value="" />
+                <input id="potholesString" hidden name="PotHoles" value="" />
+                <span>
+                    <select name="TypeOfJob">
+                        <option value="Inspection">Inspection</option>
+                        <option value="Repair">Repair</option>
+                    </select>
+                </span>
+                <span>Inspection On: <input type="date" name="ToInspectDate" /></span>
+                <span>Repair On: <input type="date" name="ToRepairDate" /></span>
+            </div>
             <textarea name="notes" placeholder="Enter notes here"></textarea>
         </form>
         <table class="table-index-page" onclick="{submitWorkorder}">
             <th>Submit Workorder</th>
         </table>
+        <table class="table-index-page" onclick="{fullSearch}">
+            <th>Reload Potholes</th>
+        </table>
     </div>
-
+    
+    <style>
+        .table-index-page.updiv{
+            
+        }
+        span{
+            display:block;
+            text-align:right;
+        }
+        table{
+            vertical-align:top;
+        }
+        textarea {
+            margin:8px;
+            display:inline-block;
+            height: 124px;
+            width: 246px;
+        }
+        .orderInfo {
+            padding-top:20px;
+            padding-right:10px;
+            vertical-align: top;
+            display: inline-block;
+            width: 400px;
+            right: 0px;
+            height: auto;
+        }
+    </style>
 
     <script>
 
