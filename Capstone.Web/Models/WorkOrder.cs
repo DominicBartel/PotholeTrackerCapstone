@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using Capstone.Web.Controllers;
 namespace Capstone.Web.Models
 {
     public class WorkOrder

@@ -109,5 +109,32 @@ namespace Capstone.Web.Controllers
         public void Delete(int id)
         {
         }
-    }
+
+		public string GetDateString(DateTime date)
+		{
+			string result = "";
+			result += date.Year.ToString() + "-";
+			if (date.Month.ToString().Length == 1)
+			{
+				result += "0" + date.Month.ToString() + "-";
+			}
+			else
+			{
+				result += date.Month.ToString() + "-";
+			}
+
+			if (date.Day.ToString().Length == 1)
+			{
+				result += "0" + date.Day.ToString();
+			}
+			else
+			{
+				result += date.Day.ToString();
+			}
+
+			return result;
+		}
+	}
+
+	
 }
