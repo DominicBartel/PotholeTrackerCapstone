@@ -175,6 +175,11 @@ namespace Capstone.Web.Controllers
                 newModel.WorkOrders = potholeDAL.GetMemberOrders(User.Identity.Name);
             }
 
+            if(User.IsInRole("god") || User.IsInRole("supergod") || User.IsInRole("admin"))
+            {
+                newModel.WorkOrders = potholeDAL.GetAllWorkOrders();
+            }
+
 
             return View(newModel);
         }
