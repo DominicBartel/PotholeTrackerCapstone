@@ -120,14 +120,14 @@ Insert UserRoles values('1B9EEA9C-CFBF-4F44-B5FA-AEB1019FA783', 'crew_member');
 
 --Potholes for demo
 Insert PotHole values('1BBEBA9C-CFBF-4F64-B5FA-AEB1019FA783', 'The pothole Cleveland Deserved', 41.514250, -81.670456, 6,'Frank Ave', '', 'By the lake But not in the lake', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 1);
-Insert PotHole values('10DD883C-C3D0-499C-8421-784B7F4FF7DE', 'not as bad as some but could easily become worse after another winter', 41.5039896225187, -81.6389301786537, 4, 'Euclid', '71st', 'Outside of Baker Electric Building', '2018-04-19 00:00:00.000', '','',0);
-Insert PotHole values('10DD883C-C3D0-499C-8421-784B7F4FF7DE', 'Really bad. I think theres a family of squirrels living in it.', 41.5114833058694, -81.5800114887002, 8, 'Coventry', 'Mayfield', 'Outside of Pacific East', '2018-04-19 00:00:00.000', '', '', 0);
-Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8', 'not bad, still quite a bump', 41.4408675939493, -81.7378555469651, 3, 'Southfield', 'North Amber And Memphis', '', '2018-04-19 00:00:00.000', '', '', 0);                       
-Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8', 'BENT MY AXEL!!1! YOU OWE ME MOENY', 41.4959064883019, -81.7064731314611, 9, 'Elm', 'Main', 'outside of mcarhtys bart', '2018-04-19 00:00:00.000', '', '', 0); 
+Insert PotHole values('10DD883C-C3D0-499C-8421-784B7F4FF7DE', 'not as bad as some but could easily become worse after another winter', 41.5039896225187, -81.6389301786537, 4, 'Euclid', '71st', 'Outside of Baker Electric Building', '2018-04-19 00:00:00.000', null,null,0);
+Insert PotHole values('10DD883C-C3D0-499C-8421-784B7F4FF7DE', 'Really bad. I think theres a family of squirrels living in it.', 41.5114833058694, -81.5800114887002, 8, 'Coventry', 'Mayfield', 'Outside of Pacific East', '2018-04-19 00:00:00.000', null, null, 0);
+Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8', 'not bad, still quite a bump', 41.4408675939493, -81.7378555469651, 3, 'Southfield', 'North Amber And Memphis', '', '2018-04-19 00:00:00.000', null, null, 0);                       
+Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8', 'BENT MY AXEL!!1! YOU OWE ME MOENY', 41.4959064883019, -81.7064731314611, 9, 'Elm', 'Main', 'outside of mcarhtys bart', '2018-04-19 00:00:00.000', null, null, 0); 
 Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8','BIG HOLE JUST LIKE THE HOLE IN BROWNS LEADERSHIP. ZING.', 41.5056179974269, -81.6979469416711, 10, 'Alfred Lerner Way', 'Erieside Ave', 'Outside of Browns Stadium.', '2018-04-19 00:00:00.000', '2018-04-19 00:00:00.000', '', 1);            
-Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8','pretty good bump. near my hipster friend and his girls house', 41.4868333743881, -81.7158519263448, 5, 'Clinton', 'W38th', '', '2018-04-19 00:00:00.000', '', '', 0);                        
+Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8','pretty good bump. near my hipster friend and his girls house', 41.4868333743881, -81.7158519263448, 5, 'Clinton', 'W38th', '', '2018-04-19 00:00:00.000', null, null, 0);                        
 Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8','Youll shoot yer eye out', 41.4687276531672, -81.6876047702729, 7,'West 11th', 'Rowley', 'Near Bumpus house and his freaking dogs', '2018-04-19 00:00:00.000', '2018-04-19 00:00:00.000', '2018-04-19 00:00:00.000', 1);               
-Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8','This is huge. About the size of a baby orengatan, orangetan, .... monkey',41.4469686570236, -81.7115220356563, 6, 'Zoo Drive', 'Wildlife Way', 'Zoo parkinglot', '2018-04-19 00:00:00.000', '', '', 0);                       
+Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8','This is huge. About the size of a baby orengatan, orangetan, .... monkey',41.4469686570236, -81.7115220356563, 6, 'Zoo Drive', 'Wildlife Way', 'Zoo parkinglot', '2018-04-19 00:00:00.000', null, null, 0);                       
 
 
 select * from UserRoles;
