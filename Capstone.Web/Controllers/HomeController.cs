@@ -23,7 +23,11 @@ namespace Capstone.Web.Controllers
 
 		public ActionResult RoleAssignment(RoleAssignModel viewModel)
 		{
-			RoleAssignModel newModel = new RoleAssignModel();
+            if (!Request.IsAuthenticated || User.IsInRole("citizen") || User.IsInRole("crew_member") || User.IsInRole("crew_leader"))
+            {
+                return RedirectToAction("Index");
+            }
+            RoleAssignModel newModel = new RoleAssignModel();
 			newModel.users = potholeDAL.GetAllUsers();
 			return View(newModel);
 		}
@@ -31,7 +35,12 @@ namespace Capstone.Web.Controllers
 		[HttpPost]
 		public ActionResult ChangeRole (Guid guid, string role)
 		{
-			potholeDAL.UpdateUserRole(guid, role);
+            if (!Request.IsAuthenticated || User.IsInRole("citizen") || User.IsInRole("crew_member") || User.IsInRole("crew_leader"))
+            {
+                return RedirectToAction("Index");
+            }
+
+            potholeDAL.UpdateUserRole(guid, role);
 			return RedirectToAction("RoleAssignment");
 		}
 
@@ -77,7 +86,10 @@ namespace Capstone.Web.Controllers
         [HttpGet]
         public ActionResult ReportPothole(PotholeViewModel viewModel)
         {
-
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Index");
+            }
             PotholeViewModel newModel = new PotholeViewModel();
 
             newModel.Roles = GetRoles();
@@ -90,6 +102,10 @@ namespace Capstone.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ReportPotholePost(PotholeViewModel viewModel)
         {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Index");
+            }
             //Pothole pothole = new Pothole();
             //pothole.UserName = userName;
 
@@ -114,6 +130,11 @@ namespace Capstone.Web.Controllers
 
         public ActionResult AdminPotholeEdit(PotholeViewModel viewModel)
         {
+            if (!Request.IsAuthenticated || User.IsInRole("citizen") || User.IsInRole("crew_member"))
+            {
+                return RedirectToAction("Index");
+            }
+
             if (viewModel == null)
             {
                 viewModel = new PotholeViewModel();
@@ -125,6 +146,11 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public ActionResult AdminPotholeEdit(Pothole pothole)
         {
+            if (!Request.IsAuthenticated || User.IsInRole("citizen") || User.IsInRole("crew_member"))
+            {
+                return RedirectToAction("Index");
+            }
+
             potholeDAL.UpdatePothole(pothole);
             //PotholeViewModel returnModel = new PotholeViewModel();
             //returnModel.PotholeList = new List<Pothole>();
@@ -135,6 +161,10 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public ActionResult DeletePothole(Pothole potholeDelete)
         {
+            if (!Request.IsAuthenticated || User.IsInRole("citizen") || User.IsInRole("crew_member"))
+            {
+                return RedirectToAction("Index");
+            }
             potholeDAL.DeletePothole(potholeDelete);
             return RedirectToAction("AdminPotholeEdit");
         }
@@ -142,12 +172,22 @@ namespace Capstone.Web.Controllers
 
         public ActionResult WorkOrder()
         {
+            if (!Request.IsAuthenticated || User.IsInRole("citizen") || User.IsInRole("crew_member"))
+            {
+                return RedirectToAction("Index");
+            }
+
             return View();
         }
 
         [HttpPost]
         public ActionResult SubmitWorkOrder(string PotHoles, string Users, WorkOrder order)
         {
+            if (!Request.IsAuthenticated || User.IsInRole("citizen") || User.IsInRole("crew_member"))
+            {
+                return RedirectToAction("Index");
+            }
+
             order.LeaderId = potholeDAL.GetUserId(User.Identity.Name);
             potholeDAL.ScheduleWorkOrder(order, Users, PotHoles);
             return RedirectToAction("WorkOrder");
@@ -187,6 +227,12 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public ActionResult SubmitMyWorkOrders(WorkOrder workOrder)
         {
+            if (!Request.IsAuthenticated || User.IsInRole("citizen"))
+            {
+                return RedirectToAction("Index");
+            }
+
+
             potholeDAL.UpdateWorkOrder(workOrder);
 
             return RedirectToAction("ReviewMyWorkOrders");
