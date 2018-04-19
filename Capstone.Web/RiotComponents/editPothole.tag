@@ -28,11 +28,11 @@
             </div>
             <div class="inputs_edit">
                 <p class="input_p">Location Description</p>
-                <textarea id="LocationDesc" rows="10" cols="24" name="LocationDesc"></textarea>
+                <textarea id="LocationDesc" rows="10" cols="24" name="LocationDesc" placeholder="Enter a location description."></textarea>
             </div>
             <div class="inputs_edit">
                 <p class="input_p">Pothole Description</p>
-                <textarea id="PotholeDesc" rows="10" cols="24" name="PotholeDesc"></textarea>
+                <textarea id="PotholeDesc" rows="10" cols="24" name="PotholeDesc" placeholder="Enter a description of the pothole."></textarea>
             </div>
             <div class="inputs_edit">
                 <button>Submit</button>

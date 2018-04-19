@@ -1,9 +1,10 @@
 <resultstable>
 
     <table class="table-index-page table-scroll">
-        <th colspan="5">Pothole Search Results:</th>
+        <th colspan="6">Pothole Search Results:</th>
 
         <tr style="font-weight:bold">
+            <td>ID Number</td>
             <td>Severity</td>
             <td>First Cross Street</td>
             <td>Second Cross Street</td>
@@ -12,6 +13,7 @@
         </tr>
 
         <tr onclick="{selectPothole}" each="{potholes}">
+            <td>{PotholeId}</td>
             <td>{Severity}</td>
             <td>{Street1}</td>
             <td>{Street2}</td>
