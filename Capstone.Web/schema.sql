@@ -118,34 +118,16 @@ Insert Users values('1B9EEA9C-CFBF-4F44-B5FA-AEB1019FA783', 'Daniel_Driver@pt.co
 Insert UserRoles values('1B9EEA9C-CFBF-4F44-B5FA-AEB1019FA783', 'crew_member');
 
 
-
-
-
-
-
-Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8', 'Just a small hole in the road', 41.519369, 81.658027, 1, 'Euclid', 'Elm', 'Its on the corner of euclid and elm', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', null, 1);
-Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8', 'Barely there but worth mentioning', 41.515351, -81.666653, 1, 'Euclid', 'Som Center', 'By the church', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 1);
-Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8', 'The worst pothole I have ever seen fix ASAP', 41.516560,  -81.670086, 10, 'Fairfield Avenue', '', 'As you exit the gas station', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', null, 1);
-Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8', 'This is really bad, Cleveland!', 41.516290, -81.670046, 9, 'Saint Clair', '', 'Its almost half the road what do you mean where is it', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 1);
-Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8', 'A terriblie Pothole', 41.516252, -81.670026, 9, 'St Peter', '', 'Next to the taco stand', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 1);
-Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8', 'A pothole in need of repair', 41.516240, -81.670066, 8, 'Road Ln', '140th', 'by the street', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 1);
-Insert PotHole values('1BBEBA9C-CFBF-4F64-B5FA-AEB1019FA783', 'Annoying', 41.516265, -81.670056, 4, 'E 152nd Street', 'High Road', 'Someone planted a tree in it Im late for work!', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 1);
-Insert PotHole values('1BBEBA9C-CFBF-4F64-B5FA-AEB1019FA783', 'Not Bad', 41.515230, -81.670046, 2, 'Street St', 'Fleet St', '', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 1);
+--Potholes for demo
 Insert PotHole values('1BBEBA9C-CFBF-4F64-B5FA-AEB1019FA783', 'The pothole Cleveland Deserved', 41.514250, -81.670456, 6,'Frank Ave', '', 'By the lake But not in the lake', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 1);
-Insert PotHole values('1BBEBA9C-CFBF-4F64-B5FA-AEB1019FA783', 'Not sure if pothole or porthole', 41.516250, -81.670036, 2, 'E 24th St.', '', '', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 1);
-Insert PotHole values('1BBEBA9C-CFBF-4F64-B5FA-AEB1019FA783', 'Watch out!', 41.513250, -81.670046, 7, 'Carnegie', 'Elm', 'by the sewer grate', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', null, 1);
-Insert PotHole values('1BBEBA9C-CFBF-4F64-B5FA-AEB1019FA783', 'I am hit but not bad', 41.516240, -81.670066, 3, '644th st', '', 'next to the cat', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 1);
-Insert PotHole values('C5AF99B0-3425-41FD-8DB3-32ED13EC4494', 'Had to repair my car after an encounter with this pothole', 41.517250, -81.670084, 6, 'Mango Ln', '', 'on the street', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 1);
-Insert PotHole values('C5AF99B0-3425-41FD-8DB3-32ED13EC4494', 'Wow', 41.515250, -81.670066, 3, '123rd', 'Elm', 'In front of the house, by the stop sign', '2007-04-30 20:10:02.047', null, null, 0);
-Insert PotHole values('C5AF99B0-3425-41FD-8DB3-32ED13EC4494', 'It is a hole', 41.513260, -81.670076, 8, 'St clair', '453', 'By the dogshelter, near the fire hydrant', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 1);
-Insert PotHole values('C5AF99B0-3425-41FD-8DB3-32ED13EC4494', '', 41.513235, -81.670746, 10, 'Birch', '12 st', 'Corner of birch and elm', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
-Insert PotHole values('C5AF99B0-3425-41FD-8DB3-32ED13EC4494', '', 41.513240, -81.670776, 4, 'Twelve', '13 st', 'Next to the weird curb art', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
-Insert PotHole values('C5AF99B0-3425-41FD-8DB3-32ED13EC4494', '', 41.513334, -81.670386, 3, 'Bird', 'Welcome St', 'by the manhole cover', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', null, 0);
-Insert PotHole values('2528EB34-77EE-4AE8-B906-D29563AFC7DA', '', 41.513235, -81.670734, 3, 'Squirrel Dr', 'Cigar Ln', 'right out the front of the house with the tire swing', '2007-04-30 20:10:02.047', null, null, 0);
-Insert PotHole values('2528EB34-77EE-4AE8-B906-D29563AFC7DA', '', 41.513204, -81.670766, 5, 'Tooth', 'Lemon Ln', 'Next to the broken down car', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
-Insert PotHole values('2528EB34-77EE-4AE8-B906-D29563AFC7DA', '', 41.513240, -81.670744, 1, 'Moon', 'Temple', 'Corner of birch and elm', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
-Insert PotHole values('2528EB34-77EE-4AE8-B906-D29563AFC7DA', '', 41.513232, -81.670783, 9, 'Long Street', '', 'By the TacoYell', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', '2007-04-30 20:10:02.047', 0);
-
+Insert PotHole values('10DD883C-C3D0-499C-8421-784B7F4FF7DE', 'not as bad as some but could easily become worse after another winter', 41.5039896225187, -81.6389301786537, 4, 'Euclid', '71st', 'Outside of Baker Electric Building', '2018-04-19 00:00:00.000', '','',0);
+Insert PotHole values('10DD883C-C3D0-499C-8421-784B7F4FF7DE', 'Really bad. I think theres a family of squirrels living in it.', 41.5114833058694, -81.5800114887002, 8, 'Coventry', 'Mayfield', 'Outside of Pacific East', '2018-04-19 00:00:00.000', '', '', 0);
+Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8', 'not bad, still quite a bump', 41.4408675939493, -81.7378555469651, 3, 'Southfield', 'North Amber And Memphis', '', '2018-04-19 00:00:00.000', '', '', 0);                       
+Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8', 'BENT MY AXEL!!1! YOU OWE ME MOENY', 41.4959064883019, -81.7064731314611, 9, 'Elm', 'Main', 'outside of mcarhtys bart', '2018-04-19 00:00:00.000', '', '', 0); 
+Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8','BIG HOLE JUST LIKE THE HOLE IN BROWNS LEADERSHIP. ZING.', 41.5056179974269, -81.6979469416711, 10, 'Alfred Lerner Way', 'Erieside Ave', 'Outside of Browns Stadium.', '2018-04-19 00:00:00.000', '2018-04-19 00:00:00.000', '', 1);            
+Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8','pretty good bump. near my hipster friend and his girls house', 41.4868333743881, -81.7158519263448, 5, 'Clinton', 'W38th', '', '2018-04-19 00:00:00.000', '', '', 0);                        
+Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8','Youll shoot yer eye out', 41.4687276531672, -81.6876047702729, 7,'West 11th', 'Rowley', 'Near Bumpus house and his freaking dogs', '2018-04-19 00:00:00.000', '2018-04-19 00:00:00.000', '2018-04-19 00:00:00.000', 1);               
+Insert PotHole values('E0F27DB1-A4CD-466A-9F28-075A6CE832C8','This is huge. About the size of a baby orengatan, orangetan, .... monkey',41.4469686570236, -81.7115220356563, 6, 'Zoo Drive', 'Wildlife Way', 'Zoo parkinglot', '2018-04-19 00:00:00.000', '', '', 0);                       
 
 
 select * from UserRoles;
