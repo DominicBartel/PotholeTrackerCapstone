@@ -28,13 +28,13 @@
                 {
                     <li style="background-color:#083D77; border-radius: 5px; padding-bottom: 1px; padding-top: 3px; padding-right: 3px;">@Html.ActionLink('\u2657' + " Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
                 }
-                else if (User.IsInRole("crew_member")) //Knight
+                else if (User.IsInRole("crew_member")) //Pawn
                 {
-                    <li style="background-color:#453823; border-radius: 5px; padding-bottom: 1px; padding-top: 3px; padding-right: 3px;">@Html.ActionLink('\u2658' + " Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                    <li style="background-color:#453823; border-radius: 5px; padding-bottom: 1px; padding-top: 3px; padding-right: 3px;">@Html.ActionLink('\u2659' + " Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
                 }
-                else //Pawn
+                else //Knight
                 {
-                    <li>@Html.ActionLink('\u2659' + " Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                    <li>@Html.ActionLink('\u2658' + " Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
 
                 }
                 @*<li>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { id = "homeLink" }) </li>*@
