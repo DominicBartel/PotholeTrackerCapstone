@@ -231,7 +231,7 @@
 
         function searchUsers() {
 
-            const url = `http://localhost:55900/api/users`;
+            const url = `http://potholetracker-2.apphb.com/api/users`;
             fetch(url)
                 .then(response => response.json())
                 .then(json => {
