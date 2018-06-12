@@ -6,25 +6,25 @@
 
     <script type="text/javascript">
 
-        // Get the column totals from the database
-        // add variable to hold the total number of confirmed potholes
-        let confirmed = 0;
+      // Get the column totals from the database
+      // add variable to hold the total number of confirmed potholes
+      let confirmed = 0;
 
-        // add variable to hold the total number of repaired potholes
-        let repaired = 0;
+      // add variable to hold the total number of repaired potholes
+      let repaired = 0;
 
-        this.potholes = [];
+      this.potholes = [];
 
-        let i = 0;
+      let i = 0;
 
-        this.on('mount', () => {
+      this.on('mount', () => {
 
-            fetch(`http://localhost:55900/api/potholes`)
-                .then(response => response.json())
-                .then(json => {
-                    this.potholes = json;
-                    console.log(this.potholes);
-                    for (i = 0; i < this.potholes.length; i++) {
+      fetch(`http://potholetracker-2.apphb.com/api/potholes`)
+      .then(response => response.json())
+      .then(json => {
+      this.potholes = json;
+      console.log(this.potholes);
+      for (i = 0; i < this.potholes.length; i++) {
 
                         if (this.potholes[i].ReportedDate == null) {
 
